@@ -8,6 +8,12 @@ public class Route {
     private Store storeA, storeB;
     private int distance;
 
+    public Route(Store storeA, Store storeB) {
+        this.storeA = storeA;
+        this.storeB = storeB;
+        this.distance = -1;
+    }
+
     public Route(Store storeA, Store storeB, int distance) {
         this.storeA = storeA;
         this.storeB = storeB;
