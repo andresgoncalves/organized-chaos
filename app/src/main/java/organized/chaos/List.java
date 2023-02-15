@@ -1,5 +1,7 @@
 package organized.chaos;
 
+import java.util.Objects;
+
 /**
  *
  * @author Andres
@@ -21,9 +23,9 @@ public class List<T> {
         return node;
     }
     
-    public void remove(T value) {
+    public void remove(Object value) {
         for(ListNode<T> node = first, prev = null; node != null; prev = node, node = node.getNext()) {
-            if(node.getValue().equals(value)) {
+            if(nodeEquals(node.getValue(), value)) {
                 if(node == last) {
                     last = prev;
                 }
@@ -39,13 +41,17 @@ public class List<T> {
         }
     }
     
-    public ListNode<T> find(T value) {
-        for(ListNode<T> node = first, prev = null; node != null; prev = node, node = node.getNext()) {
-            if(node.getValue().equals(value)) {
+    public ListNode<T> find(Object value) {
+        for(ListNode<T> node = first; node != null; node = node.getNext()) {
+            if(nodeEquals(node.getValue(), value)) {
                 return node;
             }
         }
         return null;
+    }
+    
+    private boolean nodeEquals(T a, Object b) {
+        return Objects.equals(a, b);
     }
 
     public ListNode<T> getFirst() {
@@ -59,6 +65,7 @@ public class List<T> {
     public int getSize() {
         return size;
     }
+    
     public boolean isEmpty() {
         return size == 0;
     }
