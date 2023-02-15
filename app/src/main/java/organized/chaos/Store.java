@@ -12,6 +12,13 @@ public class Store {
     public Store(String name) {
         this.name = name;
     }
+    
+    public Store(String name, Route[] routes) {
+        this.name = name;
+        for(Route route : routes) {
+            this.routes.append(route);
+        }
+    }
 
     public String getName() {
         return name;
