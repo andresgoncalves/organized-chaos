@@ -4,7 +4,7 @@ package organized.chaos;
  *
  * @author Andres
  */
-class ListNode<T> {
+public class ListNode<T> {
     private T value;
     private ListNode<T> next;
 
