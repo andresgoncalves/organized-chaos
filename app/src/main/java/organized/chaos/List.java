@@ -11,7 +11,7 @@ public class List<T> {
     private ListNode<T> first, last;
     private int size;
     
-    public ListNode<T> append(T value) {
+    public void append(T value) {
         ListNode<T> node = new ListNode(value);
         if(size == 0) {
             first = last = node;
@@ -21,10 +21,9 @@ public class List<T> {
             last = node;
         }
         size += 1;
-        return node;
     }
     
-    public void remove(Object value) {
+    public T remove(Object value) {
         for(ListNode<T> node = first, prev = null; node != null; prev = node, node = node.getNext()) {
             if(compareKey(node.getValue(), value)) {
                 if(node == last) {
@@ -37,9 +36,10 @@ public class List<T> {
                     prev.setNext(node.getNext());
                 }
                 size -= 1;
-                break;
+                return node.getValue();
             }
         }
+        return null;
     }
     
     public T find(Object value) {
