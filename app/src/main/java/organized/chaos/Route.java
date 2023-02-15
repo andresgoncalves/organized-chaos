@@ -5,7 +5,7 @@ package organized.chaos;
  * @author Andres
  */
 public class Route {
-    private Store store;
+    private final Store store;
     private int distance;
 
     public Route(Store store, Store storeB) {
@@ -20,10 +20,6 @@ public class Route {
 
     public Store getStore() {
         return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
     }
 
     public int getDistance() {

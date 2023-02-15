@@ -50,10 +50,6 @@ public class List<T> {
         }
         return null;
     }
-    
-    protected boolean compareKey(T a, Object b) {
-        return Objects.equals(a, b);
-    }
 
     public ListNode<T> getFirst() {
         return first;
@@ -69,5 +65,9 @@ public class List<T> {
     
     public boolean isEmpty() {
         return size == 0;
+    }
+    
+    protected boolean compareKey(T a, Object b) {
+        return Objects.equals(a, b);
     }
 }

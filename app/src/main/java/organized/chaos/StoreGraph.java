@@ -5,7 +5,7 @@ package organized.chaos;
  * @author Andres
  */
 public class StoreGraph {
-    private StoreList stores = new StoreList();
+    private final StoreList stores = new StoreList();
         
     public void addRoute(String a, String b, int distance) {
         Store storeA = stores.find(a);

@@ -6,8 +6,8 @@ package organized.chaos;
  */
 public class Store {
     private String name;
-    private StockList stock = new StockList();
-    private RouteList routes = new RouteList();
+    private final StockList stock = new StockList();
+    private final RouteList routes = new RouteList();
 
     public Store(String name) {
         this.name = name;
