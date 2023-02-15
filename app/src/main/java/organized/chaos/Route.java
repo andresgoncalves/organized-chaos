@@ -8,11 +8,6 @@ public class Route {
     private final Store store;
     private int distance;
 
-    public Route(Store store, Store storeB) {
-        this.store = store;
-        this.distance = -1;
-    }
-
     public Route(Store store, int distance) {
         this.store = store;
         this.distance = distance;
