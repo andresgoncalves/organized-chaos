@@ -5,35 +5,25 @@ package organized.chaos;
  * @author Andres
  */
 public class Route {
-    private Store storeA, storeB;
+    private Store store;
     private int distance;
 
-    public Route(Store storeA, Store storeB) {
-        this.storeA = storeA;
-        this.storeB = storeB;
+    public Route(Store store, Store storeB) {
+        this.store = store;
         this.distance = -1;
     }
 
-    public Route(Store storeA, Store storeB, int distance) {
-        this.storeA = storeA;
-        this.storeB = storeB;
+    public Route(Store store, int distance) {
+        this.store = store;
         this.distance = distance;
     }
 
-    public Store getStoreA() {
-        return storeA;
+    public Store getStore() {
+        return store;
     }
 
-    public void setStoreA(Store storeA) {
-        this.storeA = storeA;
-    }
-
-    public Store getStoreB() {
-        return storeB;
-    }
-
-    public void setStoreB(Store storeB) {
-        this.storeB = storeB;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
     public int getDistance() {

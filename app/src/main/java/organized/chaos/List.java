@@ -1,6 +1,7 @@
 package organized.chaos;
 
 import java.util.Objects;
+import java.util.function.Predicate;
 
 /**
  *
@@ -41,10 +42,10 @@ public class List<T> {
         }
     }
     
-    public ListNode<T> find(Object value) {
+    public T find(Object value) {
         for(ListNode<T> node = first; node != null; node = node.getNext()) {
             if(compareKey(node.getValue(), value)) {
-                return node;
+                return node.getValue();
             }
         }
         return null;
