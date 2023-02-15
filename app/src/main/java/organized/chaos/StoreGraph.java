@@ -56,9 +56,9 @@ public class StoreGraph {
     }
     
     public int getDistance(String a, String b) {
-        Store storeA = stores.find("A");
+        Store storeA = stores.find(a);
         if(storeA != null) {
-            Route route = storeA.getRoutes().find("B");
+            Route route = storeA.getRoutes().find(b);
             if(route != null) {
                 return route.getDistance();
             }
