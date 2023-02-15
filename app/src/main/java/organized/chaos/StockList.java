@@ -9,7 +9,7 @@ import java.util.Objects;
 public class StockList extends List<Stock> {
 
     @Override
-    protected boolean nodeEquals(Stock a, Object b) {
+    protected boolean compareKey(Stock a, Object b) {
         return Objects.equals(a.getProduct(), b);
     }
     

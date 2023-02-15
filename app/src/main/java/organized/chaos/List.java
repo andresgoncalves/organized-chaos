@@ -25,7 +25,7 @@ public class List<T> {
     
     public void remove(Object value) {
         for(ListNode<T> node = first, prev = null; node != null; prev = node, node = node.getNext()) {
-            if(nodeEquals(node.getValue(), value)) {
+            if(compareKey(node.getValue(), value)) {
                 if(node == last) {
                     last = prev;
                 }
@@ -43,14 +43,14 @@ public class List<T> {
     
     public ListNode<T> find(Object value) {
         for(ListNode<T> node = first; node != null; node = node.getNext()) {
-            if(nodeEquals(node.getValue(), value)) {
+            if(compareKey(node.getValue(), value)) {
                 return node;
             }
         }
         return null;
     }
     
-    protected boolean nodeEquals(T a, Object b) {
+    protected boolean compareKey(T a, Object b) {
         return Objects.equals(a, b);
     }
 
