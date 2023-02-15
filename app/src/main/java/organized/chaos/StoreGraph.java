@@ -65,6 +65,19 @@ public class StoreGraph {
         }
         return -1;
     }
+    
+    public void setDistance(String a, String b, int distance) {
+        Store storeA = stores.find(a);
+        Store storeB = stores.find(b);
+        if(storeA != null && storeB != null && storeA != storeB) {
+            Route routeAB = storeA.getRoutes().find(b);
+            Route routeBA = storeB.getRoutes().find(a);
+            if(routeAB != null && routeBA != null) {
+                routeAB.setDistance(distance);
+                routeBA.setDistance(distance);
+            }
+        }
+    }
 
     public StoreList getStores() {
         return stores;
