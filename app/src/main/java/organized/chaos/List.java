@@ -1,7 +1,6 @@
 package organized.chaos;
 
 import java.util.Objects;
-import java.util.function.Predicate;
 
 /**
  *
