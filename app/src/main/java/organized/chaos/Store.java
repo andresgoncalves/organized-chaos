@@ -7,6 +7,7 @@ package organized.chaos;
 public class Store {
     private String name;
     private StockList stock = new StockList();
+    private RouteList routes = new RouteList();
 
     public Store(String name) {
         this.name = name;
@@ -22,5 +23,9 @@ public class Store {
 
     public StockList getStock() {
         return stock;
+    }  
+
+    public RouteList getRoutes() {
+        return routes;
     }   
 }
