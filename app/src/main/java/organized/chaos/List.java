@@ -50,7 +50,7 @@ public class List<T> {
         return null;
     }
     
-    private boolean nodeEquals(T a, Object b) {
+    protected boolean nodeEquals(T a, Object b) {
         return Objects.equals(a, b);
     }
 
