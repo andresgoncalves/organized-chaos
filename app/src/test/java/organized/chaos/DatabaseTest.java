@@ -1,6 +1,7 @@
 package organized.chaos;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.StringWriter;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,6 +39,21 @@ public class DatabaseTest {
             "Almacen C,Almacen D,4\n" +
             "Almacen C,Almacen E,13\n" +
             "Almacen E,Almacen D,3";
+    
+    @Test
+    void readDatabase() throws IOException {
+        StoreGraph graph = Database.readDatabase(new StringReader(testDatabase));
+        
+        assertEquals(5, graph.getStores().getSize());
+        
+        assertEquals(3, graph.getStore("Almacen A").getStock().getSize());
+        assertEquals(2, graph.getStore("Almacen B").getStock().getSize());
+        assertEquals(1, graph.getStore("Almacen D").getStock().getSize());
+        
+        assertEquals(-1, graph.getDistance("Almacen A", "Almacen D"));
+        assertEquals(25, graph.getDistance("Almacen A", "Almacen E"));
+        assertEquals(4, graph.getDistance("Almacen C", "Almacen D"));
+    }
     
     @Test
     void writeDatabase() throws IOException {
