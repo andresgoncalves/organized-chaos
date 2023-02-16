@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 
 /**
  *
@@ -23,9 +25,13 @@ public class Database {
     private Database() {}
     
     public static StoreGraph readDatabase(File file) throws FileNotFoundException, IOException {
+        return readDatabase(new FileReader(file));
+    }
+    
+    public static StoreGraph readDatabase(Reader baseReader) throws IOException {
         StoreGraph graph = new StoreGraph();
         
-        try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try(BufferedReader reader = new BufferedReader(baseReader)) {
             
             int mode = READING_NULL;
             Store store = null;
@@ -65,7 +71,11 @@ public class Database {
     }
     
     public static void writeDatabase(StoreGraph graph, File file) throws FileNotFoundException, IOException {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+        writeDatabase(graph, new FileWriter(file));
+    }
+    
+    public static void writeDatabase(StoreGraph graph, Writer baseWriter) throws IOException {
+        try(BufferedWriter writer = new BufferedWriter(baseWriter)) {
             
             writer.write("%s\n".formatted(STORES_SECTION));
             
