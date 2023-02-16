@@ -14,9 +14,9 @@ public class RouteListTest {
         list.append(new Route(new Store("A"), 1));
         list.append(new Route(new Store("B"), 1));
         list.append(new Route(new Store("C"), 1));
-        assertEquals(list.getSize(), 3);
-        assertEquals(list.getFirst().getValue().getStore().getName(), "A");
-        assertEquals(list.getLast().getValue().getStore().getName(), "C");
+        assertEquals(3, list.getSize());
+        assertEquals("A", list.getFirst().getValue().getStore().getName());
+        assertEquals("C", list.getLast().getValue().getStore().getName());
     }
     
     @Test
@@ -24,6 +24,6 @@ public class RouteListTest {
         RouteList list = new RouteList();
         list.append(new Route(new Store("A"), 1));
         list.remove("A");
-        assertEquals(list.getSize(), 0);
+        assertEquals(0, list.getSize());
     }
 }

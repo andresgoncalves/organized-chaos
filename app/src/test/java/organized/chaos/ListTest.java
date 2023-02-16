@@ -14,9 +14,9 @@ public class ListTest {
         list.append(1);
         list.append(2);
         list.append(3);
-        assertEquals(list.getSize(), 3);
-        assertEquals(list.getFirst().getValue(), 1);
-        assertEquals(list.getLast().getValue(), 3);
+        assertEquals(3, list.getSize());
+        assertEquals(1, list.getFirst().getValue());
+        assertEquals(3, list.getLast().getValue());
     }
     
     @Test
@@ -26,9 +26,9 @@ public class ListTest {
         list.append(2);
         list.append(3);
         list.remove(1);
-        assertEquals(list.getSize(), 2);
-        assertEquals(list.getFirst().getValue(), 2);
-        assertEquals(list.getLast().getValue(), 3);
+        assertEquals(2, list.getSize());
+        assertEquals(2, list.getFirst().getValue());
+        assertEquals(3, list.getLast().getValue());
     }
     
     @Test
@@ -38,9 +38,9 @@ public class ListTest {
         list.append(2);
         list.append(3);
         list.remove(2);
-        assertEquals(list.getSize(), 2);
-        assertEquals(list.getFirst().getValue(), 1);
-        assertEquals(list.getLast().getValue(), 3);
+        assertEquals(2, list.getSize());
+        assertEquals(1, list.getFirst().getValue());
+        assertEquals(3, list.getLast().getValue());
     }
     
     @Test
@@ -50,9 +50,9 @@ public class ListTest {
         list.append(2);
         list.append(3);
         list.remove(3);
-        assertEquals(list.getSize(), 2);
-        assertEquals(list.getFirst().getValue(), 1);
-        assertEquals(list.getLast().getValue(), 2);
+        assertEquals(2, list.getSize());
+        assertEquals(1, list.getFirst().getValue());
+        assertEquals(2, list.getLast().getValue());
     }
     
     @Test
@@ -60,7 +60,7 @@ public class ListTest {
         List<Integer> list = new List<Integer>();
         list.append(1);
         list.remove(1);
-        assertEquals(list.getSize(), 0);
+        assertEquals(0, list.getSize());
         assertNull(list.getFirst());
         assertNull(list.getLast());
     }

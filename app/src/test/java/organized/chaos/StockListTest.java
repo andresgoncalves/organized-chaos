@@ -14,9 +14,9 @@ public class StockListTest {
         list.append(new Stock("A", 1));
         list.append(new Stock("B", 1));
         list.append(new Stock("C", 1));
-        assertEquals(list.getSize(), 3);
-        assertEquals(list.getFirst().getValue().getProduct(), "A");
-        assertEquals(list.getLast().getValue().getProduct(), "C");
+        assertEquals(3, list.getSize());
+        assertEquals("A", list.getFirst().getValue().getProduct());
+        assertEquals("C", list.getLast().getValue().getProduct());
     }
     
     @Test
@@ -24,6 +24,6 @@ public class StockListTest {
         StockList list = new StockList();
         list.append(new Stock("A", 1));
         list.remove("A");
-        assertEquals(list.getSize(), 0);
+        assertEquals(0, list.getSize());
     }
 }

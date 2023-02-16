@@ -16,8 +16,8 @@ public class StoreGraphTest {
         graph.createStore("C");
         graph.createRoute("A", "B", 1);
         graph.createRoute("B", "C", 2);
-        assertEquals(graph.getDistance("A", "C"), -1);
-        assertEquals(graph.getDistance("A", "B"), 1);
-        assertEquals(graph.getDistance("B", "A"), 1);
+        assertEquals(-1, graph.getDistance("A", "C"));
+        assertEquals(1, graph.getDistance("A", "B"));
+        assertEquals(1, graph.getDistance("B", "A"));
     }
 }

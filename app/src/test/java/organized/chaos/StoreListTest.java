@@ -14,9 +14,9 @@ public class StoreListTest {
         list.append(new Store("A"));
         list.append(new Store("B"));
         list.append(new Store("C"));
-        assertEquals(list.getSize(), 3);
-        assertEquals(list.getFirst().getValue().getName(), "A");
-        assertEquals(list.getLast().getValue().getName(), "C");
+        assertEquals(3, list.getSize());
+        assertEquals("A", list.getFirst().getValue().getName());
+        assertEquals("C", list.getLast().getValue().getName());
     }
     
     @Test
@@ -24,6 +24,6 @@ public class StoreListTest {
         StoreList list = new StoreList();
         list.append(new Store("A"));
         list.remove("A");
-        assertEquals(list.getSize(), 0);
+        assertEquals(0, list.getSize());
     }
 }
