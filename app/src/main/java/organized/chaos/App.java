@@ -1,16 +1,58 @@
 package organized.chaos;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Andres
  */
 public class App extends javax.swing.JFrame {
+    
+    private StoreGraph graph;
+    private File dataFile;
 
     /**
      * Creates new form App
      */
     public App() {
         initComponents();
+    }
+
+    public StoreGraph getGraph() {
+        return graph;
+    }
+
+    public void setGraph(StoreGraph graph) {
+        this.graph = graph;
+    }
+
+    public File getDataFile() {
+        return dataFile;
+    }
+
+    public void setDataFile(File dataFile) {
+        this.dataFile = dataFile;
+    }
+    
+    public void loadFile(File file) {
+        try {
+            graph = Database.readDatabase(file);
+            dataFile = file;
+            JOptionPane.showMessageDialog(this, "El archivo contiene %d almacenes".formatted(graph.getStores().getSize()), "Archivo cargado", JOptionPane.INFORMATION_MESSAGE);
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo", "Error de lectura", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Hubo un problema al leer el archivo", "Error de formato", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -22,15 +64,24 @@ public class App extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        fileLoadPanel = new organized.chaos.FileLoadPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Organized Chaos");
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new java.awt.CardLayout());
+        getContentPane().add(fileLoadPanel, "FILE_LOAD_CARD");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private organized.chaos.FileLoadPanel fileLoadPanel;
+    // End of variables declaration//GEN-END:variables
+
+    public static App instance;
+    
     /**
      * @param args the command line arguments
      */
@@ -51,13 +102,13 @@ public class App extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new App().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            instance = new App();
+            instance.setVisible(true);
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
+    public static App getInstance() {
+        return instance;
+    }
 }
