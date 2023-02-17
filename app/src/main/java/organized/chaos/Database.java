@@ -24,7 +24,7 @@ public class Database {
 
     private Database() {}
     
-    public static StoreGraph readDatabase(File file) throws FileNotFoundException, IOException {
+    public static StoreGraph readDatabase(File file) throws IOException {
         return readDatabase(new FileReader(file));
     }
     
@@ -70,7 +70,7 @@ public class Database {
         return graph;
     }
     
-    public static void writeDatabase(StoreGraph graph, File file) throws FileNotFoundException, IOException {
+    public static void writeDatabase(StoreGraph graph, File file) throws IOException {
         writeDatabase(graph, new FileWriter(file));
     }
     
