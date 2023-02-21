@@ -63,7 +63,7 @@ public class StoreGraph {
                 return route.getDistance();
             }
         }
-        return -1;
+        return 0;
     }
     
     public void setDistance(String a, String b, int distance) {
