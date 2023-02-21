@@ -33,12 +33,12 @@ public class DatabaseTest {
             "Rutas;\n" +
             "A,B,10\n" +
             "A,C,20\n" +
-            "A,E,25\n" +
             "B,C,5\n" +
             "B,D,8\n" +
             "C,D,4\n" +
             "C,E,13\n" +
-            "E,D,3";
+            "D,E,3\n" +
+            "E,A,25";
     
     @Test
     void readDatabase() throws IOException {
@@ -50,8 +50,8 @@ public class DatabaseTest {
         assertEquals(2, graph.getStore("B").getStock().getSize());
         assertEquals(1, graph.getStore("D").getStock().getSize());
         
-        assertEquals(-1, graph.getDistance("A", "D"));
-        assertEquals(25, graph.getDistance("A", "E"));
+        assertEquals(0, graph.getDistance("A", "D"));
+        assertEquals(-25, graph.getDistance("A", "E"));
         assertEquals(4, graph.getDistance("C", "D"));
     }
     
