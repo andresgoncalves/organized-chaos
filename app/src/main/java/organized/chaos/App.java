@@ -50,7 +50,6 @@ public class App extends javax.swing.JFrame {
         try {
             graph = Database.readDatabase(file);
             dataFile = file;
-            JOptionPane.showMessageDialog(this, "El archivo contiene %d almacenes".formatted(graph.getStores().getSize()), "Archivo cargado", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
