@@ -40,16 +40,16 @@ public class StoreGraph {
     public void createRoute(String a, String b, int distance) {
         Store storeA = stores.find(a);
         Store storeB = stores.find(b);
-        if(storeA != null && storeB != null && storeA != storeB) {
+        if(storeA != null && storeB != null) {
             storeA.getRoutes().append(new Route(storeB, distance));
-            storeB.getRoutes().append(new Route(storeA, distance));
+            storeB.getRoutes().append(new Route(storeA, -distance));
         }
     }
         
     public void removeRoute(String a, String b) {
         Store storeA = stores.find(a);
         Store storeB = stores.find(b);
-        if(storeA != null && storeB != null && storeA != storeB) {
+        if(storeA != null && storeB != null) {
             storeA.getRoutes().remove(b);
             storeB.getRoutes().remove(a);
         }
@@ -69,12 +69,12 @@ public class StoreGraph {
     public void setDistance(String a, String b, int distance) {
         Store storeA = stores.find(a);
         Store storeB = stores.find(b);
-        if(storeA != null && storeB != null && storeA != storeB) {
+        if(storeA != null && storeB != null) {
             Route routeAB = storeA.getRoutes().find(b);
             Route routeBA = storeB.getRoutes().find(a);
             if(routeAB != null && routeBA != null) {
                 routeAB.setDistance(distance);
-                routeBA.setDistance(distance);
+                routeBA.setDistance(-distance);
             }
         }
     }
