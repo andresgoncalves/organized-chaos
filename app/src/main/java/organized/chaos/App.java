@@ -7,7 +7,11 @@ import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import javax.swing.JFileChooser;
+import java.awt.Graphics2D;
+import java.util.Vector;
+import java.awt.Graphics;
+import java.awt.BasicStroke;
 /**
  *
  * @author Andres
@@ -16,6 +20,7 @@ public class App extends javax.swing.JFrame {
     
     private StoreGraph graph;
     private File dataFile;
+    private File selectedFile;
 
     /**
      * Creates new form App
@@ -23,6 +28,7 @@ public class App extends javax.swing.JFrame {
     public App() {
         initComponents();
     }
+    
 
     public StoreGraph getGraph() {
         return graph;
@@ -63,21 +69,316 @@ public class App extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        fileLoadPanel = new organized.chaos.FileLoadPanel();
+        fileChooser = new javax.swing.JFileChooser();
+        logoPanel = new javax.swing.JPanel();
+        ParentPanel = new javax.swing.JPanel();
+        LoadPanel = new javax.swing.JPanel();
+        chooseButton = new javax.swing.JButton();
+        tittle1 = new javax.swing.JLabel();
+        loadButton = new javax.swing.JButton();
+        tittle2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        optionsPanel = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        disponibilidadShow = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        disponibilidadPanel = new javax.swing.JPanel();
+        pedidoPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        productosInput = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Organized Chaos");
+        setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
-        getContentPane().setLayout(new java.awt.CardLayout());
-        getContentPane().add(fileLoadPanel, "FILE_LOAD_CARD");
+
+        logoPanel.setBackground(new java.awt.Color(0, 0, 0));
+        logoPanel.setLayout(null);
+
+        ParentPanel.setBackground(new java.awt.Color(0, 0, 0));
+        ParentPanel.setLayout(new java.awt.CardLayout());
+
+        LoadPanel.setBackground(new java.awt.Color(255, 255, 255));
+        LoadPanel.setLayout(new java.awt.GridBagLayout());
+
+        chooseButton.setBackground(new java.awt.Color(255, 204, 51));
+        chooseButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        chooseButton.setForeground(new java.awt.Color(0, 0, 0));
+        chooseButton.setText("Seleccionar archivo...");
+        chooseButton.setPreferredSize(new java.awt.Dimension(190, 30));
+        chooseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 244;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(23, 180, 0, 180);
+        LoadPanel.add(chooseButton, gridBagConstraints);
+
+        tittle1.setFont(new java.awt.Font("Tekton Pro Ext", 0, 24)); // NOI18N
+        tittle1.setForeground(new java.awt.Color(0, 0, 0));
+        tittle1.setText("¡Bienvenidos al Sistema ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(100, 240, 0, 0);
+        LoadPanel.add(tittle1, gridBagConstraints);
+
+        loadButton.setBackground(new java.awt.Color(255, 204, 51));
+        loadButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        loadButton.setForeground(new java.awt.Color(0, 0, 0));
+        loadButton.setText("Cargar datos");
+        loadButton.setEnabled(false);
+        loadButton.setPreferredSize(new java.awt.Dimension(97, 30));
+        loadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 309;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 180, 121, 180);
+        LoadPanel.add(loadButton, gridBagConstraints);
+
+        tittle2.setFont(new java.awt.Font("Tekton Pro Ext", 1, 24)); // NOI18N
+        tittle2.setForeground(new java.awt.Color(0, 0, 0));
+        tittle2.setText("de Distribución de Amazon!");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 220, 0, 0);
+        LoadPanel.add(tittle2, gridBagConstraints);
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Seleccione el archivo con la información necesaria");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 260, 0, 0);
+        LoadPanel.add(jLabel1, gridBagConstraints);
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Cargue los datos para poder continuar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 5;
+        gridBagConstraints.ipady = -1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(30, 300, 0, 0);
+        LoadPanel.add(jLabel2, gridBagConstraints);
+
+        ParentPanel.add(LoadPanel, "card2");
+
+        optionsPanel.setBackground(new java.awt.Color(255, 255, 255));
+        optionsPanel.setLayout(null);
+
+        jButton2.setBackground(new java.awt.Color(255, 204, 51));
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("Actualizar Datos");
+        optionsPanel.add(jButton2);
+        jButton2.setBounds(460, 440, 210, 30);
+
+        disponibilidadShow.setBackground(new java.awt.Color(255, 204, 51));
+        disponibilidadShow.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        disponibilidadShow.setForeground(new java.awt.Color(0, 0, 0));
+        disponibilidadShow.setText("Disponibilidad por Almacén");
+        disponibilidadShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disponibilidadShowActionPerformed(evt);
+            }
+        });
+        optionsPanel.add(disponibilidadShow);
+        disponibilidadShow.setBounds(10, 120, 200, 30);
+
+        jButton4.setBackground(new java.awt.Color(255, 204, 51));
+        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jButton4.setText("Solicitar Productos ");
+        optionsPanel.add(jButton4);
+        jButton4.setBounds(590, 120, 190, 30);
+
+        jButton5.setBackground(new java.awt.Color(255, 204, 51));
+        jButton5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(0, 0, 0));
+        jButton5.setText("Agregar Almacén");
+        optionsPanel.add(jButton5);
+        jButton5.setBounds(10, 280, 200, 30);
+
+        jButton6.setBackground(new java.awt.Color(255, 204, 51));
+        jButton6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 0, 0));
+        jButton6.setText("Realizar Pedido");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        optionsPanel.add(jButton6);
+        jButton6.setBounds(310, 120, 200, 30);
+
+        jButton7.setBackground(new java.awt.Color(255, 204, 51));
+        jButton7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(0, 0, 0));
+        jButton7.setText("Agregar Camino");
+        optionsPanel.add(jButton7);
+        jButton7.setBounds(310, 280, 200, 30);
+
+        jButton8.setBackground(new java.awt.Color(255, 204, 51));
+        jButton8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(0, 0, 0));
+        jButton8.setText("Gestionar Almacén");
+        optionsPanel.add(jButton8);
+        jButton8.setBounds(590, 280, 190, 30);
+
+        jButton9.setBackground(new java.awt.Color(255, 204, 51));
+        jButton9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(0, 0, 0));
+        jButton9.setText("Ver Almacenes");
+        optionsPanel.add(jButton9);
+        jButton9.setBounds(130, 440, 210, 30);
+
+        ParentPanel.add(optionsPanel, "card3");
+
+        disponibilidadPanel.setBackground(new java.awt.Color(255, 255, 255));
+        disponibilidadPanel.setLayout(null);
+        ParentPanel.add(disponibilidadPanel, "card4");
+
+        pedidoPanel.setBackground(new java.awt.Color(255, 255, 255));
+        pedidoPanel.setLayout(null);
+
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("PRODUCTOS DISPONIBLES:");
+        pedidoPanel.add(jLabel3);
+        jLabel3.setBounds(50, 20, 190, 17);
+
+        productosInput.setColumns(20);
+        productosInput.setForeground(new java.awt.Color(0, 0, 0));
+        productosInput.setRows(5);
+        jScrollPane1.setViewportView(productosInput);
+
+        pedidoPanel.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 50, 240, 430);
+
+        ParentPanel.add(pedidoPanel, "card5");
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ParentPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void chooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseButtonActionPerformed
+        int result = fileChooser.showOpenDialog(this);
+        if(result == JFileChooser.APPROVE_OPTION) {
+            selectedFile = fileChooser.getSelectedFile();
+            loadButton.setEnabled(true);
+        }
+    }//GEN-LAST:event_chooseButtonActionPerformed
+
+    private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
+        if(selectedFile != null) {
+            App.getInstance().loadFile(selectedFile);
+        }
+        ParentPanel.removeAll();
+        ParentPanel.add(optionsPanel);
+        ParentPanel.repaint();
+        ParentPanel.revalidate();
+    }//GEN-LAST:event_loadButtonActionPerformed
+
+    private void disponibilidadShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponibilidadShowActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_disponibilidadShowActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+       
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private organized.chaos.FileLoadPanel fileLoadPanel;
+    private javax.swing.JPanel LoadPanel;
+    private javax.swing.JPanel ParentPanel;
+    private javax.swing.JButton chooseButton;
+    private javax.swing.JPanel disponibilidadPanel;
+    private javax.swing.JButton disponibilidadShow;
+    private javax.swing.JFileChooser fileChooser;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton loadButton;
+    private javax.swing.JPanel logoPanel;
+    private javax.swing.JPanel optionsPanel;
+    private javax.swing.JPanel pedidoPanel;
+    private javax.swing.JTextArea productosInput;
+    private javax.swing.JLabel tittle1;
+    private javax.swing.JLabel tittle2;
     // End of variables declaration//GEN-END:variables
 
     public static App instance;
