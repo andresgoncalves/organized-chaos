@@ -17,6 +17,7 @@ import java.io.Writer;
 public class Database {
     private static final String STORES_SECTION = "Almacenes;";
     private static final String ROUTES_SECTION = "Rutas;";
+    private static final String STORE_PREFIX = "Almacen ";
     private static final int READING_NULL = 0;
     private static final int READING_STORE = 1;
     private static final int READING_STOCK = 2;
@@ -44,7 +45,7 @@ public class Database {
                     mode = READING_ROUTE;
                 }
                 else if(mode == READING_STORE) {
-                    String name = line.replace(":", "");
+                    String name = line.replace(":", "").replace(STORE_PREFIX, "");
                     store = graph.createStore(name);
                     mode = READING_STOCK;
                 }
@@ -81,7 +82,7 @@ public class Database {
             
             for(ListNode<Store> storeNode = graph.getStores().getFirst(); storeNode != null; storeNode = storeNode.getNext()) {
                 Store store = storeNode.getValue();
-                writer.write("%s:".formatted(store.getName()));
+                writer.write("%s%s:".formatted(STORE_PREFIX, store.getName()));
                 for(ListNode<Stock> stockNode = store.getStock().getFirst(); stockNode != null; stockNode = stockNode.getNext()) {
                     Stock stock = stockNode.getValue();
                     writer.write("\n%s,%d".formatted(stock.getProduct(), stock.getAmount()));
