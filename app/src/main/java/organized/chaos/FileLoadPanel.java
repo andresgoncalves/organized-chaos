@@ -30,11 +30,17 @@ public class FileLoadPanel extends javax.swing.JPanel {
 
         fileChooser = new javax.swing.JFileChooser();
         chooseButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         loadButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.GridBagLayout());
 
+        chooseButton.setBackground(new java.awt.Color(0, 0, 0));
+        chooseButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        chooseButton.setForeground(new java.awt.Color(255, 255, 255));
         chooseButton.setText("Seleccionar archivo...");
+        chooseButton.setPreferredSize(new java.awt.Dimension(190, 30));
         chooseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chooseButtonActionPerformed(evt);
@@ -42,12 +48,32 @@ public class FileLoadPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 237;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 120, 0, 0);
         add(chooseButton, gridBagConstraints);
 
+        jLabel1.setFont(new java.awt.Font("Tekton Pro Ext", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("¡Bienvenidos al Sistema de Distribución de Amazon!");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 9;
+        gridBagConstraints.ipady = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(130, 80, 0, 71);
+        add(jLabel1, gridBagConstraints);
+
+        loadButton.setBackground(new java.awt.Color(0, 0, 0));
+        loadButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        loadButton.setForeground(new java.awt.Color(255, 255, 255));
         loadButton.setText("Cargar datos");
         loadButton.setEnabled(false);
+        loadButton.setPreferredSize(new java.awt.Dimension(97, 30));
         loadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadButtonActionPerformed(evt);
@@ -55,7 +81,11 @@ public class FileLoadPanel extends javax.swing.JPanel {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 290;
+        gridBagConstraints.ipady = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(50, 120, 144, 0);
         add(loadButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -76,6 +106,7 @@ public class FileLoadPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton chooseButton;
     private javax.swing.JFileChooser fileChooser;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton loadButton;
     // End of variables declaration//GEN-END:variables
 }
