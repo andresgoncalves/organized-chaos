@@ -1013,11 +1013,17 @@ public class App extends javax.swing.JFrame {
         String mostrarInventario = "";
         for (ListNode<Store> i = graph.getStores().getFirst(); i != null; i = i.getNext()) {
             SeleccionarAlmacen.addItem("Almacen " + i.getValue().getName());
-            for (ListNode<Stock> j = i.getValue().getStock().getFirst(); j != null; j = j.getNext()) {
-                mostrarInventario = mostrarInventario + "- " + j.getValue().getProduct() + ": " + j.getValue().getAmount() + "\n";
-            }
         }
         ShowStockField.setText(mostrarInventario);
+        
+//        for (ListNode<Store> recorrer = graph.getStores().getFirst(); recorrer != null; recorrer = recorrer.getNext()) {
+//            if (recorrer.getValue().getName().equals(almacenSeleccionado)) {
+//                for (ListNode<Stock> i = recorrer.getValue().getStock().getFirst(); i != null; i = i.getNext()) {
+//                    mostrarInventario = mostrarInventario + "- " + i.getValue().getProduct() + ": " + i.getValue().getAmount() + "\n";
+//                }
+//                ShowStockField.setText(mostrarInventario);
+//            }
+//        }
     }//GEN-LAST:event_BotonGestionarAlmacenActionPerformed
 
     private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
