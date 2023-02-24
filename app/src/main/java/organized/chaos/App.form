@@ -1092,13 +1092,13 @@
                                   <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                                      <Component id="BotonAñadirNuevoProducto" min="-2" max="-2" attributes="0"/>
+                                      <Component id="BotonAnadirNuevoProducto" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                          <Component id="FieldAñadirNuevoProducto" min="-2" max="-2" attributes="0"/>
+                                          <Component id="FieldAnadirNuevoProducto" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1124,9 +1124,9 @@
                       <EmptySpace min="0" pref="99" max="32767" attributes="0"/>
                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                      <Component id="FieldAñadirNuevoProducto" min="-2" max="-2" attributes="0"/>
+                      <Component id="FieldAnadirNuevoProducto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="BotonAñadirNuevoProducto" min="-2" max="-2" attributes="0"/>
+                      <Component id="BotonAnadirNuevoProducto" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1178,12 +1178,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="BotonA&#xf1;adirNuevoProducto">
+            <Component class="javax.swing.JButton" name="BotonAnadirNuevoProducto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="A&#xf1;adir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonA&#xf1;adirNuevoProductoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonAnadirNuevoProductoActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -1244,12 +1244,12 @@
                 <Property name="text" type="java.lang.String" value="en el inventario"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="FieldA&#xf1;adirNuevoProducto">
+            <Component class="javax.swing.JTextField" name="FieldAnadirNuevoProducto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ingrese el nombre del producto a a&#xf1;adir"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FieldA&#xf1;adirNuevoProductoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FieldAnadirNuevoProductoActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

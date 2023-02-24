@@ -140,7 +140,7 @@ public class App extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         SeleccionarAlmacen = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
-        BotonAñadirNuevoProducto = new javax.swing.JButton();
+        BotonAnadirNuevoProducto = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         ShowStockField = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
@@ -148,7 +148,7 @@ public class App extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        FieldAñadirNuevoProducto = new javax.swing.JTextField();
+        FieldAnadirNuevoProducto = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         mainMenu = new javax.swing.JMenu();
         chargeFile = new javax.swing.JMenu();
@@ -194,7 +194,7 @@ public class App extends javax.swing.JFrame {
 
         tittle1.setFont(new java.awt.Font("Tekton Pro Ext", 0, 24)); // NOI18N
         tittle1.setForeground(new java.awt.Color(0, 0, 0));
-        tittle1.setText("¡Bienvenidos al Sistema ");
+        tittle1.setText("�Bienvenidos al Sistema ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -227,7 +227,7 @@ public class App extends javax.swing.JFrame {
 
         tittle2.setFont(new java.awt.Font("Tekton Pro Ext", 1, 24)); // NOI18N
         tittle2.setForeground(new java.awt.Color(0, 0, 0));
-        tittle2.setText("de Distribución de Amazon!");
+        tittle2.setText("de Distribuci�n de Amazon!");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -239,7 +239,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Seleccione el archivo con la información necesaria");
+        jLabel1.setText("Seleccione el archivo con la informaci�n necesaria");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -288,7 +288,7 @@ public class App extends javax.swing.JFrame {
         disponibilidadShow.setBackground(new java.awt.Color(255, 204, 51));
         disponibilidadShow.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         disponibilidadShow.setForeground(new java.awt.Color(0, 0, 0));
-        disponibilidadShow.setText("Disponibilidad por Almacén");
+        disponibilidadShow.setText("Disponibilidad por Almac�n");
         disponibilidadShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disponibilidadShowActionPerformed(evt);
@@ -306,7 +306,7 @@ public class App extends javax.swing.JFrame {
         addStore.setBackground(new java.awt.Color(255, 204, 51));
         addStore.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         addStore.setForeground(new java.awt.Color(0, 0, 0));
-        addStore.setText("Agregar Almacén");
+        addStore.setText("Agregar Almac�n");
         addStore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStoreActionPerformed(evt);
@@ -358,7 +358,7 @@ public class App extends javax.swing.JFrame {
         BotonGestionarAlmacen.setBackground(new java.awt.Color(255, 204, 51));
         BotonGestionarAlmacen.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         BotonGestionarAlmacen.setForeground(new java.awt.Color(0, 0, 0));
-        BotonGestionarAlmacen.setText("Gestionar Almacén");
+        BotonGestionarAlmacen.setText("Gestionar Almac�n");
         BotonGestionarAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonGestionarAlmacenActionPerformed(evt);
@@ -500,7 +500,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Seleccione un almacén:");
+        jLabel4.setText("Seleccione un almac�n:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -616,15 +616,15 @@ public class App extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Conexión 1:");
+        jLabel8.setText("Conexi�n 1:");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Conexión 2:");
+        jLabel9.setText("Conexi�n 2:");
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Más conexiones:");
+        jLabel10.setText("M�s conexiones:");
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
@@ -638,7 +638,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Ingrese el nombre del almacén:");
+        jLabel12.setText("Ingrese el nombre del almac�n:");
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -655,7 +655,7 @@ public class App extends javax.swing.JFrame {
         createStoreButton.setBackground(new java.awt.Color(255, 204, 51));
         createStoreButton.setFont(new java.awt.Font("Tekton Pro Ext", 0, 14)); // NOI18N
         createStoreButton.setForeground(new java.awt.Color(0, 0, 0));
-        createStoreButton.setText("Crear almacén");
+        createStoreButton.setText("Crear almac�n");
         createStoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createStoreButtonActionPerformed(evt);
@@ -664,7 +664,7 @@ public class App extends javax.swing.JFrame {
 
         addConection.setBackground(new java.awt.Color(204, 204, 204));
         addConection.setForeground(new java.awt.Color(0, 0, 0));
-        addConection.setText("Agregar más conexiones");
+        addConection.setText("Agregar m�s conexiones");
         addConection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addConectionActionPerformed(evt);
@@ -685,7 +685,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Almacén");
+        jLabel16.setText("Almac�n");
 
         javax.swing.GroupLayout addStorePanelLayout = new javax.swing.GroupLayout(addStorePanel);
         addStorePanel.setLayout(addStorePanelLayout);
@@ -802,10 +802,10 @@ public class App extends javax.swing.JFrame {
             }
         });
 
-        BotonAñadirNuevoProducto.setText("Añadir");
-        BotonAñadirNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+        BotonAnadirNuevoProducto.setText("A�adir");
+        BotonAnadirNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAñadirNuevoProductoActionPerformed(evt);
+                BotonAnadirNuevoProductoActionPerformed(evt);
             }
         });
 
@@ -819,7 +819,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel19.setText("AÑADIR NUEVO PRODUCTO");
+        jLabel19.setText("A�ADIR NUEVO PRODUCTO");
 
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Escoja la cantidad a sumar");
@@ -828,10 +828,10 @@ public class App extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("en el inventario");
 
-        FieldAñadirNuevoProducto.setText("Ingrese el nombre del producto a añadir");
-        FieldAñadirNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+        FieldAnadirNuevoProducto.setText("Ingrese el nombre del producto a a�adir");
+        FieldAnadirNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldAñadirNuevoProductoActionPerformed(evt);
+                FieldAnadirNuevoProductoActionPerformed(evt);
             }
         });
 
@@ -865,12 +865,12 @@ public class App extends javax.swing.JFrame {
                             .addComponent(jLabel19)
                             .addGroup(manageStockPanelLayout.createSequentialGroup()
                                 .addGap(84, 84, 84)
-                                .addComponent(BotonAñadirNuevoProducto))
+                                .addComponent(BotonAnadirNuevoProducto))
                             .addGroup(manageStockPanelLayout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel18)
-                                    .addComponent(FieldAñadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(FieldAnadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(611, Short.MAX_VALUE))
         );
         manageStockPanelLayout.setVerticalGroup(
@@ -887,9 +887,9 @@ public class App extends javax.swing.JFrame {
                 .addGap(0, 99, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addGap(21, 21, 21)
-                .addComponent(FieldAñadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FieldAnadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(BotonAñadirNuevoProducto)
+                .addComponent(BotonAnadirNuevoProducto)
                 .addGap(58, 58, 58)
                 .addComponent(jLabel18)
                 .addGap(18, 18, 18)
@@ -928,10 +928,10 @@ public class App extends javax.swing.JFrame {
         });
         jMenuBar1.add(requestOption);
 
-        showGraph.setText("Ver Almacén");
+        showGraph.setText("Ver Almac�n");
         jMenuBar1.add(showGraph);
 
-        storesManage.setText("Gestionar Almacén");
+        storesManage.setText("Gestionar Almac�n");
         jMenuBar1.add(storesManage);
 
         setJMenuBar(jMenuBar1);
@@ -1121,9 +1121,9 @@ public class App extends javax.swing.JFrame {
     private void JConectionStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JConectionStoreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JConectionStoreActionPerformed
-
+/*
     private void FieldAñadirNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldAñadirNuevoProductoActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handing code here:
     }//GEN-LAST:event_FieldAñadirNuevoProductoActionPerformed
 
     private void BotonAñadirNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAñadirNuevoProductoActionPerformed
@@ -1131,11 +1131,19 @@ public class App extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_BotonAñadirNuevoProductoActionPerformed
+*/
+    private void BotonAnadirNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAnadirNuevoProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonAnadirNuevoProductoActionPerformed
+
+    private void FieldAnadirNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldAnadirNuevoProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldAnadirNuevoProductoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonAñadirNuevoProducto;
+    private javax.swing.JButton BotonAnadirNuevoProducto;
     private javax.swing.JButton BotonGestionarAlmacen;
-    private javax.swing.JTextField FieldAñadirNuevoProducto;
+    private javax.swing.JTextField FieldAnadirNuevoProducto;
     private static javax.swing.JComboBox<String> JCStores;
     private javax.swing.JComboBox<String> JConectionStore;
     private javax.swing.JComboBox<String> JConectionStore2;
