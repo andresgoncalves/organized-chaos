@@ -95,12 +95,12 @@ public class App extends javax.swing.JFrame {
         BotonGestionarAlmacen = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         disponibilidadPanel = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
         pedidoPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -135,7 +135,7 @@ public class App extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         SeleccionarAlmacen = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        BotonAñadirNuevoProducto = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         ShowStockField = new javax.swing.JTextArea();
         jLabel18 = new javax.swing.JLabel();
@@ -143,7 +143,7 @@ public class App extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        FieldAñadirNuevoProducto = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         mainMenu = new javax.swing.JMenu();
         chargeFile = new javax.swing.JMenu();
@@ -157,7 +157,6 @@ public class App extends javax.swing.JFrame {
         setTitle("Organized Chaos");
         setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(1312, 600));
-        setPreferredSize(new java.awt.Dimension(1312, 601));
 
         logoPanel.setBackground(new java.awt.Color(0, 0, 0));
         logoPanel.setLayout(null);
@@ -392,35 +391,58 @@ public class App extends javax.swing.JFrame {
         ParentPanel.add(optionsPanel, "card3");
 
         disponibilidadPanel.setBackground(new java.awt.Color(255, 255, 255));
-        disponibilidadPanel.setLayout(null);
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Recorrido en Anchura (BFS)");
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("Recorrido en Profundidad (DFS)");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane4.setViewportView(jTextArea1);
 
-        disponibilidadPanel.add(jScrollPane4);
-        jScrollPane4.setBounds(40, 140, 320, 320);
-
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane5.setViewportView(jTextArea2);
 
-        disponibilidadPanel.add(jScrollPane5);
-        jScrollPane5.setBounds(400, 140, 320, 320);
+        javax.swing.GroupLayout disponibilidadPanelLayout = new javax.swing.GroupLayout(disponibilidadPanel);
+        disponibilidadPanel.setLayout(disponibilidadPanelLayout);
+        disponibilidadPanelLayout.setHorizontalGroup(
+            disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jLabel22))
+                    .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel23)
+                    .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(119, 119, 119))
+        );
+        disponibilidadPanelLayout.setVerticalGroup(
+            disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("Recorrido en Anchura (BFS)");
-        disponibilidadPanel.add(jLabel22);
-        jLabel22.setBounds(100, 110, 190, 20);
-
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel23.setText("Recorrido en Profundidad (DFS)");
-        disponibilidadPanel.add(jLabel23);
-        jLabel23.setBounds(440, 110, 220, 20);
-
-        ParentPanel.add(disponibilidadPanel, "card4");
+        ParentPanel.add(disponibilidadPanel, "card8");
 
         pedidoPanel.setBackground(new java.awt.Color(255, 255, 255));
         pedidoPanel.setLayout(new java.awt.GridBagLayout());
@@ -716,6 +738,9 @@ public class App extends javax.swing.JFrame {
 
         ParentPanel.add(addStorePanel, "card6");
 
+        manageStockPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Almacen:");
 
         SeleccionarAlmacen.addActionListener(new java.awt.event.ActionListener() {
@@ -731,26 +756,36 @@ public class App extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Añadir");
+        BotonAñadirNuevoProducto.setText("Añadir");
+        BotonAñadirNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonAñadirNuevoProductoActionPerformed(evt);
+            }
+        });
 
         ShowStockField.setColumns(20);
         ShowStockField.setRows(5);
         jScrollPane3.setViewportView(ShowStockField);
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("MODIFICAR INVENTARIO");
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("AÑADIR NUEVO PRODUCTO");
 
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("Escoja la cantidad a sumar");
 
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
         jLabel21.setText("en el inventario");
 
-        jTextField3.setText("Ingrese el nombre del producto a añadir");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        FieldAñadirNuevoProducto.setText("Ingrese el nombre del producto a añadir");
+        FieldAñadirNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                FieldAñadirNuevoProductoActionPerformed(evt);
             }
         });
 
@@ -758,8 +793,8 @@ public class App extends javax.swing.JFrame {
         manageStockPanel.setLayout(manageStockPanelLayout);
         manageStockPanelLayout.setHorizontalGroup(
             manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageStockPanelLayout.createSequentialGroup()
-                .addGap(145, 145, 145)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageStockPanelLayout.createSequentialGroup()
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -786,31 +821,32 @@ public class App extends javax.swing.JFrame {
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
                         .addGap(313, 313, 313)
-                        .addComponent(jButton1))
+                        .addComponent(BotonAñadirNuevoProducto))
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(478, Short.MAX_VALUE))
+                            .addComponent(FieldAñadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(108, 108, 108))
         );
         manageStockPanelLayout.setVerticalGroup(
             manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageStockPanelLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
+                .addGap(94, 94, 94)
                 .addComponent(jLabel19)
                 .addGap(5, 5, 5)
                 .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(SeleccionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FieldAñadirNuevoProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel17)
+                                .addComponent(SeleccionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(jButton1)
+                        .addComponent(BotonAñadirNuevoProducto)
                         .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(manageStockPanelLayout.createSequentialGroup()
                                 .addGap(77, 77, 77)
@@ -825,7 +861,7 @@ public class App extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(9, 9, 9)))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         ParentPanel.add(manageStockPanel, "card7");
@@ -896,6 +932,10 @@ public class App extends javax.swing.JFrame {
 
     private void disponibilidadShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disponibilidadShowActionPerformed
         // TODO add your handling code here:
+        ParentPanel.removeAll();
+        ParentPanel.add(disponibilidadPanel);
+        ParentPanel.repaint();
+        ParentPanel.revalidate();
     }//GEN-LAST:event_disponibilidadShowActionPerformed
 
     private void pedidoBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedidoBotonActionPerformed
@@ -1040,12 +1080,20 @@ public class App extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JConectionStoreActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void FieldAñadirNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldAñadirNuevoProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_FieldAñadirNuevoProductoActionPerformed
+
+    private void BotonAñadirNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAñadirNuevoProductoActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_BotonAñadirNuevoProductoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonAñadirNuevoProducto;
     private javax.swing.JButton BotonGestionarAlmacen;
+    private javax.swing.JTextField FieldAñadirNuevoProducto;
     private static javax.swing.JComboBox<String> JCStores;
     private javax.swing.JComboBox<String> JConectionStore;
     private javax.swing.JComboBox<String> JConectionStore2;
@@ -1063,7 +1111,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel disponibilidadPanel;
     private javax.swing.JButton disponibilidadShow;
     private javax.swing.JFileChooser fileChooser;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -1101,7 +1148,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton loadButton;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JMenu mainMenu;
