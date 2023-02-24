@@ -16,6 +16,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.SpinnerNumberModel;
+
 
 /**
  *
@@ -26,12 +28,15 @@ public class App extends javax.swing.JFrame {
     private StoreGraph graph;
     private File dataFile;
     private File selectedFile;
-
+    private String[] products;
+    private Integer[] amountProducts;
     /**
      * Creates new form App
      */
     public App() {
         initComponents();
+        this.products=null;
+        this.amountProducts=null;
     }
 
     public StoreGraph getGraph() {
@@ -107,11 +112,14 @@ public class App extends javax.swing.JFrame {
         productosInput = new javax.swing.JTextArea();
         JCStores = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        confirmRequest = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        JProductsAmount = new javax.swing.JSpinner();
+        addproduct = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        productListRequest = new javax.swing.JTextArea();
+        userList = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        sendInfoRequest = new javax.swing.JButton();
+        JProducts = new javax.swing.JComboBox<>();
         addStorePanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -132,7 +140,7 @@ public class App extends javax.swing.JFrame {
         JConectionStore2 = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         manageStockPanel = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         SeleccionarAlmacen = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         BotonAñadirNuevoProducto = new javax.swing.JButton();
@@ -413,20 +421,19 @@ public class App extends javax.swing.JFrame {
         disponibilidadPanelLayout.setHorizontalGroup(
             disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                .addGap(216, 216, 216)
                 .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(disponibilidadPanelLayout.createSequentialGroup()
-                        .addGap(97, 97, 97)
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel22))
-                    .addGroup(disponibilidadPanelLayout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 701, Short.MAX_VALUE)
                 .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel23)
                     .addGroup(disponibilidadPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(119, 119, 119))
+                .addGap(259, 259, 259))
         );
         disponibilidadPanelLayout.setVerticalGroup(
             disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,7 +446,7 @@ public class App extends javax.swing.JFrame {
                 .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         ParentPanel.add(disponibilidadPanel, "card8");
@@ -453,10 +460,9 @@ public class App extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipadx = 25;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(30, 30, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(30, 170, 0, 0);
         pedidoPanel.add(jLabel3, gridBagConstraints);
 
         productosInput.setBackground(new java.awt.Color(255, 204, 51));
@@ -469,14 +475,15 @@ public class App extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 6;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 204;
-        gridBagConstraints.ipady = 394;
+        gridBagConstraints.ipadx = 314;
+        gridBagConstraints.ipady = 469;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 20, 41, 0);
+        gridBagConstraints.insets = new java.awt.Insets(1, 130, 0, 0);
         pedidoPanel.add(jScrollPane1, gridBagConstraints);
 
         JCStores.addActionListener(new java.awt.event.ActionListener() {
@@ -485,84 +492,126 @@ public class App extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 138;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 158;
         gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 30, 0, 30);
+        gridBagConstraints.insets = new java.awt.Insets(35, 140, 0, 0);
         pedidoPanel.add(JCStores, gridBagConstraints);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Seleccione un almacén:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 29;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 6;
         gridBagConstraints.ipady = -2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(13, 40, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(34, 190, 0, 0);
         pedidoPanel.add(jLabel4, gridBagConstraints);
 
-        productListRequest.setBackground(new java.awt.Color(255, 255, 255));
-        productListRequest.setColumns(20);
-        productListRequest.setForeground(new java.awt.Color(0, 0, 0));
-        productListRequest.setRows(5);
-        jScrollPane2.setViewportView(productListRequest);
+        confirmRequest.setBackground(new java.awt.Color(255, 204, 51));
+        confirmRequest.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        confirmRequest.setForeground(new java.awt.Color(0, 0, 0));
+        confirmRequest.setText("Confirmar Pedido");
+        confirmRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmRequestActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 77;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 110, 0, 0);
+        pedidoPanel.add(confirmRequest, gridBagConstraints);
 
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Seleccione el producto a pedir e idique la cantidad");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridheight = 3;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(60, 120, 0, 0);
+        pedidoPanel.add(jLabel17, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.ipadx = 16;
+        gridBagConstraints.ipady = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(43, 10, 0, 0);
+        pedidoPanel.add(JProductsAmount, gridBagConstraints);
+
+        addproduct.setBackground(new java.awt.Color(204, 204, 204));
+        addproduct.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        addproduct.setForeground(new java.awt.Color(0, 0, 0));
+        addproduct.setText("Agregar producto");
+        addproduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addproductActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 57;
+        gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(60, 190, 0, 0);
+        pedidoPanel.add(addproduct, gridBagConstraints);
+
+        userList.setColumns(20);
+        userList.setForeground(new java.awt.Color(0, 0, 0));
+        userList.setRows(5);
+        jScrollPane2.setViewportView(userList);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridheight = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 224;
-        gridBagConstraints.ipady = 344;
+        gridBagConstraints.ipadx = 218;
+        gridBagConstraints.ipady = 394;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 40, 41, 0);
+        gridBagConstraints.insets = new java.awt.Insets(4, 100, 0, 0);
         pedidoPanel.add(jScrollPane2, gridBagConstraints);
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("respectiva cantidad. Ej: Producto: cantidad");
+        jLabel5.setText("Tu lista:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 34;
+        gridBagConstraints.ipady = -1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(3, 40, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 110, 0, 0);
         pedidoPanel.add(jLabel5, gridBagConstraints);
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Ingrese una lista de los productos con su");
+        JProducts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(2, 40, 0, 0);
-        pedidoPanel.add(jLabel6, gridBagConstraints);
-
-        sendInfoRequest.setBackground(new java.awt.Color(255, 204, 51));
-        sendInfoRequest.setForeground(new java.awt.Color(0, 0, 0));
-        sendInfoRequest.setText("Confirmar Pedido");
-        sendInfoRequest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendInfoRequestActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 76;
+        gridBagConstraints.ipadx = 98;
+        gridBagConstraints.ipady = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(300, 40, 0, 30);
-        pedidoPanel.add(sendInfoRequest, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(43, 120, 0, 0);
+        pedidoPanel.add(JProducts, gridBagConstraints);
 
         ParentPanel.add(pedidoPanel, "card5");
 
@@ -689,7 +738,7 @@ public class App extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
                         .addComponent(nameStoreInput, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(434, Short.MAX_VALUE))
+                .addContainerGap(435, Short.MAX_VALUE))
         );
         addStorePanelLayout.setVerticalGroup(
             addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -740,8 +789,8 @@ public class App extends javax.swing.JFrame {
 
         manageStockPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("Almacen:");
+        jLabel24.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel24.setText("Almacen:");
 
         SeleccionarAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -793,75 +842,71 @@ public class App extends javax.swing.JFrame {
         manageStockPanel.setLayout(manageStockPanelLayout);
         manageStockPanelLayout.setHorizontalGroup(
             manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageStockPanelLayout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
-                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                .addGap(430, 430, 430)
+                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SeleccionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel20)
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabel21)))
+                        .addGap(33, 33, 33)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addGap(227, 227, 227)
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel24)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(SeleccionarAlmacen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(22, 22, 22)))
+                        .addGap(208, 208, 208)
                         .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
                             .addGroup(manageStockPanelLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel18))))
-                    .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(84, 84, 84)
+                                .addComponent(BotonAñadirNuevoProducto))
                             .addGroup(manageStockPanelLayout.createSequentialGroup()
-                                .addGap(226, 226, 226)
-                                .addComponent(jLabel20))
-                            .addGroup(manageStockPanelLayout.createSequentialGroup()
-                                .addGap(262, 262, 262)
-                                .addComponent(jLabel21)))
-                        .addGap(30, 30, 30)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addGap(313, 313, 313)
-                        .addComponent(BotonAñadirNuevoProducto))
-                    .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(FieldAñadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(108, 108, 108))
+                                .addGap(14, 14, 14)
+                                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel18)
+                                    .addComponent(FieldAñadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(611, Short.MAX_VALUE))
         );
         manageStockPanelLayout.setVerticalGroup(
             manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageStockPanelLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageStockPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(SeleccionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(140, 140, 140))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageStockPanelLayout.createSequentialGroup()
+                .addGap(0, 99, Short.MAX_VALUE)
                 .addComponent(jLabel19)
-                .addGap(5, 5, 5)
+                .addGap(21, 21, 21)
+                .addComponent(FieldAñadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BotonAñadirNuevoProducto)
+                .addGap(58, 58, 58)
+                .addComponent(jLabel18)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FieldAñadirNuevoProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel17)
-                                .addComponent(SeleccionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel21))
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(BotonAñadirNuevoProducto)
-                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(manageStockPanelLayout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(jLabel18)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageStockPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9)))))
-                .addContainerGap(129, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(105, 105, 105))
         );
 
         ParentPanel.add(manageStockPanel, "card7");
@@ -943,61 +988,41 @@ public class App extends javax.swing.JFrame {
         ParentPanel.add(pedidoPanel);
         ParentPanel.repaint();
         ParentPanel.revalidate();
-        String productText = "";
-        for (ListNode<Store> recorrer = graph.getStores().getFirst(); recorrer != null; recorrer = recorrer.getNext()) {
-            JCStores.addItem("Almacen " + recorrer.getValue().getName());
-            for (ListNode<Stock> recorrerStock = recorrer.getValue().getStock().getFirst(); recorrerStock != null; recorrerStock = recorrerStock.getNext()) {
-                productText = productText + "- " + recorrerStock.getValue().getProduct() + ": " + recorrerStock.getValue().getAmount() + "\n";
-            }
-        }
+        String productText="";
+        for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
+            System.out.println(recorrer);
+            JCStores.addItem(recorrer.getValue().getName());
+            for(ListNode<Stock> recorrerStock=recorrer.getValue().getStock().getFirst(); recorrerStock!=null;recorrerStock=recorrerStock.getNext()){
+                productText=productText+"- "+recorrerStock.getValue().getProduct()+": "+recorrerStock.getValue().getAmount()+"\n";
+                JProducts.addItem(recorrerStock.getValue().getProduct());
+            }  
+        }   
         productosInput.setText(productText);
-
     }//GEN-LAST:event_pedidoBotonActionPerformed
 
-    private void sendInfoRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendInfoRequestActionPerformed
-
-        try {
-
-            String productString = productListRequest.getText();
-            if ("".equals(productString)) {
-                JOptionPane.showMessageDialog(ParentPanel, "Ingrese la lista de productos!");
-            } else {
-                String[] productArray = productString.split("\n");
-                String[] products = null;
-                for (int i = 0; i < productArray.length; i++) {
-                    products = productArray[i].split(":");
-                }
-                String storeSelected = JCStores.getSelectedItem().toString();
-                for (ListNode<Store> recorrer = graph.getStores().getFirst(); recorrer != null; recorrer = recorrer.getNext()) {
-                    if ((recorrer.getValue().getName()).equals(storeSelected)) {
-                        for (ListNode<Stock> recorrerStock = recorrer.getValue().getStock().getFirst(); recorrerStock != null; recorrerStock = recorrerStock.getNext()) {
-                            for (int i = 0; i < products.length; i++) {
-                                int aux = 0;
-                                int aux2 = 1;
-                                if (products[aux].equals(recorrerStock.getValue().getProduct())) {
-                                    if (Integer.parseInt(products[aux2]) > recorrerStock.getValue().getAmount()) {
-                                        JOptionPane.showMessageDialog(ParentPanel, "Revise las cantidades de los productos a comprar!");
-                                    } else {
-                                        recorrerStock.getValue().setAmount((recorrerStock.getValue().getAmount()) - Integer.parseInt(products[i + 1]));
-                                    }
-                                    aux = aux + 2;
-                                    aux2 = aux2 + 2;
-                                } else {
-                                    //codigo de solicitar producto
-                                }
-                            }
-                        }
-                    }
-                }
-                JOptionPane.showMessageDialog(ParentPanel, "�Pedido Realizado!");
+    private void confirmRequestActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        String storeSelected = JCStores.getSelectedItem().toString();
+        Store storeGet=null;
+        for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
+            if(storeSelected.equals(recorrer.getValue().getName())){
+                storeGet=recorrer.getValue();
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(productosInput, "Lista de productos inv�lida!");
+
         }
-    }//GEN-LAST:event_sendInfoRequestActionPerformed
+        
+        for(int i = 0; i < products.length; i++) {
+            Stock stock = storeGet.getStock().find(products[i]);
+            if(stock==null){
+                //codigo solicitar
+            }else{
+                stock.setAmount(stock.getAmount()-Integer.parseInt(JProductsAmount.getValue().toString()));
+            }
+        }
+  
+    }                                              
 
     private void JCStoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCStoresActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_JCStoresActionPerformed
 
     private void updateDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDataActionPerformed
@@ -1016,14 +1041,14 @@ public class App extends javax.swing.JFrame {
         }
         ShowStockField.setText(mostrarInventario);
         
-//        for (ListNode<Store> recorrer = graph.getStores().getFirst(); recorrer != null; recorrer = recorrer.getNext()) {
-//            if (recorrer.getValue().getName().equals(almacenSeleccionado)) {
-//                for (ListNode<Stock> i = recorrer.getValue().getStock().getFirst(); i != null; i = i.getNext()) {
-//                    mostrarInventario = mostrarInventario + "- " + i.getValue().getProduct() + ": " + i.getValue().getAmount() + "\n";
-//                }
-//                ShowStockField.setText(mostrarInventario);
-//            }
-//        }
+        for (ListNode<Store> recorrer = graph.getStores().getFirst(); recorrer != null; recorrer = recorrer.getNext()) {
+            if (recorrer.getValue().getName().equals(SeleccionarAlmacen)) {
+                for (ListNode<Stock> i = recorrer.getValue().getStock().getFirst(); i != null; i = i.getNext()) {
+                    mostrarInventario = mostrarInventario + "- " + i.getValue().getProduct() + ": " + i.getValue().getAmount() + "\n";
+                }
+                ShowStockField.setText(mostrarInventario);
+            }
+        }
     }//GEN-LAST:event_BotonGestionarAlmacenActionPerformed
 
     private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
@@ -1044,8 +1069,8 @@ public class App extends javax.swing.JFrame {
         ParentPanel.repaint();
         ParentPanel.revalidate();
         for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
-            JConectionStore.addItem("Almacen "+recorrer.getValue().getName());
-            JConectionStore2.addItem("Almacen "+recorrer.getValue().getName());
+            JConectionStore.addItem(recorrer.getValue().getName());
+            JConectionStore2.addItem(recorrer.getValue().getName());
         }
     }//GEN-LAST:event_addStoreActionPerformed
 
@@ -1069,6 +1094,20 @@ public class App extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(ParentPanel, "Error, verifique los datos ingresados!");
         }
     }//GEN-LAST:event_createStoreButtonActionPerformed
+
+    private void addproductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addproductActionPerformed
+        for (int i = 0; i < JProducts.getItemCount(); i++) {
+            String selectItem=JProducts.getSelectedItem().toString();
+            products[i]=selectItem; 
+            amountProducts[i]=Integer.parseInt(JProductsAmount.getValue().toString());
+        }
+        for (int i = 0; i < products.length; i++) {
+        userList.setText(products[i]);
+        }
+    }//GEN-LAST:event_addproductActionPerformed
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JComboBox<String> ProductsShow;
 
     private void JConectionStore2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JConectionStore2ActionPerformed
         // TODO add your handling code here:
@@ -1103,6 +1142,8 @@ public class App extends javax.swing.JFrame {
     private static javax.swing.JComboBox<String> JCStores;
     private javax.swing.JComboBox<String> JConectionStore;
     private javax.swing.JComboBox<String> JConectionStore2;
+    private javax.swing.JComboBox<String> JProducts;
+    private javax.swing.JSpinner JProductsAmount;
     private javax.swing.JPanel LoadPanel;
     private javax.swing.JPanel ParentPanel;
     private javax.swing.JComboBox<String> SeleccionarAlmacen;
@@ -1110,9 +1151,11 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JButton addConection;
     private javax.swing.JButton addStore;
     private javax.swing.JPanel addStorePanel;
+    private javax.swing.JButton addproduct;
     private javax.swing.JMenu chargeFile;
     private javax.swing.JButton chooseButton;
     private javax.swing.JTextField conectionInput;
+    private javax.swing.JButton confirmRequest;
     private javax.swing.JButton createStoreButton;
     private javax.swing.JPanel disponibilidadPanel;
     private javax.swing.JButton disponibilidadShow;
@@ -1135,10 +1178,10 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1162,16 +1205,15 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel optionsPanel;
     private javax.swing.JButton pedidoBoton;
     private javax.swing.JPanel pedidoPanel;
-    private javax.swing.JTextArea productListRequest;
     private javax.swing.JTextArea productosInput;
     private javax.swing.JMenu requestOption;
     private javax.swing.JSpinner route3;
-    private javax.swing.JButton sendInfoRequest;
     private javax.swing.JMenu showGraph;
     private javax.swing.JMenu storesManage;
     private javax.swing.JLabel tittle1;
     private javax.swing.JLabel tittle2;
     private javax.swing.JButton updateData;
+    private javax.swing.JTextArea userList;
     // End of variables declaration//GEN-END:variables
 
     public static App instance;
