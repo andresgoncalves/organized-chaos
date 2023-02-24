@@ -95,6 +95,12 @@ public class App extends javax.swing.JFrame {
         BotonGestionarAlmacen = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         disponibilidadPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         pedidoPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -127,11 +133,17 @@ public class App extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         manageStockPanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
-        ShowStoresField = new javax.swing.JComboBox<>();
+        SeleccionarAlmacen = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         ShowStockField = new javax.swing.JTextArea();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         mainMenu = new javax.swing.JMenu();
         chargeFile = new javax.swing.JMenu();
@@ -381,6 +393,33 @@ public class App extends javax.swing.JFrame {
 
         disponibilidadPanel.setBackground(new java.awt.Color(255, 255, 255));
         disponibilidadPanel.setLayout(null);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane4.setViewportView(jTextArea1);
+
+        disponibilidadPanel.add(jScrollPane4);
+        jScrollPane4.setBounds(40, 140, 320, 320);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane5.setViewportView(jTextArea2);
+
+        disponibilidadPanel.add(jScrollPane5);
+        jScrollPane5.setBounds(400, 140, 320, 320);
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Recorrido en Anchura (BFS)");
+        disponibilidadPanel.add(jLabel22);
+        jLabel22.setBounds(100, 110, 190, 20);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("Recorrido en Profundidad (DFS)");
+        disponibilidadPanel.add(jLabel23);
+        jLabel23.setBounds(440, 110, 220, 20);
+
         ParentPanel.add(disponibilidadPanel, "card4");
 
         pedidoPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -679,62 +718,114 @@ public class App extends javax.swing.JFrame {
 
         jLabel17.setText("Almacen:");
 
-        ShowStoresField.addActionListener(new java.awt.event.ActionListener() {
+        SeleccionarAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowStoresFieldActionPerformed(evt);
+                SeleccionarAlmacenActionPerformed(evt);
             }
         });
 
-        jTextField1.setText("Ingrese el nombre del producto a añadir");
+        jTextField1.setText("Ingrese el nombre del producto a modificar");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Añadir producto");
+        jButton1.setText("Añadir");
 
         ShowStockField.setColumns(20);
         ShowStockField.setRows(5);
         jScrollPane3.setViewportView(ShowStockField);
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel18.setText("MODIFICAR INVENTARIO");
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel19.setText("AÑADIR NUEVO PRODUCTO");
+
+        jLabel20.setText("Escoja la cantidad a sumar");
+
+        jLabel21.setText("en el inventario");
+
+        jTextField3.setText("Ingrese el nombre del producto a añadir");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout manageStockPanelLayout = new javax.swing.GroupLayout(manageStockPanel);
         manageStockPanel.setLayout(manageStockPanelLayout);
         manageStockPanelLayout.setHorizontalGroup(
             manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageStockPanelLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(145, 145, 145)
                 .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(ShowStoresField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(200, 200, 200)
+                        .addComponent(SeleccionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(541, Short.MAX_VALUE))
+                        .addGap(227, 227, 227)
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel18))))
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addGap(226, 226, 226)
+                                .addComponent(jLabel20))
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addGap(262, 262, 262)
+                                .addComponent(jLabel21)))
+                        .addGap(30, 30, 30)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGap(313, 313, 313)
+                        .addComponent(jButton1))
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(478, Short.MAX_VALUE))
         );
         manageStockPanelLayout.setVerticalGroup(
             manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(manageStockPanelLayout.createSequentialGroup()
-                .addGap(95, 95, 95)
+                .addGap(85, 85, 85)
+                .addComponent(jLabel19)
+                .addGap(5, 5, 5)
                 .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
                         .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(ShowStoresField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(SeleccionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(manageStockPanelLayout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addContainerGap(135, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addComponent(jButton1)
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel21))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageStockPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)))))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         ParentPanel.add(manageStockPanel, "card7");
@@ -881,7 +972,7 @@ public class App extends javax.swing.JFrame {
         ParentPanel.revalidate();
         String mostrarInventario = "";
         for (ListNode<Store> i = graph.getStores().getFirst(); i != null; i = i.getNext()) {
-            ShowStoresField.addItem("Almacen " + i.getValue().getName());
+            SeleccionarAlmacen.addItem("Almacen " + i.getValue().getName());
             for (ListNode<Stock> j = i.getValue().getStock().getFirst(); j != null; j = j.getNext()) {
                 mostrarInventario = mostrarInventario + "- " + j.getValue().getProduct() + ": " + j.getValue().getAmount() + "\n";
             }
@@ -937,9 +1028,9 @@ public class App extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JConectionStore2ActionPerformed
 
-    private void ShowStoresFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowStoresFieldActionPerformed
+    private void SeleccionarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarAlmacenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ShowStoresFieldActionPerformed
+    }//GEN-LAST:event_SeleccionarAlmacenActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -949,6 +1040,10 @@ public class App extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JConectionStoreActionPerformed
 
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonGestionarAlmacen;
     private static javax.swing.JComboBox<String> JCStores;
@@ -956,8 +1051,8 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> JConectionStore2;
     private javax.swing.JPanel LoadPanel;
     private javax.swing.JPanel ParentPanel;
+    private javax.swing.JComboBox<String> SeleccionarAlmacen;
     private javax.swing.JTextArea ShowStockField;
-    private javax.swing.JComboBox<String> ShowStoresField;
     private javax.swing.JButton addConection;
     private javax.swing.JButton addStore;
     private javax.swing.JPanel addStorePanel;
@@ -980,7 +1075,13 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -992,9 +1093,15 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton loadButton;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JMenu mainMenu;
