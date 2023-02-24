@@ -17,12 +17,14 @@ import java.awt.event.ItemListener;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.SpinnerNumberModel;
+
+
 /**
  *
  * @author Andres
  */
 public class App extends javax.swing.JFrame {
-    
+
     private StoreGraph graph;
     private File dataFile;
     private File selectedFile;
@@ -36,7 +38,6 @@ public class App extends javax.swing.JFrame {
         this.products=null;
         this.amountProducts=null;
     }
-    
 
     public StoreGraph getGraph() {
         return graph;
@@ -53,14 +54,14 @@ public class App extends javax.swing.JFrame {
     public void setDataFile(File dataFile) {
         this.dataFile = dataFile;
     }
-    
+
     public void loadFile(File file) {
         try {
             graph = Database.readDatabase(file);
             dataFile = file;
             JOptionPane.showMessageDialog(this, "El archivo contiene %d almacenes".formatted(graph.getStores().getSize()), "Archivo cargado", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontrï¿½ el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "No se pudo leer el archivo", "Error de lectura", JOptionPane.ERROR_MESSAGE);
@@ -96,9 +97,15 @@ public class App extends javax.swing.JFrame {
         addStore = new javax.swing.JButton();
         pedidoBoton = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        BotonGestionarAlmacen = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         disponibilidadPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         pedidoPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -107,12 +114,12 @@ public class App extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         confirmRequest = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        JCProducts = new javax.swing.JComboBox<>();
         JProductsAmount = new javax.swing.JSpinner();
         addproduct = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         userList = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
+        JProducts = new javax.swing.JComboBox<>();
         addStorePanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -132,6 +139,19 @@ public class App extends javax.swing.JFrame {
         JConectionStore = new javax.swing.JComboBox<>();
         JConectionStore2 = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
+        manageStockPanel = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        SeleccionarAlmacen = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ShowStockField = new javax.swing.JTextArea();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         mainMenu = new javax.swing.JMenu();
         chargeFile = new javax.swing.JMenu();
@@ -339,13 +359,13 @@ public class App extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(130, 180, 0, 0);
         optionsPanel.add(jButton7, gridBagConstraints);
 
-        jButton8.setBackground(new java.awt.Color(255, 204, 51));
-        jButton8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
-        jButton8.setText("Gestionar Almacén");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        BotonGestionarAlmacen.setBackground(new java.awt.Color(255, 204, 51));
+        BotonGestionarAlmacen.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        BotonGestionarAlmacen.setForeground(new java.awt.Color(0, 0, 0));
+        BotonGestionarAlmacen.setText("Gestionar Almacén");
+        BotonGestionarAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                BotonGestionarAlmacenActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -356,7 +376,7 @@ public class App extends javax.swing.JFrame {
         gridBagConstraints.ipady = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(130, 80, 0, 0);
-        optionsPanel.add(jButton8, gridBagConstraints);
+        optionsPanel.add(BotonGestionarAlmacen, gridBagConstraints);
 
         jButton9.setBackground(new java.awt.Color(255, 204, 51));
         jButton9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -381,6 +401,33 @@ public class App extends javax.swing.JFrame {
 
         disponibilidadPanel.setBackground(new java.awt.Color(255, 255, 255));
         disponibilidadPanel.setLayout(null);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane4.setViewportView(jTextArea1);
+
+        disponibilidadPanel.add(jScrollPane4);
+        jScrollPane4.setBounds(40, 140, 320, 320);
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane5.setViewportView(jTextArea2);
+
+        disponibilidadPanel.add(jScrollPane5);
+        jScrollPane5.setBounds(400, 140, 320, 320);
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("Recorrido en Anchura (BFS)");
+        disponibilidadPanel.add(jLabel22);
+        jLabel22.setBounds(100, 110, 190, 20);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel23.setText("Recorrido en Profundidad (DFS)");
+        disponibilidadPanel.add(jLabel23);
+        jLabel23.setBounds(440, 110, 220, 20);
+
         ParentPanel.add(disponibilidadPanel, "card4");
 
         pedidoPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -433,14 +480,6 @@ public class App extends javax.swing.JFrame {
         jLabel17.setText("Seleccione el producto a pedir e idique la cantidad");
         pedidoPanel.add(jLabel17);
         jLabel17.setBounds(580, 250, 290, 17);
-
-        JCProducts.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JCProductsActionPerformed(evt);
-            }
-        });
-        pedidoPanel.add(JCProducts);
-        JCProducts.setBounds(560, 310, 190, 30);
         pedidoPanel.add(JProductsAmount);
         JProductsAmount.setBounds(800, 310, 80, 30);
 
@@ -469,6 +508,10 @@ public class App extends javax.swing.JFrame {
         jLabel5.setText("Tu lista:");
         pedidoPanel.add(jLabel5);
         jLabel5.setBounds(990, 60, 80, 16);
+
+        JProducts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pedidoPanel.add(JProducts);
+        JProducts.setBounds(580, 310, 170, 30);
 
         ParentPanel.add(pedidoPanel, "card5");
 
@@ -528,6 +571,18 @@ public class App extends javax.swing.JFrame {
         addConection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addConectionActionPerformed(evt);
+            }
+        });
+
+        JConectionStore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JConectionStoreActionPerformed(evt);
+            }
+        });
+
+        JConectionStore2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JConectionStore2ActionPerformed(evt);
             }
         });
 
@@ -632,6 +687,121 @@ public class App extends javax.swing.JFrame {
 
         ParentPanel.add(addStorePanel, "card6");
 
+        jLabel24.setText("Almacen:");
+
+        SeleccionarAlmacen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeleccionarAlmacenActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setText("Ingrese el nombre del producto a modificar");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Añadir");
+
+        ShowStockField.setColumns(20);
+        ShowStockField.setRows(5);
+        jScrollPane3.setViewportView(ShowStockField);
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel18.setText("MODIFICAR INVENTARIO");
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel19.setText("AÑADIR NUEVO PRODUCTO");
+
+        jLabel20.setText("Escoja la cantidad a sumar");
+
+        jLabel21.setText("en el inventario");
+
+        jTextField3.setText("Ingrese el nombre del producto a añadir");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout manageStockPanelLayout = new javax.swing.GroupLayout(manageStockPanel);
+        manageStockPanel.setLayout(manageStockPanelLayout);
+        manageStockPanelLayout.setHorizontalGroup(
+            manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(SeleccionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel18))))
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addGap(226, 226, 226)
+                                .addComponent(jLabel20))
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addGap(262, 262, 262)
+                                .addComponent(jLabel21)))
+                        .addGap(30, 30, 30)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGap(313, 313, 313)
+                        .addComponent(jButton1))
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(478, Short.MAX_VALUE))
+        );
+        manageStockPanelLayout.setVerticalGroup(
+            manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jLabel19)
+                .addGap(5, 5, 5)
+                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel24)
+                                .addComponent(SeleccionarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jButton1)
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel20)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel21))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageStockPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)))))
+                .addContainerGap(115, Short.MAX_VALUE))
+        );
+
+        ParentPanel.add(manageStockPanel, "card7");
+
         mainMenu.setText("Menu");
         mainMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         mainMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -672,7 +842,7 @@ public class App extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE))
+                .addComponent(ParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
         );
 
         pack();
@@ -680,14 +850,14 @@ public class App extends javax.swing.JFrame {
 
     private void chooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseButtonActionPerformed
         int result = fileChooser.showOpenDialog(this);
-        if(result == JFileChooser.APPROVE_OPTION) {
+        if (result == JFileChooser.APPROVE_OPTION) {
             selectedFile = fileChooser.getSelectedFile();
             loadButton.setEnabled(true);
         }
     }//GEN-LAST:event_chooseButtonActionPerformed
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
-        if(selectedFile != null) {
+        if (selectedFile != null) {
             App.getInstance().loadFile(selectedFile);
         }
         ParentPanel.removeAll();
@@ -708,22 +878,23 @@ public class App extends javax.swing.JFrame {
         String productText="";
         for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
             System.out.println(recorrer);
-            JCStores.addItem("Almacen "+recorrer.getValue().getName());
+            JCStores.addItem(recorrer.getValue().getName());
             for(ListNode<Stock> recorrerStock=recorrer.getValue().getStock().getFirst(); recorrerStock!=null;recorrerStock=recorrerStock.getNext()){
                 productText=productText+"- "+recorrerStock.getValue().getProduct()+": "+recorrerStock.getValue().getAmount()+"\n";
-                JCProducts.addItem(recorrerStock.getValue().getProduct());
+                JProducts.addItem(recorrerStock.getValue().getProduct());
             }  
         }   
         productosInput.setText(productText);
     }//GEN-LAST:event_pedidoBotonActionPerformed
 
-    private void confirmRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmRequestActionPerformed
+    private void confirmRequestActionPerformed(java.awt.event.ActionEvent evt) {                                               
         String storeSelected = JCStores.getSelectedItem().toString();
         Store storeGet=null;
         for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
             if(storeSelected.equals(recorrer.getValue().getName())){
                 storeGet=recorrer.getValue();
             }
+
         }
         
         for(int i = 0; i < products.length; i++) {
@@ -735,7 +906,7 @@ public class App extends javax.swing.JFrame {
             }
         }
   
-    }//GEN-LAST:event_confirmRequestActionPerformed
+    }                                              
 
     private void JCStoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCStoresActionPerformed
         
@@ -745,9 +916,21 @@ public class App extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_updateDataActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void BotonGestionarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionarAlmacenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        ParentPanel.removeAll();
+        ParentPanel.add(manageStockPanel);
+        ParentPanel.repaint();
+        ParentPanel.revalidate();
+        String mostrarInventario = "";
+        for (ListNode<Store> i = graph.getStores().getFirst(); i != null; i = i.getNext()) {
+            SeleccionarAlmacen.addItem("Almacen " + i.getValue().getName());
+            for (ListNode<Stock> j = i.getValue().getStock().getFirst(); j != null; j = j.getNext()) {
+                mostrarInventario = mostrarInventario + "- " + j.getValue().getProduct() + ": " + j.getValue().getAmount() + "\n";
+            }
+        }
+        ShowStockField.setText(mostrarInventario);
+    }//GEN-LAST:event_BotonGestionarAlmacenActionPerformed
 
     private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
        
@@ -767,8 +950,8 @@ public class App extends javax.swing.JFrame {
         ParentPanel.repaint();
         ParentPanel.revalidate();
         for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
-            JConectionStore.addItem("Almacen "+recorrer.getValue().getName());
-            JConectionStore2.addItem("Almacen "+recorrer.getValue().getName());
+            JConectionStore.addItem(recorrer.getValue().getName());
+            JConectionStore2.addItem(recorrer.getValue().getName());
         }
     }//GEN-LAST:event_addStoreActionPerformed
 
@@ -794,8 +977,8 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_createStoreButtonActionPerformed
 
     private void addproductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addproductActionPerformed
-        for (int i = 0; i < JCProducts.getItemCount(); i++) {
-            String selectItem=JCProducts.getSelectedItem().toString();
+        for (int i = 0; i < JProducts.getItemCount(); i++) {
+            String selectItem=JProducts.getSelectedItem().toString();
             products[i]=selectItem; 
             amountProducts[i]=Integer.parseInt(JProductsAmount.getValue().toString());
         }
@@ -804,30 +987,40 @@ public class App extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addproductActionPerformed
 
-    private void JCProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCProductsActionPerformed
-        String storeSelected = JCStores.getSelectedItem().toString();
-        Store storeGet=null;
-        for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
-            if(storeSelected.equals(recorrer.getValue().getName())){
-                storeGet=recorrer.getValue();
-            }
-        }
-        Stock stock = storeGet.getStock().find(JCProducts.getSelectedItem().toString());
-        int maxItem=stock.getAmount();
-        SpinnerNumberModel modeloSpinner = new SpinnerNumberModel();
-        modeloSpinner.setMaximum(maxItem);
-        modeloSpinner.setMinimum(0);
-        JProductsAmount.setModel(modeloSpinner);
-    }//GEN-LAST:event_JCProductsActionPerformed
+    // Variables declaration - do not modify                     
+    private javax.swing.JComboBox<String> ProductsShow;
+
+    private void JConectionStore2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JConectionStore2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JConectionStore2ActionPerformed
+
+    private void SeleccionarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarAlmacenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SeleccionarAlmacenActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void JConectionStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JConectionStoreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JConectionStoreActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> JCProducts;
+    private javax.swing.JButton BotonGestionarAlmacen;
     private static javax.swing.JComboBox<String> JCStores;
     private javax.swing.JComboBox<String> JConectionStore;
     private javax.swing.JComboBox<String> JConectionStore2;
+    private javax.swing.JComboBox<String> JProducts;
     private javax.swing.JSpinner JProductsAmount;
     private javax.swing.JPanel LoadPanel;
     private javax.swing.JPanel ParentPanel;
+    private javax.swing.JComboBox<String> SeleccionarAlmacen;
+    private javax.swing.JTextArea ShowStockField;
     private javax.swing.JButton addConection;
     private javax.swing.JButton addStore;
     private javax.swing.JPanel addStorePanel;
@@ -840,8 +1033,8 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel disponibilidadPanel;
     private javax.swing.JButton disponibilidadShow;
     private javax.swing.JFileChooser fileChooser;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -852,7 +1045,14 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -862,11 +1062,20 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton loadButton;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JMenu mainMenu;
+    private javax.swing.JPanel manageStockPanel;
     private javax.swing.JTextField nameStoreInput;
     private javax.swing.JPanel optionsPanel;
     private javax.swing.JButton pedidoBoton;
@@ -892,14 +1101,26 @@ public class App extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(App.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(App.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(App.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(App.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
