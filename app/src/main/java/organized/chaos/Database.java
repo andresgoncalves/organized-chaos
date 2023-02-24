@@ -110,31 +110,4 @@ public class Database {
             writer.flush();
         }
     }
-
-    public String showStores(StoreGraph graph) {
-        String storePrint = "";
-        StoreList pending = new StoreList();
-        StoreList visited = new StoreList();
-        pending.append(graph.getStores().getFirst().getValue());
-        for (ListNode<Store> storeNode = pending.getFirst(); storeNode != null; storeNode = storeNode.getNext()) {
-            storePrint = storePrint + "Stores:\n" + storeNode.getValue().getStock() + "\n";
-        }
-        return storePrint;
-    }
-
-    public String showStock(StoreGraph graph, String selectedStore) {
-        String stockPrint = "";
-        StoreList pending = new StoreList();
-        StoreList visited = new StoreList();
-        pending.append(graph.getStores().getFirst().getValue());
-        for (ListNode<Store> storeNode = pending.getFirst(); storeNode != null; storeNode = storeNode.getNext()) {
-            Store store = storeNode.getValue();
-            if (storeNode.getValue().getName().equalsIgnoreCase(selectedStore)) {
-                for (ListNode<Stock> stockNode = store.getStock().getFirst(); stockNode != null; stockNode = stockNode.getNext()) {
-                    stockPrint = stockPrint + "- " + stockNode.getValue().getProduct() + ": " + stockNode.getValue().getAmount() + "\n";
-                }
-            }
-        }
-        return stockPrint;
-    }
 }

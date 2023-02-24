@@ -16,12 +16,13 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
+
 /**
  *
  * @author Andres
  */
 public class App extends javax.swing.JFrame {
-    
+
     private StoreGraph graph;
     private File dataFile;
     private File selectedFile;
@@ -32,7 +33,6 @@ public class App extends javax.swing.JFrame {
     public App() {
         initComponents();
     }
-    
 
     public StoreGraph getGraph() {
         return graph;
@@ -49,14 +49,14 @@ public class App extends javax.swing.JFrame {
     public void setDataFile(File dataFile) {
         this.dataFile = dataFile;
     }
-    
+
     public void loadFile(File file) {
         try {
             graph = Database.readDatabase(file);
             dataFile = file;
             JOptionPane.showMessageDialog(this, "El archivo contiene %d almacenes".formatted(graph.getStores().getSize()), "Archivo cargado", JOptionPane.INFORMATION_MESSAGE);
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontrï¿½ el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "No se pudo leer el archivo", "Error de lectura", JOptionPane.ERROR_MESSAGE);
@@ -92,7 +92,7 @@ public class App extends javax.swing.JFrame {
         addStore = new javax.swing.JButton();
         pedidoBoton = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        BotonGestionarAlmacen = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         disponibilidadPanel = new javax.swing.JPanel();
         pedidoPanel = new javax.swing.JPanel();
@@ -125,6 +125,13 @@ public class App extends javax.swing.JFrame {
         JConectionStore = new javax.swing.JComboBox<>();
         JConectionStore2 = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
+        manageStockPanel = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        ShowStoresField = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ShowStockField = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         mainMenu = new javax.swing.JMenu();
         chargeFile = new javax.swing.JMenu();
@@ -171,7 +178,7 @@ public class App extends javax.swing.JFrame {
 
         tittle1.setFont(new java.awt.Font("Tekton Pro Ext", 0, 24)); // NOI18N
         tittle1.setForeground(new java.awt.Color(0, 0, 0));
-        tittle1.setText("¡Bienvenidos al Sistema ");
+        tittle1.setText("Â¡Bienvenidos al Sistema ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -204,7 +211,7 @@ public class App extends javax.swing.JFrame {
 
         tittle2.setFont(new java.awt.Font("Tekton Pro Ext", 1, 24)); // NOI18N
         tittle2.setForeground(new java.awt.Color(0, 0, 0));
-        tittle2.setText("de Distribución de Amazon!");
+        tittle2.setText("de DistribuciÃ³n de Amazon!");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -216,7 +223,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Seleccione el archivo con la información necesaria");
+        jLabel1.setText("Seleccione el archivo con la informaciÃ³n necesaria");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -265,7 +272,7 @@ public class App extends javax.swing.JFrame {
         disponibilidadShow.setBackground(new java.awt.Color(255, 204, 51));
         disponibilidadShow.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         disponibilidadShow.setForeground(new java.awt.Color(0, 0, 0));
-        disponibilidadShow.setText("Disponibilidad por Almacén");
+        disponibilidadShow.setText("Disponibilidad por AlmacÃ©n");
         disponibilidadShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 disponibilidadShowActionPerformed(evt);
@@ -283,7 +290,7 @@ public class App extends javax.swing.JFrame {
         addStore.setBackground(new java.awt.Color(255, 204, 51));
         addStore.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         addStore.setForeground(new java.awt.Color(0, 0, 0));
-        addStore.setText("Agregar Almacén");
+        addStore.setText("Agregar AlmacÃ©n");
         addStore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStoreActionPerformed(evt);
@@ -332,13 +339,13 @@ public class App extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(130, 180, 0, 0);
         optionsPanel.add(jButton7, gridBagConstraints);
 
-        jButton8.setBackground(new java.awt.Color(255, 204, 51));
-        jButton8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
-        jButton8.setText("Gestionar Almacén");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        BotonGestionarAlmacen.setBackground(new java.awt.Color(255, 204, 51));
+        BotonGestionarAlmacen.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        BotonGestionarAlmacen.setForeground(new java.awt.Color(0, 0, 0));
+        BotonGestionarAlmacen.setText("Gestionar AlmacÃ©n");
+        BotonGestionarAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                BotonGestionarAlmacenActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -349,7 +356,7 @@ public class App extends javax.swing.JFrame {
         gridBagConstraints.ipady = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(130, 80, 0, 0);
-        optionsPanel.add(jButton8, gridBagConstraints);
+        optionsPanel.add(BotonGestionarAlmacen, gridBagConstraints);
 
         jButton9.setBackground(new java.awt.Color(255, 204, 51));
         jButton9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -428,7 +435,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Seleccione un almacén:");
+        jLabel4.setText("Seleccione un almacÃ©n:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
@@ -502,15 +509,15 @@ public class App extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Conexión 1:");
+        jLabel8.setText("ConexiÃ³n 1:");
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Conexión 2:");
+        jLabel9.setText("ConexiÃ³n 2:");
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Más conexiones:");
+        jLabel10.setText("MÃ¡s conexiones:");
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
@@ -524,7 +531,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Ingrese el nombre del almacén:");
+        jLabel12.setText("Ingrese el nombre del almacÃ©n:");
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -541,7 +548,7 @@ public class App extends javax.swing.JFrame {
         createStoreButton.setBackground(new java.awt.Color(255, 204, 51));
         createStoreButton.setFont(new java.awt.Font("Tekton Pro Ext", 0, 14)); // NOI18N
         createStoreButton.setForeground(new java.awt.Color(0, 0, 0));
-        createStoreButton.setText("Crear almacén");
+        createStoreButton.setText("Crear almacÃ©n");
         createStoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createStoreButtonActionPerformed(evt);
@@ -550,16 +557,28 @@ public class App extends javax.swing.JFrame {
 
         addConection.setBackground(new java.awt.Color(204, 204, 204));
         addConection.setForeground(new java.awt.Color(0, 0, 0));
-        addConection.setText("Agregar más conexiones");
+        addConection.setText("Agregar mÃ¡s conexiones");
         addConection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addConectionActionPerformed(evt);
             }
         });
 
+        JConectionStore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JConectionStoreActionPerformed(evt);
+            }
+        });
+
+        JConectionStore2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JConectionStore2ActionPerformed(evt);
+            }
+        });
+
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Almacén");
+        jLabel16.setText("AlmacÃ©n");
 
         javax.swing.GroupLayout addStorePanelLayout = new javax.swing.GroupLayout(addStorePanel);
         addStorePanel.setLayout(addStorePanelLayout);
@@ -609,7 +628,7 @@ public class App extends javax.swing.JFrame {
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
                         .addComponent(nameStoreInput, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(447, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
         addStorePanelLayout.setVerticalGroup(
             addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -658,6 +677,68 @@ public class App extends javax.swing.JFrame {
 
         ParentPanel.add(addStorePanel, "card6");
 
+        jLabel17.setText("Almacen:");
+
+        ShowStoresField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowStoresFieldActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setText("Ingrese el nombre del producto a aÃ±adir");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("AÃ±adir producto");
+
+        ShowStockField.setColumns(20);
+        ShowStockField.setRows(5);
+        jScrollPane3.setViewportView(ShowStockField);
+
+        javax.swing.GroupLayout manageStockPanelLayout = new javax.swing.GroupLayout(manageStockPanel);
+        manageStockPanel.setLayout(manageStockPanelLayout);
+        manageStockPanelLayout.setHorizontalGroup(
+            manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ShowStoresField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(200, 200, 200)
+                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(541, Short.MAX_VALUE))
+        );
+        manageStockPanelLayout.setVerticalGroup(
+            manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(manageStockPanelLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(ShowStoresField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(manageStockPanelLayout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
+
+        ParentPanel.add(manageStockPanel, "card7");
+
         mainMenu.setText("Menu");
         mainMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         mainMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -678,10 +759,10 @@ public class App extends javax.swing.JFrame {
         });
         jMenuBar1.add(requestOption);
 
-        showGraph.setText("Ver Almacén");
+        showGraph.setText("Ver AlmacÃ©n");
         jMenuBar1.add(showGraph);
 
-        storesManage.setText("Gestionar Almacén");
+        storesManage.setText("Gestionar AlmacÃ©n");
         jMenuBar1.add(storesManage);
 
         setJMenuBar(jMenuBar1);
@@ -698,7 +779,7 @@ public class App extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
+                .addComponent(ParentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 501, Short.MAX_VALUE))
         );
 
         pack();
@@ -706,14 +787,14 @@ public class App extends javax.swing.JFrame {
 
     private void chooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseButtonActionPerformed
         int result = fileChooser.showOpenDialog(this);
-        if(result == JFileChooser.APPROVE_OPTION) {
+        if (result == JFileChooser.APPROVE_OPTION) {
             selectedFile = fileChooser.getSelectedFile();
             loadButton.setEnabled(true);
         }
     }//GEN-LAST:event_chooseButtonActionPerformed
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
-        if(selectedFile != null) {
+        if (selectedFile != null) {
             App.getInstance().loadFile(selectedFile);
         }
         ParentPanel.removeAll();
@@ -731,55 +812,56 @@ public class App extends javax.swing.JFrame {
         ParentPanel.add(pedidoPanel);
         ParentPanel.repaint();
         ParentPanel.revalidate();
-        String productText="";
-        for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
-            JCStores.addItem("Almacen "+recorrer.getValue().getName());
-            for(ListNode<Stock> recorrerStock=recorrer.getValue().getStock().getFirst(); recorrerStock!=null;recorrerStock=recorrerStock.getNext())
-                productText=productText+"- "+recorrerStock.getValue().getProduct()+": "+recorrerStock.getValue().getAmount()+"\n";
-                }
+        String productText = "";
+        for (ListNode<Store> recorrer = graph.getStores().getFirst(); recorrer != null; recorrer = recorrer.getNext()) {
+            JCStores.addItem("Almacen " + recorrer.getValue().getName());
+            for (ListNode<Stock> recorrerStock = recorrer.getValue().getStock().getFirst(); recorrerStock != null; recorrerStock = recorrerStock.getNext()) {
+                productText = productText + "- " + recorrerStock.getValue().getProduct() + ": " + recorrerStock.getValue().getAmount() + "\n";
+            }
+        }
         productosInput.setText(productText);
-        
+
     }//GEN-LAST:event_pedidoBotonActionPerformed
 
     private void sendInfoRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendInfoRequestActionPerformed
-        
-        try{
-          
-          String productString=productListRequest.getText();
-          if("".equals(productString)){
-              JOptionPane.showMessageDialog(ParentPanel, "Ingrese la lista de productos!");
-          }else{
-          String[] productArray=productString.split("\n");
-          String [] products=null;
-            for (int i = 0; i <productArray.length; i++) {
-                products=productArray[i].split(":");
-            }
-            String storeSelected=JCStores.getSelectedItem().toString();
-            for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
-                if((recorrer.getValue().getName()).equals(storeSelected)){
-                    for(ListNode<Stock> recorrerStock=recorrer.getValue().getStock().getFirst(); recorrerStock!=null;recorrerStock=recorrerStock.getNext()){
-                        for (int i = 0; i < products.length; i++) {
-                            int aux=0;
-                            int aux2=1;
-                            if(products[aux].equals(recorrerStock.getValue().getProduct())){
-                                if(Integer.parseInt(products[aux2])>recorrerStock.getValue().getAmount()){
-                                    JOptionPane.showMessageDialog(ParentPanel, "Revise las cantidades de los productos a comprar!");
-                                }else{
-                                recorrerStock.getValue().setAmount((recorrerStock.getValue().getAmount())-Integer.parseInt(products[i+1]));
-                            }
-                            aux=aux+2;
-                            aux2=aux2+2;
-                        }else{
-                                //codigo de solicitar producto
+
+        try {
+
+            String productString = productListRequest.getText();
+            if ("".equals(productString)) {
+                JOptionPane.showMessageDialog(ParentPanel, "Ingrese la lista de productos!");
+            } else {
+                String[] productArray = productString.split("\n");
+                String[] products = null;
+                for (int i = 0; i < productArray.length; i++) {
+                    products = productArray[i].split(":");
+                }
+                String storeSelected = JCStores.getSelectedItem().toString();
+                for (ListNode<Store> recorrer = graph.getStores().getFirst(); recorrer != null; recorrer = recorrer.getNext()) {
+                    if ((recorrer.getValue().getName()).equals(storeSelected)) {
+                        for (ListNode<Stock> recorrerStock = recorrer.getValue().getStock().getFirst(); recorrerStock != null; recorrerStock = recorrerStock.getNext()) {
+                            for (int i = 0; i < products.length; i++) {
+                                int aux = 0;
+                                int aux2 = 1;
+                                if (products[aux].equals(recorrerStock.getValue().getProduct())) {
+                                    if (Integer.parseInt(products[aux2]) > recorrerStock.getValue().getAmount()) {
+                                        JOptionPane.showMessageDialog(ParentPanel, "Revise las cantidades de los productos a comprar!");
+                                    } else {
+                                        recorrerStock.getValue().setAmount((recorrerStock.getValue().getAmount()) - Integer.parseInt(products[i + 1]));
+                                    }
+                                    aux = aux + 2;
+                                    aux2 = aux2 + 2;
+                                } else {
+                                    //codigo de solicitar producto
+                                }
                             }
                         }
                     }
                 }
+                JOptionPane.showMessageDialog(ParentPanel, "ï¿½Pedido Realizado!");
             }
-            JOptionPane.showMessageDialog(ParentPanel, "¡Pedido Realizado!");
-          }
-          }catch(Exception e){
-            JOptionPane.showMessageDialog(productosInput,"Lista de productos inválida!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(productosInput, "Lista de productos invï¿½lida!");
         }
     }//GEN-LAST:event_sendInfoRequestActionPerformed
 
@@ -791,9 +873,21 @@ public class App extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_updateDataActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void BotonGestionarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGestionarAlmacenActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        ParentPanel.removeAll();
+        ParentPanel.add(manageStockPanel);
+        ParentPanel.repaint();
+        ParentPanel.revalidate();
+        String mostrarInventario = "";
+        for (ListNode<Store> i = graph.getStores().getFirst(); i != null; i = i.getNext()) {
+            ShowStoresField.addItem("Almacen " + i.getValue().getName());
+            for (ListNode<Stock> j = i.getValue().getStock().getFirst(); j != null; j = j.getNext()) {
+                mostrarInventario = mostrarInventario + "- " + j.getValue().getProduct() + ": " + j.getValue().getAmount() + "\n";
+            }
+        }
+        ShowStockField.setText(mostrarInventario);
+    }//GEN-LAST:event_BotonGestionarAlmacenActionPerformed
 
     private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
        
@@ -839,12 +933,31 @@ public class App extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_createStoreButtonActionPerformed
 
+    private void JConectionStore2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JConectionStore2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JConectionStore2ActionPerformed
+
+    private void ShowStoresFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowStoresFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowStoresFieldActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void JConectionStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JConectionStoreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JConectionStoreActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonGestionarAlmacen;
     private static javax.swing.JComboBox<String> JCStores;
     private javax.swing.JComboBox<String> JConectionStore;
     private javax.swing.JComboBox<String> JConectionStore2;
     private javax.swing.JPanel LoadPanel;
     private javax.swing.JPanel ParentPanel;
+    private javax.swing.JTextArea ShowStockField;
+    private javax.swing.JComboBox<String> ShowStoresField;
     private javax.swing.JButton addConection;
     private javax.swing.JButton addStore;
     private javax.swing.JPanel addStorePanel;
@@ -855,8 +968,8 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JPanel disponibilidadPanel;
     private javax.swing.JButton disponibilidadShow;
     private javax.swing.JFileChooser fileChooser;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -866,6 +979,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -877,11 +991,14 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton loadButton;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JMenu mainMenu;
+    private javax.swing.JPanel manageStockPanel;
     private javax.swing.JTextField nameStoreInput;
     private javax.swing.JPanel optionsPanel;
     private javax.swing.JButton pedidoBoton;
@@ -908,14 +1025,26 @@ public class App extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(App.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(App.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(App.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(App.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
