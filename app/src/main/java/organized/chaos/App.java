@@ -28,6 +28,8 @@ public class App extends javax.swing.JFrame {
     private File selectedFile;
     private String[] products;
     private Integer[] amountProducts;
+    private RouteList newRoutes;
+    
     /**
      * Creates new form App
      */
@@ -35,6 +37,7 @@ public class App extends javax.swing.JFrame {
         initComponents();
         this.products=null;
         this.amountProducts=null;
+        this.newRoutes=null;
     }
     
 
@@ -95,7 +98,7 @@ public class App extends javax.swing.JFrame {
         disponibilidadShow = new javax.swing.JButton();
         addStore = new javax.swing.JButton();
         pedidoBoton = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        addRouteButton = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         disponibilidadPanel = new javax.swing.JPanel();
@@ -117,7 +120,6 @@ public class App extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        conectionInput = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         nameStoreInput = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -132,6 +134,15 @@ public class App extends javax.swing.JFrame {
         JConectionStore = new javax.swing.JComboBox<>();
         JConectionStore2 = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
+        JConectionMore = new javax.swing.JComboBox<>();
+        addRoute = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        storeAddRoute2 = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        storeAddroute = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        distanceRoute = new javax.swing.JSpinner();
+        sendInfoRoute = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mainMenu = new javax.swing.JMenu();
         chargeFile = new javax.swing.JMenu();
@@ -325,10 +336,15 @@ public class App extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(130, 60, 0, 0);
         optionsPanel.add(pedidoBoton, gridBagConstraints);
 
-        jButton7.setBackground(new java.awt.Color(255, 204, 51));
-        jButton7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setText("Agregar Camino");
+        addRouteButton.setBackground(new java.awt.Color(255, 204, 51));
+        addRouteButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        addRouteButton.setForeground(new java.awt.Color(0, 0, 0));
+        addRouteButton.setText("Agregar Camino");
+        addRouteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addRouteButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -337,7 +353,7 @@ public class App extends javax.swing.JFrame {
         gridBagConstraints.ipady = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(130, 180, 0, 0);
-        optionsPanel.add(jButton7, gridBagConstraints);
+        optionsPanel.add(addRouteButton, gridBagConstraints);
 
         jButton8.setBackground(new java.awt.Color(255, 204, 51));
         jButton8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
@@ -473,44 +489,69 @@ public class App extends javax.swing.JFrame {
         ParentPanel.add(pedidoPanel, "card5");
 
         addStorePanel.setBackground(new java.awt.Color(255, 255, 255));
+        addStorePanel.setLayout(null);
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Conexión 1:");
+        addStorePanel.add(jLabel8);
+        jLabel8.setBounds(22, 134, 67, 17);
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Conexión 2:");
+        addStorePanel.add(jLabel9);
+        jLabel9.setBounds(22, 244, 67, 17);
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Más conexiones:");
+        addStorePanel.add(jLabel10);
+        jLabel10.setBounds(6, 363, 94, 17);
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Indique al menos dos conexiones con los almacenes existentes:");
+        addStorePanel.add(jLabel11);
+        jLabel11.setBounds(6, 78, 356, 17);
 
         nameStoreInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameStoreInputActionPerformed(evt);
             }
         });
+        addStorePanel.add(nameStoreInput);
+        nameStoreInput.setBounds(523, 35, 164, 22);
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Ingrese el nombre del almacén:");
+        addStorePanel.add(jLabel12);
+        jLabel12.setBounds(204, 38, 190, 17);
+        addStorePanel.add(route3);
+        route3.setBounds(620, 360, 90, 22);
 
         jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Peso de la ruta 2");
+        addStorePanel.add(jLabel13);
+        jLabel13.setBounds(472, 244, 100, 17);
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Peso de la ruta 1");
+        addStorePanel.add(jLabel14);
+        jLabel14.setBounds(472, 134, 100, 17);
 
         jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Peso de la ruta ");
+        addStorePanel.add(jLabel15);
+        jLabel15.setBounds(472, 360, 100, 17);
+        addStorePanel.add(jSpinner2);
+        jSpinner2.setBounds(620, 130, 88, 22);
+        addStorePanel.add(jSpinner3);
+        jSpinner3.setBounds(620, 241, 88, 22);
 
         createStoreButton.setBackground(new java.awt.Color(255, 204, 51));
         createStoreButton.setFont(new java.awt.Font("Tekton Pro Ext", 0, 14)); // NOI18N
@@ -521,6 +562,8 @@ public class App extends javax.swing.JFrame {
                 createStoreButtonActionPerformed(evt);
             }
         });
+        addStorePanel.add(createStoreButton);
+        createStoreButton.setBounds(359, 443, 240, 25);
 
         addConection.setBackground(new java.awt.Color(204, 204, 204));
         addConection.setForeground(new java.awt.Color(0, 0, 0));
@@ -530,107 +573,69 @@ public class App extends javax.swing.JFrame {
                 addConectionActionPerformed(evt);
             }
         });
+        addStorePanel.add(addConection);
+        addConection.setBounds(780, 360, 160, 23);
+
+        addStorePanel.add(JConectionStore);
+        JConectionStore.setBounds(122, 131, 261, 22);
+
+        addStorePanel.add(JConectionStore2);
+        JConectionStore2.setBounds(122, 241, 270, 22);
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("Almacén");
+        addStorePanel.add(jLabel16);
+        jLabel16.setBounds(456, 38, 49, 17);
 
-        javax.swing.GroupLayout addStorePanelLayout = new javax.swing.GroupLayout(addStorePanel);
-        addStorePanel.setLayout(addStorePanelLayout);
-        addStorePanelLayout.setHorizontalGroup(
-            addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addStorePanelLayout.createSequentialGroup()
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel11))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel9)
-                        .addGap(33, 33, 33)
-                        .addComponent(JConectionStore2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(359, 359, 359)
-                        .addComponent(createStoreButton, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(conectionInput, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(route3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(addConection))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel8)
-                        .addGap(33, 33, 33)
-                        .addComponent(JConectionStore, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel16)
-                        .addGap(18, 18, 18)
-                        .addComponent(nameStoreInput, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(435, Short.MAX_VALUE))
-        );
-        addStorePanelLayout.setVerticalGroup(
-            addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addStorePanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(nameStoreInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addGap(21, 21, 21)
-                .addComponent(jLabel11)
-                .addGap(36, 36, 36)
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JConectionStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel14))))
-                .addGap(88, 88, 88)
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JConectionStore2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel13))))
-                .addGap(94, 94, 94)
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(route3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(addConection))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel10)
-                                .addComponent(conectionInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel15))))
-                .addGap(61, 61, 61)
-                .addComponent(createStoreButton)
-                .addContainerGap())
-        );
+        addStorePanel.add(JConectionMore);
+        JConectionMore.setBounds(120, 360, 270, 22);
 
-        ParentPanel.add(addStorePanel, "card6");
+        ParentPanel.add(addStorePanel, "addStorePanel");
+
+        addRoute.setBackground(new java.awt.Color(255, 255, 255));
+        addRoute.setLayout(null);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Seleccione el almacén al que quiere agregarle la ruta");
+        addRoute.add(jLabel6);
+        jLabel6.setBounds(300, 100, 292, 17);
+
+        addRoute.add(storeAddRoute2);
+        storeAddRoute2.setBounds(310, 340, 260, 30);
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("Seleccione el almacén con el que quiere hacer la ruta:");
+        addRoute.add(jLabel18);
+        jLabel18.setBounds(300, 280, 310, 17);
+
+        addRoute.add(storeAddroute);
+        storeAddroute.setBounds(310, 170, 260, 30);
+
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("Indique el peso de la ruta a agregar");
+        addRoute.add(jLabel19);
+        jLabel19.setBounds(730, 190, 210, 17);
+        addRoute.add(distanceRoute);
+        distanceRoute.setBounds(760, 230, 130, 30);
+
+        sendInfoRoute.setBackground(new java.awt.Color(255, 204, 51));
+        sendInfoRoute.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        sendInfoRoute.setForeground(new java.awt.Color(0, 0, 0));
+        sendInfoRoute.setText("Agregar ruta");
+        sendInfoRoute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendInfoRouteActionPerformed(evt);
+            }
+        });
+        addRoute.add(sendInfoRoute);
+        sendInfoRoute.setBounds(730, 310, 210, 24);
+
+        ParentPanel.add(addRoute, "card7");
 
         mainMenu.setText("Menu");
         mainMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -672,7 +677,7 @@ public class App extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE))
+                .addComponent(ParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
         );
 
         pack();
@@ -707,14 +712,13 @@ public class App extends javax.swing.JFrame {
         ParentPanel.revalidate();
         String productText="";
         for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
-            System.out.println(recorrer);
-            JCStores.addItem("Almacen "+recorrer.getValue().getName());
-            for(ListNode<Stock> recorrerStock=recorrer.getValue().getStock().getFirst(); recorrerStock!=null;recorrerStock=recorrerStock.getNext()){
-                productText=productText+"- "+recorrerStock.getValue().getProduct()+": "+recorrerStock.getValue().getAmount()+"\n";
-                JCProducts.addItem(recorrerStock.getValue().getProduct());
-            }  
-        }   
-        productosInput.setText(productText);
+            JCStores.addItem(recorrer.getValue().getName().toString());
+            for(ListNode<Stock> getStock=recorrer.getValue().getStock().getFirst();getStock!=null;getStock=getStock.getNext()){
+                productText=productText+"- "+getStock.getValue().getProduct()+": "+getStock.getValue().getAmount()+"\n";
+                JCProducts.addItem(getStock.getValue().getProduct());
+            }
+        }
+        productosInput.setText(productText); 
     }//GEN-LAST:event_pedidoBotonActionPerformed
 
     private void confirmRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmRequestActionPerformed
@@ -742,7 +746,12 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_JCStoresActionPerformed
 
     private void updateDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDataActionPerformed
-        // TODO add your handling code here:
+        try {
+            Database.readDatabase(getDataFile());
+            Database.writeDatabase(graph, getDataFile());
+        } catch (IOException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_updateDataActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -767,13 +776,35 @@ public class App extends javax.swing.JFrame {
         ParentPanel.repaint();
         ParentPanel.revalidate();
         for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
-            JConectionStore.addItem("Almacen "+recorrer.getValue().getName());
-            JConectionStore2.addItem("Almacen "+recorrer.getValue().getName());
+            JConectionStore.addItem(recorrer.getValue().getName());
+            JConectionStore2.addItem(recorrer.getValue().getName());
+            JConectionMore.addItem(recorrer.getValue().getName());
         }
+        
     }//GEN-LAST:event_addStoreActionPerformed
 
     private void addConectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConectionActionPerformed
-        conectionInput.setText("");
+        newRoutes=null;
+        Store store1;
+        Store store2;
+        Store moreStore;
+        for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
+            if((JConectionStore.getSelectedItem()).equals(recorrer.getValue().getName())   && JConectionMore.getSelectedItem().equals(recorrer.getValue().getName())){
+                store1=recorrer.getValue();
+            }
+            if(JConectionStore2.getSelectedItem().equals(recorrer.getValue().getName())){
+                store2=recorrer.getValue();
+            }
+        }
+        for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
+            
+        }
+        
+//        Route route1=new Route(JConectionStore.getSelectedItem(), WIDTH);
+//        newRoutes.append();
+        Integer valueInicial=0;
+        route3.setValue(valueInicial);
+        
     }//GEN-LAST:event_addConectionActionPerformed
 
     private void nameStoreInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameStoreInputActionPerformed
@@ -781,11 +812,13 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_nameStoreInputActionPerformed
 
     private void createStoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStoreButtonActionPerformed
+        
         try{
             String nameStore=nameStoreInput.getText();
             if((nameStore.toLowerCase()).contains("almacen")){
                 JOptionPane.showMessageDialog(ParentPanel, "No incluya la palabra almacen");
             }else{
+                
                 
             }
         }catch(Exception e){
@@ -794,6 +827,8 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_createStoreButtonActionPerformed
 
     private void addproductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addproductActionPerformed
+        products=null;
+        amountProducts=null;
         for (int i = 0; i < JCProducts.getItemCount(); i++) {
             String selectItem=JCProducts.getSelectedItem().toString();
             products[i]=selectItem; 
@@ -820,27 +855,52 @@ public class App extends javax.swing.JFrame {
         JProductsAmount.setModel(modeloSpinner);
     }//GEN-LAST:event_JCProductsActionPerformed
 
+    private void addRouteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRouteButtonActionPerformed
+        ParentPanel.removeAll();
+        ParentPanel.add(addRoute);
+        ParentPanel.repaint();
+        ParentPanel.revalidate();
+        for(ListNode<Store> recorrer= graph.getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
+            storeAddRoute2.addItem(recorrer.getValue().getName().toString());
+            storeAddroute.addItem(recorrer.getValue().getName().toString());
+        }
+    }//GEN-LAST:event_addRouteButtonActionPerformed
+
+    private void sendInfoRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendInfoRouteActionPerformed
+       try{
+       String almacenA=storeAddroute.getSelectedItem().toString();
+       String almacenB=storeAddRoute2.getSelectedItem().toString();
+       int distance=Integer.parseInt(distanceRoute.getValue().toString());
+       graph.createRoute(almacenA, almacenB, distance);
+       JOptionPane.showMessageDialog(ParentPanel, "Ruta creada!");
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(ParentPanel, "Error, verifique la distancia ingresada");
+       }
+    }//GEN-LAST:event_sendInfoRouteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> JCProducts;
     private static javax.swing.JComboBox<String> JCStores;
+    private javax.swing.JComboBox<String> JConectionMore;
     private javax.swing.JComboBox<String> JConectionStore;
     private javax.swing.JComboBox<String> JConectionStore2;
     private javax.swing.JSpinner JProductsAmount;
     private javax.swing.JPanel LoadPanel;
     private javax.swing.JPanel ParentPanel;
     private javax.swing.JButton addConection;
+    private javax.swing.JPanel addRoute;
+    private javax.swing.JButton addRouteButton;
     private javax.swing.JButton addStore;
     private javax.swing.JPanel addStorePanel;
     private javax.swing.JButton addproduct;
     private javax.swing.JMenu chargeFile;
     private javax.swing.JButton chooseButton;
-    private javax.swing.JTextField conectionInput;
     private javax.swing.JButton confirmRequest;
     private javax.swing.JButton createStoreButton;
     private javax.swing.JPanel disponibilidadPanel;
     private javax.swing.JButton disponibilidadShow;
+    private javax.swing.JSpinner distanceRoute;
     private javax.swing.JFileChooser fileChooser;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -852,10 +912,13 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -874,7 +937,10 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextArea productosInput;
     private javax.swing.JMenu requestOption;
     private javax.swing.JSpinner route3;
+    private javax.swing.JButton sendInfoRoute;
     private javax.swing.JMenu showGraph;
+    private javax.swing.JComboBox<String> storeAddRoute2;
+    private javax.swing.JComboBox<String> storeAddroute;
     private javax.swing.JMenu storesManage;
     private javax.swing.JLabel tittle1;
     private javax.swing.JLabel tittle2;
