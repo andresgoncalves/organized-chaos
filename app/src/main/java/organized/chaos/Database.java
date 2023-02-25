@@ -10,7 +10,7 @@ import java.io.Reader;
 import java.io.Writer;
 
 /**
- *
+ * Utilidad de lectura y escritura de base de datos
  * @author Andres
  */
 public class Database {
@@ -23,13 +23,24 @@ public class Database {
     private static final int READING_STOCK = 2;
     private static final int READING_ROUTE = 3;
 
-    private Database() {
-    }
+    private Database() {}
 
+    /**
+     * Lee la base de datos desde un archivo
+     * @param file archivo a leer
+     * @return Grafo que representa la base de datos
+     * @throws IOException si ocurre un error al leer el archivo
+     */
     public static StoreGraph readDatabase(File file) throws IOException {
         return readDatabase(new FileReader(file));
     }
 
+    /**
+     * Lee la base de datos a través de un lector
+     * @param baseReader lector a utilizar
+     * @return Grafo que representa la base de datos
+     * @throws IOException si ocurre un error al leer los datos
+     */
     public static StoreGraph readDatabase(Reader baseReader) throws IOException {
         StoreGraph graph = new StoreGraph();
 
@@ -70,10 +81,22 @@ public class Database {
         return graph;
     }
 
+    /**
+     * Escribe la base de datos hacia un archivo
+     * @param graph grafo que representa la base de datos
+     * @param file archivo a leer
+     * @throws IOException si ocurre un error al escribir al archivo
+     */
     public static void writeDatabase(StoreGraph graph, File file) throws IOException {
         writeDatabase(graph, new FileWriter(file));
     }
 
+    /**
+     * Escribe la base de datos a través de un escritor
+     * @param graph grafo que representa la base de datos
+     * @param baseWriter escritor a utilizar
+     * @throws IOException si ocurre un error al escribir los datos
+     */
     public static void writeDatabase(StoreGraph graph, Writer baseWriter) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(baseWriter)) {
 
