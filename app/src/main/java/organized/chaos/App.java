@@ -48,7 +48,7 @@ public class App extends javax.swing.JFrame {
             graph = Database.readDatabase(file);
             dataFile = file;
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontrï¿½ el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "No se pudo leer el archivo", "Error de lectura", JOptionPane.ERROR_MESSAGE);
@@ -61,7 +61,7 @@ public class App extends javax.swing.JFrame {
         try {
             Database.writeDatabase(graph, dataFile);
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontrï¿½ el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "No se pudo leer el archivo", "Error de lectura", JOptionPane.ERROR_MESSAGE);
@@ -89,6 +89,21 @@ public class App extends javax.swing.JFrame {
     
     public void showStockPanel() {
         show("StockPanel");
+    }
+    
+    public void DFS(StoreGraph graph, int v, boolean[] discovered) {
+        //Se marca el nodo actual como descubierto
+        discovered[v] = true;
+        
+        //Se imprime van imprimiendo los nodos
+        System.out.println(v + " ");
+        
+        // Se buscan los almacenes adyacentes a v para continuar el recorrido
+        for (int i = 0; i < graph.getStores().getSize(); i++) {
+            if ((v != i) && (!discovered[i])) {
+                DFS(graph, v, discovered);
+            }
+        }
     }
     
     public void showAddRoutePanel() {
@@ -145,9 +160,9 @@ public class App extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        FieldDFS = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        FiledBFS = new javax.swing.JTextArea();
         pedidoPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -194,13 +209,13 @@ public class App extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(0, 0, 0));
         jLabel23.setText("Recorrido en Profundidad (DFS)");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        FieldDFS.setColumns(20);
+        FieldDFS.setRows(5);
+        jScrollPane4.setViewportView(FieldDFS);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane5.setViewportView(jTextArea2);
+        FiledBFS.setColumns(20);
+        FiledBFS.setRows(5);
+        jScrollPane5.setViewportView(FiledBFS);
 
         javax.swing.GroupLayout stockPanelLayout = new javax.swing.GroupLayout(stockPanel);
         stockPanel.setLayout(stockPanelLayout);
@@ -289,7 +304,7 @@ public class App extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Seleccione un almacén:");
+        jLabel4.setText("Seleccione un almacÃ©n:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -422,10 +437,10 @@ public class App extends javax.swing.JFrame {
         });
         jMenuBar1.add(requestOption);
 
-        showGraph.setText("Ver Almacén");
+        showGraph.setText("Ver AlmacÃ©n");
         jMenuBar1.add(showGraph);
 
-        storesManage.setText("Gestionar Almacén");
+        storesManage.setText("Gestionar AlmacÃ©n");
         jMenuBar1.add(storesManage);
 
         setJMenuBar(jMenuBar1);
@@ -491,6 +506,8 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonAÃ±adirNuevoProductoActionPerformed
 */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea FieldDFS;
+    private javax.swing.JTextArea FiledBFS;
     private static javax.swing.JComboBox<String> JCStores;
     private javax.swing.JComboBox<String> JProducts;
     private javax.swing.JSpinner JProductsAmount;
@@ -512,8 +529,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private organized.chaos.LoadPanel loadPanel;
     private javax.swing.JMenu mainMenu;
     private organized.chaos.OptionsPanel optionsPanel;
