@@ -46,11 +46,13 @@ public class Database {
                 } else if (line.startsWith(ROUTES_SECTION)) {
                     mode = READING_ROUTE;
                 } else if (mode == READING_STORE) {
-                    String name = line.replace(":", "").replace(STORE_PREFIX, "");
+                    String name = line.split(":")[0].replace(STORE_PREFIX, "");
                     store = graph.createStore(name);
-                    mode = READING_STOCK;
+                    if (!line.endsWith(";")) {
+                        mode = READING_STOCK;
+                    }
                 } else if (mode == READING_STOCK) {
-                    String[] data = line.replace(";", "").split(",");
+                    String[] data = line.split(";")[0].split(",");
                     if (store != null && data.length >= 2) {
                         Stock stock = new Stock(data[0], Integer.parseInt(data[1]));
                         store.getStock().append(stock);
