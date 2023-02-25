@@ -14,16 +14,6 @@ public class StoreGraph {
         return store;
     }
 
-    public Store createStore(String name, Route[] routes) {
-        Store store = new Store(name);
-        for (Route route : routes) {
-            store.getRoutes().append(route);
-            route.getStore().getRoutes().append(new Route(store, route.getDistance()));
-        }
-        stores.append(store);
-        return store;
-    }
-
     public Store removeStore(String name) {
         Store store = stores.remove(name);
         if (store != null) {
@@ -76,6 +66,10 @@ public class StoreGraph {
             if (routeAB != null && routeBA != null) {
                 routeAB.setDistance(distance);
                 routeBA.setDistance(-distance);
+            }
+            else {
+                storeA.getRoutes().append(new Route(storeB, distance));
+                storeB.getRoutes().append(new Route(storeA, -distance));
             }
         }
     }

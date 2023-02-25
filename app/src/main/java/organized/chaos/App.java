@@ -16,7 +16,6 @@ public class App extends javax.swing.JFrame {
 
     private StoreGraph graph;
     private File dataFile;
-    private File selectedFile;
     private String[] products;
     private Integer[] amountProducts;
     /**
@@ -49,7 +48,20 @@ public class App extends javax.swing.JFrame {
             graph = Database.readDatabase(file);
             dataFile = file;
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "No se encontrï¿½ el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo", "Error de lectura", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Hubo un problema al leer el archivo", "Error de formato", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void saveFile() {
+        try {
+            Database.writeDatabase(graph, dataFile);
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "No se pudo leer el archivo", "Error de lectura", JOptionPane.ERROR_MESSAGE);
@@ -71,6 +83,7 @@ public class App extends javax.swing.JFrame {
     }
     
     public void showAddStorePanel() {
+        addStorePanel.setStore(null);
         show("AddStorePanel");
     }
     
@@ -91,6 +104,7 @@ public class App extends javax.swing.JFrame {
     }
     
     public void showUpdateDataPanel() {
+        addStorePanel.setStore(null);
         show("UpdateDataPanel");
     }    
 
@@ -108,7 +122,8 @@ public class App extends javax.swing.JFrame {
         contentPanel = new javax.swing.JPanel();
         loadPanel = new organized.chaos.LoadPanel();
         optionsPanel = new organized.chaos.OptionsPanel();
-        disponibilidadPanel = new javax.swing.JPanel();
+        addStorePanel = new organized.chaos.AddStorePanel();
+        stockPanel = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -129,25 +144,6 @@ public class App extends javax.swing.JFrame {
         userList = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         JProducts = new javax.swing.JComboBox<>();
-        addStorePanel = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        conectionInput = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        nameStoreInput = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        route3 = new javax.swing.JSpinner();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
-        createStoreButton = new javax.swing.JButton();
-        addConection = new javax.swing.JButton();
-        JConectionStore = new javax.swing.JComboBox<>();
-        JConectionStore2 = new javax.swing.JComboBox<>();
-        jLabel16 = new javax.swing.JLabel();
         manageStockPanel = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         SeleccionarAlmacen = new javax.swing.JComboBox<>();
@@ -175,14 +171,14 @@ public class App extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
-        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.PAGE_AXIS));
 
         contentPanel.setBackground(new java.awt.Color(0, 0, 0));
         contentPanel.setLayout(new java.awt.CardLayout());
-        contentPanel.add(loadPanel, "loadPanel");
+        contentPanel.add(loadPanel, "LoadPanel");
         contentPanel.add(optionsPanel, "OptionsPanel");
+        contentPanel.add(addStorePanel, "AddStorePanel");
 
-        disponibilidadPanel.setBackground(new java.awt.Color(255, 255, 255));
+        stockPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
@@ -200,40 +196,40 @@ public class App extends javax.swing.JFrame {
         jTextArea2.setRows(5);
         jScrollPane5.setViewportView(jTextArea2);
 
-        javax.swing.GroupLayout disponibilidadPanelLayout = new javax.swing.GroupLayout(disponibilidadPanel);
-        disponibilidadPanel.setLayout(disponibilidadPanelLayout);
-        disponibilidadPanelLayout.setHorizontalGroup(
-            disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout stockPanelLayout = new javax.swing.GroupLayout(stockPanel);
+        stockPanel.setLayout(stockPanelLayout);
+        stockPanelLayout.setHorizontalGroup(
+            stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stockPanelLayout.createSequentialGroup()
                 .addGap(472, 472, 472)
-                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                .addGroup(stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(stockPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel22))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 461, Short.MAX_VALUE)
-                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel23)
-                    .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                    .addGroup(stockPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(259, 259, 259))
         );
-        disponibilidadPanelLayout.setVerticalGroup(
-            disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+        stockPanelLayout.setVerticalGroup(
+            stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(stockPanelLayout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
-        contentPanel.add(disponibilidadPanel, "card8");
+        contentPanel.add(stockPanel, "card8");
 
         pedidoPanel.setBackground(new java.awt.Color(255, 255, 255));
         pedidoPanel.setLayout(new java.awt.GridBagLayout());
@@ -399,178 +395,6 @@ public class App extends javax.swing.JFrame {
 
         contentPanel.add(pedidoPanel, "card5");
 
-        addStorePanel.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Conexión 1:");
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Conexión 2:");
-
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Más conexiones:");
-
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Indique al menos dos conexiones con los almacenes existentes:");
-
-        nameStoreInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameStoreInputActionPerformed(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel12.setText("Ingrese el nombre del almacén:");
-
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("Peso de la ruta 2");
-
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Peso de la ruta 1");
-
-        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Peso de la ruta ");
-
-        createStoreButton.setBackground(new java.awt.Color(255, 204, 51));
-        createStoreButton.setFont(new java.awt.Font("Tekton Pro Ext", 0, 14)); // NOI18N
-        createStoreButton.setForeground(new java.awt.Color(0, 0, 0));
-        createStoreButton.setText("Crear almacén");
-        createStoreButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createStoreButtonActionPerformed(evt);
-            }
-        });
-
-        addConection.setBackground(new java.awt.Color(204, 204, 204));
-        addConection.setForeground(new java.awt.Color(0, 0, 0));
-        addConection.setText("Agregar más conexiones");
-        addConection.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addConectionActionPerformed(evt);
-            }
-        });
-
-        JConectionStore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JConectionStoreActionPerformed(evt);
-            }
-        });
-
-        JConectionStore2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JConectionStore2ActionPerformed(evt);
-            }
-        });
-
-        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Almacén");
-
-        javax.swing.GroupLayout addStorePanelLayout = new javax.swing.GroupLayout(addStorePanel);
-        addStorePanel.setLayout(addStorePanelLayout);
-        addStorePanelLayout.setHorizontalGroup(
-            addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addStorePanelLayout.createSequentialGroup()
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel11))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel9)
-                        .addGap(33, 33, 33)
-                        .addComponent(JConectionStore2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(359, 359, 359)
-                        .addComponent(createStoreButton, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(conectionInput, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(route3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(addConection))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel8)
-                        .addGap(33, 33, 33)
-                        .addComponent(JConectionStore, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(204, 204, 204)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel16)
-                        .addGap(18, 18, 18)
-                        .addComponent(nameStoreInput, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(435, Short.MAX_VALUE))
-        );
-        addStorePanelLayout.setVerticalGroup(
-            addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addStorePanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(nameStoreInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addGap(21, 21, 21)
-                .addComponent(jLabel11)
-                .addGap(36, 36, 36)
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JConectionStore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel14))))
-                .addGap(88, 88, 88)
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JConectionStore2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel13))))
-                .addGap(94, 94, 94)
-                .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(route3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(addConection))
-                    .addGroup(addStorePanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(addStorePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel10)
-                                .addComponent(conectionInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel15))))
-                .addGap(61, 61, 61)
-                .addComponent(createStoreButton)
-                .addContainerGap())
-        );
-
-        contentPanel.add(addStorePanel, "card6");
-
         manageStockPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel24.setForeground(new java.awt.Color(0, 0, 0));
@@ -658,7 +482,7 @@ public class App extends javax.swing.JFrame {
                                 .addGroup(manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel18)
                                     .addComponent(FieldAnadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(611, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         manageStockPanelLayout.setVerticalGroup(
             manageStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -671,7 +495,7 @@ public class App extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(140, 140, 140))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, manageStockPanelLayout.createSequentialGroup()
-                .addGap(0, 177, Short.MAX_VALUE)
+                .addGap(0, 318, Short.MAX_VALUE)
                 .addComponent(jLabel19)
                 .addGap(21, 21, 21)
                 .addComponent(FieldAnadirNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -695,10 +519,9 @@ public class App extends javax.swing.JFrame {
 
         contentPanel.add(manageStockPanel, "card7");
 
-        getContentPane().add(contentPanel);
+        getContentPane().add(contentPanel, java.awt.BorderLayout.CENTER);
 
         mainMenu.setText("Menu");
-        mainMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainMenuActionPerformed(evt);
@@ -761,27 +584,6 @@ public class App extends javax.swing.JFrame {
        
     }//GEN-LAST:event_requestOptionActionPerformed
 
-    private void addConectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addConectionActionPerformed
-        conectionInput.setText("");
-    }//GEN-LAST:event_addConectionActionPerformed
-
-    private void nameStoreInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameStoreInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameStoreInputActionPerformed
-
-    private void createStoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStoreButtonActionPerformed
-        try{
-            String nameStore=nameStoreInput.getText();
-            if((nameStore.toLowerCase()).contains("almacen")){
-                JOptionPane.showMessageDialog(contentPanel, "No incluya la palabra almacen");
-            }else{
-                
-            }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(contentPanel, "Error, verifique los datos ingresados!");
-        }
-    }//GEN-LAST:event_createStoreButtonActionPerformed
-
     private void addproductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addproductActionPerformed
         for (int i = 0; i < JProducts.getItemCount(); i++) {
             String selectItem=JProducts.getSelectedItem().toString();
@@ -796,10 +598,6 @@ public class App extends javax.swing.JFrame {
     // Variables declaration - do not modify                     
     private javax.swing.JComboBox<String> ProductsShow;
 
-    private void JConectionStore2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JConectionStore2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JConectionStore2ActionPerformed
-
     private void SeleccionarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarAlmacenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SeleccionarAlmacenActionPerformed
@@ -807,10 +605,6 @@ public class App extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void JConectionStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JConectionStoreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JConectionStoreActionPerformed
 /*
     private void FieldAÃ±adirNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldAÃ±adirNuevoProductoActionPerformed
         // TODO add your handing code here:
@@ -834,28 +628,15 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JButton BotonAnadirNuevoProducto;
     private javax.swing.JTextField FieldAnadirNuevoProducto;
     private static javax.swing.JComboBox<String> JCStores;
-    private javax.swing.JComboBox<String> JConectionStore;
-    private javax.swing.JComboBox<String> JConectionStore2;
     private javax.swing.JComboBox<String> JProducts;
     private javax.swing.JSpinner JProductsAmount;
     private javax.swing.JComboBox<String> SeleccionarAlmacen;
     private javax.swing.JTextArea ShowStockField;
-    private javax.swing.JButton addConection;
-    private javax.swing.JPanel addStorePanel;
+    private organized.chaos.AddStorePanel addStorePanel;
     private javax.swing.JButton addproduct;
     private javax.swing.JMenu chargeFile;
-    private javax.swing.JTextField conectionInput;
     private javax.swing.JButton confirmRequest;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JButton createStoreButton;
-    private javax.swing.JPanel disponibilidadPanel;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -868,8 +649,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -877,21 +656,18 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private organized.chaos.LoadPanel loadPanel;
     private javax.swing.JMenu mainMenu;
     private javax.swing.JPanel manageStockPanel;
-    private javax.swing.JTextField nameStoreInput;
     private organized.chaos.OptionsPanel optionsPanel;
     private javax.swing.JPanel pedidoPanel;
     private javax.swing.JTextArea productosInput;
     private javax.swing.JMenu requestOption;
-    private javax.swing.JSpinner route3;
     private javax.swing.JMenu showGraph;
+    private javax.swing.JPanel stockPanel;
     private javax.swing.JMenu storesManage;
     private javax.swing.JTextArea userList;
     // End of variables declaration//GEN-END:variables
@@ -906,26 +682,14 @@ public class App extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         try {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
-
-} catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(App.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(App.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(App.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(App.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(App.class  .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(App.class  .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(App.class  .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(App.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

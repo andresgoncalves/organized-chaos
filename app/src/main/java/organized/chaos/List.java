@@ -41,6 +41,36 @@ public class List<T> {
         return null;
     }
     
+    public T removeAt(int index) {
+        int i = 0;
+        for(ListNode<T> node = first, prev = null; node != null; prev = node, node = node.getNext()) {
+            if(index == i++) {
+                if(node == last) {
+                    last = prev;
+                }
+                if(node == first) {
+                    first = node.getNext();
+                }
+                else {
+                    prev.setNext(node.getNext());
+                }
+                size -= 1;
+                return node.getValue();
+            }
+        }
+        throw new IndexOutOfBoundsException(index);
+    }
+    
+    public T at(int index) {
+        int i = 0;
+        for(ListNode<T> node = first; node != null; node = node.getNext()) {
+            if(index == i++) {
+                return node.getValue();
+            }
+        }
+        throw new IndexOutOfBoundsException(index);
+    }
+    
     public T find(Object value) {
         for(ListNode<T> node = first; node != null; node = node.getNext()) {
             if(compareKey(node.getValue(), value)) {

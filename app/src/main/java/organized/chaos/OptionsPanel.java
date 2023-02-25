@@ -28,10 +28,8 @@ public class OptionsPanel extends javax.swing.JPanel {
         showStoresButton = new javax.swing.JButton();
         showStockButton = new javax.swing.JButton();
         buyButton = new javax.swing.JButton();
-        updateDataButton = new javax.swing.JButton();
         addStoreButton = new javax.swing.JButton();
-        addRouteButton = new javax.swing.JButton();
-        updateStockButton = new javax.swing.JButton();
+        updateDataButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 40, 20, 40));
@@ -71,7 +69,7 @@ public class OptionsPanel extends javax.swing.JPanel {
 
         showStockButton.setBackground(new java.awt.Color(255, 204, 51));
         showStockButton.setForeground(new java.awt.Color(0, 0, 0));
-        showStockButton.setText("Disponibilidad por Almacén");
+        showStockButton.setText("Consultar Disponibilidad");
         showStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showStockButtonActionPerformed(evt);
@@ -101,22 +99,6 @@ public class OptionsPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         add(buyButton, gridBagConstraints);
 
-        updateDataButton.setBackground(new java.awt.Color(255, 204, 51));
-        updateDataButton.setForeground(new java.awt.Color(0, 0, 0));
-        updateDataButton.setText("Actualizar Datos");
-        updateDataButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateDataButtonActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        add(updateDataButton, gridBagConstraints);
-
         addStoreButton.setBackground(new java.awt.Color(255, 204, 51));
         addStoreButton.setForeground(new java.awt.Color(0, 0, 0));
         addStoreButton.setText("Agregar Almacén");
@@ -133,23 +115,12 @@ public class OptionsPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         add(addStoreButton, gridBagConstraints);
 
-        addRouteButton.setBackground(new java.awt.Color(255, 204, 51));
-        addRouteButton.setForeground(new java.awt.Color(0, 0, 0));
-        addRouteButton.setText("Agregar Camino");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 10;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        add(addRouteButton, gridBagConstraints);
-
-        updateStockButton.setBackground(new java.awt.Color(255, 204, 51));
-        updateStockButton.setForeground(new java.awt.Color(0, 0, 0));
-        updateStockButton.setText("Gestionar Almacén");
-        updateStockButton.addActionListener(new java.awt.event.ActionListener() {
+        updateDataButton.setBackground(new java.awt.Color(255, 204, 51));
+        updateDataButton.setForeground(new java.awt.Color(0, 0, 0));
+        updateDataButton.setText("Gestionar Almacenes");
+        updateDataButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateStockButtonActionPerformed(evt);
+                updateDataButtonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -158,7 +129,7 @@ public class OptionsPanel extends javax.swing.JPanel {
         gridBagConstraints.ipady = 10;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        add(updateStockButton, gridBagConstraints);
+        add(updateDataButton, gridBagConstraints);
 
         closeButton.setBackground(new java.awt.Color(255, 204, 51));
         closeButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -207,24 +178,6 @@ public class OptionsPanel extends javax.swing.JPanel {
 //        productosInput.setText(productText);
     }//GEN-LAST:event_buyButtonActionPerformed
 
-    private void updateStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateStockButtonActionPerformed
-        App.getInstance().showUpdateStockPanel();
-//        String mostrarInventario = "";
-//        for (ListNode<Store> i = App.getInstance().getGraph().getStores().getFirst(); i != null; i = i.getNext()) {
-//            SeleccionarAlmacen.addItem("Almacen " + i.getValue().getName());
-//        }
-//        ShowStockField.setText(mostrarInventario);
-//
-//        for (ListNode<Store> recorrer = App.getInstance().getGraph().getStores().getFirst(); recorrer != null; recorrer = recorrer.getNext()) {
-//            if (recorrer.getValue().getName().equals(SeleccionarAlmacen)) {
-//                for (ListNode<Stock> i = recorrer.getValue().getStock().getFirst(); i != null; i = i.getNext()) {
-//                    mostrarInventario = mostrarInventario + "- " + i.getValue().getProduct() + ": " + i.getValue().getAmount() + "\n";
-//                }
-//                ShowStockField.setText(mostrarInventario);
-//            }
-//        }
-    }//GEN-LAST:event_updateStockButtonActionPerformed
-
     private void showStoresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStoresButtonActionPerformed
         App.getInstance().showUpdateStockPanel();
     }//GEN-LAST:event_showStoresButtonActionPerformed
@@ -236,7 +189,6 @@ public class OptionsPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addRouteButton;
     private javax.swing.JButton addStoreButton;
     private javax.swing.JButton buyButton;
     private javax.swing.JButton closeButton;
@@ -245,6 +197,5 @@ public class OptionsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel subtitleLabel;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton updateDataButton;
-    private javax.swing.JButton updateStockButton;
     // End of variables declaration//GEN-END:variables
 }
