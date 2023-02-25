@@ -101,7 +101,7 @@ public class Database {
                     if(route.getDistance() > 0) {
                         writer.write("%s,%s,%d\n".formatted(store.getName(), route.getStore().getName(), route.getDistance()));
                     }
-                    if(visited.find(route.getStore().getName()) == null) {
+                    if(visited.find(route.getStore().getName()) == null && pending.find(route.getStore().getName()) == null) {
                         pending.append(route.getStore());
                     }
                 }
