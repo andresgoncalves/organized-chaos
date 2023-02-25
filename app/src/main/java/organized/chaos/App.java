@@ -91,17 +91,28 @@ public class App extends javax.swing.JFrame {
         show("StockPanel");
     }
     
-    public void DFS(StoreGraph graph, int v, boolean[] discovered) {
-        //Se marca el nodo actual como descubierto
-        discovered[v] = true;
-        
-        //Se imprime van imprimiendo los nodos
-        System.out.println(v + " ");
-        
-        // Se buscan los almacenes adyacentes a v para continuar el recorrido
-        for (int i = 0; i < graph.getStores().getSize(); i++) {
+    //DFS recursivo
+    public void recorrerProfundidad(StoreGraph graph, int v, boolean[] discovered) {
+        discovered[v] = true; //Se marca el nodo actual como descubierto
+        System.out.println(v + " ");  //Se van imprimiendo los nodos
+        // Se buscan los almacenes adyacentes a "v" para continuar el recorrido
+        for (int i = 0; i < graph.getStores().getSize(); i++) {    
             if ((v != i) && (!discovered[i])) {
-                DFS(graph, v, discovered);
+                recorrerProfundidad(graph, v, discovered);
+            }
+        }
+    }
+    
+    //DFS iterativo
+    public void profundidad(StoreGraph graph) {
+        int numVertices = graph.getStores().getSize();
+        boolean[] visitados = new boolean[numVertices];
+        for (int i = 0; i < numVertices; i++) {
+            visitados[i] = false;
+        }
+        for (int i = 0; i < numVertices; i++) {
+            if (!visitados[i]) {
+                recorrerProfundidad(graph, i, visitados);
             }
         }
     }
@@ -156,13 +167,13 @@ public class App extends javax.swing.JFrame {
         optionsPanel = new organized.chaos.OptionsPanel();
         addStorePanel = new organized.chaos.AddStorePanel();
         buyPanel = new organized.chaos.BuyPanel();
-        stockPanel = new javax.swing.JPanel();
+        disponibilidadPanel = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         FieldDFS = new javax.swing.JTextArea();
         jScrollPane5 = new javax.swing.JScrollPane();
-        FiledBFS = new javax.swing.JTextArea();
+        FieldBFS = new javax.swing.JTextArea();
         pedidoPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -199,7 +210,7 @@ public class App extends javax.swing.JFrame {
         contentPanel.add(addStorePanel, "AddStorePanel");
         contentPanel.add(buyPanel, "BuyPanel");
 
-        stockPanel.setBackground(new java.awt.Color(255, 255, 255));
+        disponibilidadPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(0, 0, 0));
@@ -213,44 +224,42 @@ public class App extends javax.swing.JFrame {
         FieldDFS.setRows(5);
         jScrollPane4.setViewportView(FieldDFS);
 
-        FiledBFS.setColumns(20);
-        FiledBFS.setRows(5);
-        jScrollPane5.setViewportView(FiledBFS);
+        FieldBFS.setColumns(20);
+        FieldBFS.setRows(5);
+        jScrollPane5.setViewportView(FieldBFS);
 
-        javax.swing.GroupLayout stockPanelLayout = new javax.swing.GroupLayout(stockPanel);
-        stockPanel.setLayout(stockPanelLayout);
-        stockPanelLayout.setHorizontalGroup(
-            stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(stockPanelLayout.createSequentialGroup()
-                .addGap(472, 472, 472)
-                .addGroup(stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(stockPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout disponibilidadPanelLayout = new javax.swing.GroupLayout(disponibilidadPanel);
+        disponibilidadPanel.setLayout(disponibilidadPanelLayout);
+        disponibilidadPanelLayout.setHorizontalGroup(
+            disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                .addGap(225, 225, 225)
+                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(disponibilidadPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel22))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel23)
-                    .addGroup(stockPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(259, 259, 259))
+                .addGap(184, 184, 184)
+                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
+                .addContainerGap(355, Short.MAX_VALUE))
         );
-        stockPanelLayout.setVerticalGroup(
-            stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(stockPanelLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        disponibilidadPanelLayout.setVerticalGroup(
+            disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(disponibilidadPanelLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(stockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(disponibilidadPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(363, Short.MAX_VALUE))
         );
 
-        contentPanel.add(stockPanel, "card8");
+        contentPanel.add(disponibilidadPanel, "card8");
 
         pedidoPanel.setBackground(new java.awt.Color(255, 255, 255));
         pedidoPanel.setLayout(new java.awt.GridBagLayout());
@@ -506,8 +515,8 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonAñadirNuevoProductoActionPerformed
 */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea FieldBFS;
     private javax.swing.JTextArea FieldDFS;
-    private javax.swing.JTextArea FiledBFS;
     private static javax.swing.JComboBox<String> JCStores;
     private javax.swing.JComboBox<String> JProducts;
     private javax.swing.JSpinner JProductsAmount;
@@ -517,6 +526,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JMenu chargeFile;
     private javax.swing.JButton confirmRequest;
     private javax.swing.JPanel contentPanel;
+    private javax.swing.JPanel disponibilidadPanel;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -536,7 +546,6 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JTextArea productosInput;
     private javax.swing.JMenu requestOption;
     private javax.swing.JMenu showGraph;
-    private javax.swing.JPanel stockPanel;
     private javax.swing.JMenu storesManage;
     private javax.swing.JTextArea userList;
     // End of variables declaration//GEN-END:variables
