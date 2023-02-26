@@ -4,7 +4,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Panel destinado al pedido de productos para la compra
  * @author Andres
  */
 public class BuyPanel extends javax.swing.JPanel {
@@ -21,7 +21,7 @@ public class BuyPanel extends javax.swing.JPanel {
     public BuyPanel() {
         initComponents();
     }
-    
+
     public void setStock(StockList stock) {
         this.stock = stock;
         cart = new StockList();
@@ -35,7 +35,7 @@ public class BuyPanel extends javax.swing.JPanel {
     
     public void updateStatus() {
         if(((String) nameComboBox.getSelectedItem()).isBlank()) {
-            statusLabel.setText("Seleccione un almacén");
+            statusLabel.setText("Seleccione un almacï¿½n");
             statusLabel.setVisible(true);
             buyButton.setEnabled(false);
         }
@@ -49,7 +49,7 @@ public class BuyPanel extends javax.swing.JPanel {
             buyButton.setEnabled(true);
         }
     }
-    
+
     private boolean hasStock(Store store, StockList list) {
         for(ListNode<Stock> node = list.getFirst(); node != null; node = node.getNext()) {
             Stock listProduct = node.getValue();
@@ -196,7 +196,7 @@ public class BuyPanel extends javax.swing.JPanel {
         centerPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(40, 40, 20, 40));
         centerPanel.setLayout(new java.awt.GridBagLayout());
 
-        nameLabel.setText("Almacén: ");
+        nameLabel.setText("Almacï¿½n: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
@@ -320,7 +320,7 @@ public class BuyPanel extends javax.swing.JPanel {
                 targetProduct.setAmount(targetProduct.getAmount() - cartProduct.getAmount());
             }
             App.getInstance().saveFile();
-            JOptionPane.showMessageDialog(this, "La compra se procesó exitosamente", "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La compra se procesï¿½ exitosamente", "Operaciï¿½n exitosa", JOptionPane.INFORMATION_MESSAGE);
         App.getInstance().showOptionsPanel();
         }
         else {
@@ -343,7 +343,7 @@ public class BuyPanel extends javax.swing.JPanel {
                 targetProduct.setAmount(targetProduct.getAmount() - cartProduct.getAmount());
             }
             App.getInstance().saveFile();
-            JOptionPane.showMessageDialog(this, "La compra se procesó exitosamente abasteciendo desde el Almacén %s, a una distancia de %d km".formatted(borrowStore.getName(), borrowPath.getLast().getValue().getDistance()), "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La compra se procesï¿½ exitosamente abasteciendo desde el Almacï¿½n %s, a una distancia de %d km".formatted(borrowStore.getName(), borrowPath.getLast().getValue().getDistance()), "Operaciï¿½n exitosa", JOptionPane.INFORMATION_MESSAGE);
             App.getInstance().showGraphPanel(borrowPath);
         }
     }//GEN-LAST:event_buyButtonActionPerformed

@@ -36,7 +36,7 @@ public class OptionsPanel extends javax.swing.JPanel {
         setLayout(new java.awt.GridBagLayout());
 
         titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        titleLabel.setText("Sistema de Distribución de Amazon");
+        titleLabel.setText("Sistema de Distribuciï¿½n de Amazon");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
@@ -44,7 +44,7 @@ public class OptionsPanel extends javax.swing.JPanel {
         add(titleLabel, gridBagConstraints);
 
         subtitleLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        subtitleLabel.setText("Seleccione una opción");
+        subtitleLabel.setText("Seleccione una opciï¿½n");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
@@ -101,7 +101,7 @@ public class OptionsPanel extends javax.swing.JPanel {
 
         addStoreButton.setBackground(new java.awt.Color(255, 204, 51));
         addStoreButton.setForeground(new java.awt.Color(0, 0, 0));
-        addStoreButton.setText("Agregar Almacén");
+        addStoreButton.setText("Agregar Almacï¿½n");
         addStoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStoreButtonActionPerformed(evt);
@@ -148,26 +148,50 @@ public class OptionsPanel extends javax.swing.JPanel {
         add(closeButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Muestra el panel de GestiÃ³n de Almacenes
+     * @param evt 
+     */
     private void updateDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDataButtonActionPerformed
         App.getInstance().showManageStorePanel();
     }//GEN-LAST:event_updateDataButtonActionPerformed
 
+    /**
+     * Muestra el panel para consultar la disponibilidad de productos de cada almacen
+     * @param evt 
+     */
     private void showStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStockButtonActionPerformed
         App.getInstance().showStockPanel();
     }//GEN-LAST:event_showStockButtonActionPerformed
 
+    /**
+     * Muestra el panel para aÃ±adir nuevos almacenes
+     * @param evt 
+     */
     private void addStoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStoreButtonActionPerformed
         App.getInstance().showManageStorePanel();
     }//GEN-LAST:event_addStoreButtonActionPerformed
 
+    /**
+     * Muestra el panel de pedido de productos
+     * @param evt 
+     */
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
         App.getInstance().showBuyPanel();
     }//GEN-LAST:event_buyButtonActionPerformed
 
+    /**
+     * Muestra el grafo de rutas y almacenes
+     * @param evt 
+     */
     private void showStoresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStoresButtonActionPerformed
         App.getInstance().showGraphPanel();
     }//GEN-LAST:event_showStoresButtonActionPerformed
 
+    /**
+     * Ejecuta el cierre del programa
+     * @param evt 
+     */
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
         App.getInstance().dispose();
         System.exit(0);

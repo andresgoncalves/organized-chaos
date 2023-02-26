@@ -40,12 +40,16 @@ public class App extends javax.swing.JFrame {
         this.dataFile = dataFile;
     }
 
+    /**
+     * Carga el archivo de texto con las rutas, almacenes y cantidad de productos
+     * @param file archivo a leer
+     */
     public void loadFile(File file) {
         try {
             graph = Database.readDatabase(file);
             dataFile = file;
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontrï¿½ el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "No se pudo leer el archivo", "Error de lectura", JOptionPane.ERROR_MESSAGE);
@@ -54,11 +58,14 @@ public class App extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Guarda el archivo de texto para ejecutar el programa
+     */
     public void saveFile() {
         try {
             Database.writeDatabase(graph, dataFile);
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "No se encontró el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontrï¿½ el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "No se pudo escribir el archivo", "Error de escritura", JOptionPane.ERROR_MESSAGE);
