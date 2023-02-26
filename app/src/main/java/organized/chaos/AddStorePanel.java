@@ -49,19 +49,19 @@ public class AddStorePanel extends javax.swing.JPanel {
 
     public void updateStatus() {
         if(nameTextField.getText().isBlank()) {
-            statusLabel.setText("Ingrese un nombre para el almacï¿½n");
+            statusLabel.setText("Ingrese un nombre para el almacén");
             statusLabel.setVisible(true);
             saveButton.setEnabled(false);
             return;
         }
         Store current = App.getInstance().getGraph().getStore(nameTextField.getText());
         if(current != null && current != store ) {
-            statusLabel.setText("El almacï¿½n ya existe");
+            statusLabel.setText("El almacén ya existe");
             statusLabel.setVisible(true);
             saveButton.setEnabled(false);
         }
         else if(routes.getSize() < 2) {
-            statusLabel.setText("Agregue al menos 2 rutas al almacï¿½n");
+            statusLabel.setText("Agregue al menos 2 rutas al almacén");
             statusLabel.setVisible(true);
             saveButton.setEnabled(false);
         }
@@ -147,7 +147,7 @@ public class AddStorePanel extends javax.swing.JPanel {
         centerPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(40, 40, 20, 40));
         centerPanel.setLayout(new java.awt.GridBagLayout());
 
-        nameLabel.setText("Nombre del AlmacÃ©n: ");
+        nameLabel.setText("Nombre del Almacén: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
@@ -182,7 +182,7 @@ public class AddStorePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 20);
         centerPanel.add(searchPanel, gridBagConstraints);
 
-        createStoreButton.setText("Nuevo almacÃ©n");
+        createStoreButton.setText("Nuevo almacén");
         createStoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createStoreButtonActionPerformed(evt);
@@ -351,7 +351,7 @@ public class AddStorePanel extends javax.swing.JPanel {
             setStore(store);
         }
         else {
-            JOptionPane.showMessageDialog(this, "No se encontrï¿½ el almacï¿½n", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se encontró el almacén", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
@@ -428,7 +428,7 @@ public class AddStorePanel extends javax.swing.JPanel {
         public String getColumnName(int column) {
             switch(column) {
                 case 0:
-                    return "Almacï¿½n";
+                    return "Almacén";
                 case 1:
                     return "Distancia";
             }
