@@ -4,7 +4,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 
 /**
- *
+ * Panel para la carga del archivo de texto
  * @author Andres
  */
 public class LoadPanel extends javax.swing.JPanel {
@@ -38,7 +38,7 @@ public class LoadPanel extends javax.swing.JPanel {
 
         titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         titleLabel.setForeground(java.awt.Color.black);
-        titleLabel.setText("¡Bienvenidos al Sistema de Distribución de Amazon!");
+        titleLabel.setText("ï¿½Bienvenidos al Sistema de Distribuciï¿½n de Amazon!");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 20, 0);
@@ -78,6 +78,10 @@ public class LoadPanel extends javax.swing.JPanel {
         add(loadButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * BotÃ³n para seleccionar el archivo de texto
+     * @param evt 
+     */
     private void chooseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseButtonActionPerformed
         if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             selectedFile = fileChooser.getSelectedFile();
@@ -85,6 +89,10 @@ public class LoadPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_chooseButtonActionPerformed
 
+    /**
+     * BotÃ³n para cargar el archivo de texto
+     * @param evt 
+     */
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
         if (selectedFile != null) {
             App.getInstance().loadFile(selectedFile);
