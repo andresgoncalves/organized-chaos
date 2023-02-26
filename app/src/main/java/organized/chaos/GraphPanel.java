@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.util.Objects;
 
 /**
- *
+ * Ventana para mostrar el grafo 
  * @author Andres
  */
 public class GraphPanel extends javax.swing.JPanel {
@@ -77,12 +77,19 @@ public class GraphPanel extends javax.swing.JPanel {
 
         add(bottomPanel, java.awt.BorderLayout.SOUTH);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Botón para volver al menú
+     * @param evt 
+     */
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         App.getInstance().showOptionsPanel();
     }//GEN-LAST:event_returnButtonActionPerformed
     
     @Override
+    /**
+     * Método que dibuja el grafo de rutas y almacenes
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
