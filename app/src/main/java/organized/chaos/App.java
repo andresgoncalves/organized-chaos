@@ -93,26 +93,11 @@ public class App extends javax.swing.JFrame {
     
     //DFS recursivo
     public void recorrerProfundidad(StoreGraph graph, int v, boolean[] discovered) {
-        discovered[v] = true; //Se marca el nodo actual como descubierto
-        System.out.println(v + " ");  //Se van imprimiendo los nodos
-        // Se buscan los almacenes adyacentes a "v" para continuar el recorrido
+        discovered[v] = true; 
+        System.out.println(v + " ");
         for (int i = 0; i < graph.getStores().getSize(); i++) {    
-            if ((v != i) && (!discovered[i])) {
+            if (!discovered[i]) {
                 recorrerProfundidad(graph, v, discovered);
-            }
-        }
-    }
-    
-    //DFS iterativo
-    public void profundidad(StoreGraph graph) {
-        int numVertices = graph.getStores().getSize();
-        boolean[] visitados = new boolean[numVertices];
-        for (int i = 0; i < numVertices; i++) {
-            visitados[i] = false;
-        }
-        for (int i = 0; i < numVertices; i++) {
-            if (!visitados[i]) {
-                recorrerProfundidad(graph, i, visitados);
             }
         }
     }
