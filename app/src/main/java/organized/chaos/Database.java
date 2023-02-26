@@ -121,7 +121,7 @@ public class Database {
                 Store store = storeNode.getValue();
                 for (ListNode<Route> routeNode = store.getRoutes().getFirst(); routeNode != null; routeNode = routeNode.getNext()) {
                     Route route = routeNode.getValue();
-                    if(route.getDistance() > 0) {
+                    if(!route.isBackwards()) {
                         writer.write("%s,%s,%d\n".formatted(store.getName(), route.getStore().getName(), route.getDistance()));
                     }
                     if(visited.find(route.getStore().getName()) == null && pending.find(route.getStore().getName()) == null) {
