@@ -11,6 +11,7 @@ import java.util.Objects;
  */
 public class GraphPanel extends javax.swing.JPanel {
     
+    private StoreGraph graph;
     private RouteList highlightedPath;
 
     /**
@@ -18,6 +19,10 @@ public class GraphPanel extends javax.swing.JPanel {
      */
     public GraphPanel() {
         initComponents();
+    }
+
+    public void setGraph(StoreGraph graph) {
+        this.graph = graph;
     }
 
     public void setHighlightedPath(RouteList highlightedPath) {
@@ -81,9 +86,7 @@ public class GraphPanel extends javax.swing.JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
-        StoreGraph graph = App.getInstance().getGraph();
-        
-        if(graph.getStores().getSize() == 0) {
+        if(graph == null || graph.getStores().getSize() == 0) {
             return;
         }
         

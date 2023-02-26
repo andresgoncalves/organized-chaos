@@ -61,9 +61,9 @@ public class App extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No se encontr� el archivo", "Archivo no encontrado", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "No se pudo leer el archivo", "Error de lectura", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No se pudo escribir el archivo", "Error de escritura", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Hubo un problema al leer el archivo", "Error de formato", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Hubo un problema al escribir el archivo", "Error de formato", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -76,11 +76,13 @@ public class App extends javax.swing.JFrame {
     }
     
     public void showGraphPanel() {
+        graphPanel.setGraph(graph);
         graphPanel.setHighlightedPath(null);
         show("GraphPanel");
     }
     
     public void showGraphPanel(RouteList path) {
+        graphPanel.setGraph(graph);
         graphPanel.setHighlightedPath(path);
         show("GraphPanel");
     }
@@ -93,10 +95,6 @@ public class App extends javax.swing.JFrame {
     public void showStockPanel() {
         stockPanel.updateStock();
         show("StockPanel");
-    }
-    
-    public void showAddRoutePanel() {
-        show("AddRoutePanel");
     }
     
     public void showBuyPanel() {
@@ -119,15 +117,6 @@ public class App extends javax.swing.JFrame {
         buyPanel.setStock(stock);
         show("BuyPanel");
     }
-    
-    public void showUpdateStockPanel() {
-        show("UpdateStockPanel");
-    }
-    
-    public void showUpdateDataPanel() {
-        manageStorePanel.setStore(null);
-        show("UpdateDataPanel");
-    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -138,7 +127,6 @@ public class App extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
         loadPanel = new organized.chaos.LoadPanel();
         optionsPanel = new organized.chaos.OptionsPanel();
@@ -146,14 +134,6 @@ public class App extends javax.swing.JFrame {
         buyPanel = new organized.chaos.BuyPanel();
         stockPanel = new organized.chaos.StockPanel();
         graphPanel = new organized.chaos.GraphPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        mainMenu = new javax.swing.JMenu();
-        chargeFile = new javax.swing.JMenu();
-        requestOption = new javax.swing.JMenu();
-        showGraph = new javax.swing.JMenu();
-        storesManage = new javax.swing.JMenu();
-
-        jLabel7.setText("jLabel7");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Organized Chaos");
@@ -172,70 +152,17 @@ public class App extends javax.swing.JFrame {
 
         getContentPane().add(contentPanel, java.awt.BorderLayout.CENTER);
 
-        mainMenu.setText("Menu");
-        mainMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mainMenuActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(mainMenu);
-
-        chargeFile.setText("Archivo");
-        jMenuBar1.add(chargeFile);
-
-        requestOption.setText("Realizar Pedido");
-        requestOption.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestOptionActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(requestOption);
-
-        showGraph.setText("Ver Almac�n");
-        jMenuBar1.add(showGraph);
-
-        storesManage.setText("Gestionar Almac�n");
-        jMenuBar1.add(storesManage);
-
-        setJMenuBar(jMenuBar1);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
                                            
-    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
-       
-    }//GEN-LAST:event_mainMenuActionPerformed
-
-    private void requestOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestOptionActionPerformed
-       
-    }//GEN-LAST:event_requestOptionActionPerformed
-
-/*
-    private void FieldAñadirNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldAñadirNuevoProductoActionPerformed
-        // TODO add your handing code here:
-    }//GEN-LAST:event_FieldAñadirNuevoProductoActionPerformed
-
-    private void BotonAñadirNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAñadirNuevoProductoActionPerformed
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_BotonAñadirNuevoProductoActionPerformed
-*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private organized.chaos.BuyPanel buyPanel;
-    private javax.swing.JMenu chargeFile;
     private javax.swing.JPanel contentPanel;
     private organized.chaos.GraphPanel graphPanel;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenuBar jMenuBar1;
     private organized.chaos.LoadPanel loadPanel;
-    private javax.swing.JMenu mainMenu;
     private organized.chaos.ManageStorePanel manageStorePanel;
     private organized.chaos.OptionsPanel optionsPanel;
-    private javax.swing.JMenu requestOption;
-    private javax.swing.JMenu showGraph;
     private organized.chaos.StockPanel stockPanel;
-    private javax.swing.JMenu storesManage;
     // End of variables declaration//GEN-END:variables
 
     public static App instance;

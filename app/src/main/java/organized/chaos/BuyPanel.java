@@ -325,11 +325,11 @@ public class BuyPanel extends javax.swing.JPanel {
         }
         else {
             RouteList borrowPath = findNearestRoute(target, borrowList);
-            Store borrowStore = borrowPath.getLast().getValue().getStore();
             if(borrowPath == null) {
                 JOptionPane.showMessageDialog(this, "No fue posible enviar todos los productos", "Error", JOptionPane.WARNING_MESSAGE);
                 return;
             }
+            Store borrowStore = borrowPath.getLast().getValue().getStore();
             for(ListNode<Stock> node = cart.getFirst(); node != null; node = node.getNext()) {
                 Stock cartProduct = node.getValue();
                 Stock targetProduct = target.getStock().find(cartProduct.getProduct());
