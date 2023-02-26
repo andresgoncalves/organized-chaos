@@ -38,10 +38,8 @@ public class StockPanel extends javax.swing.JPanel {
             addStore(store, bfsList.getModel());
             for (ListNode<Route> routeNode = store.getRoutes().getFirst(); routeNode != null; routeNode = routeNode.getNext()) {
                 Route route = routeNode.getValue();
-                if(route.getDistance() > 0) {
-                    if(visited.find(route.getStore().getName()) == null && pending.find(route.getStore().getName()) == null) {
-                        pending.append(route.getStore());
-                    }
+                if(!route.isBackwards() && visited.find(route.getStore().getName()) == null && pending.find(route.getStore().getName()) == null) {
+                    pending.append(route.getStore());
                 }
             }
             pending.remove(store.getName());
@@ -64,10 +62,8 @@ public class StockPanel extends javax.swing.JPanel {
         addStore(store, dfsList.getModel());
         for (ListNode<Route> routeNode = store.getRoutes().getFirst(); routeNode != null; routeNode = routeNode.getNext()) {
             Route route = routeNode.getValue();
-            if(route.getDistance() > 0) {
-                if(visited.find(route.getStore().getName()) == null) {
-                    updateStockDFS(route.getStore(), visited);
-                }
+            if(!route.isBackwards() && visited.find(route.getStore().getName()) == null) {
+                updateStockDFS(route.getStore(), visited);
             }
         }
     }

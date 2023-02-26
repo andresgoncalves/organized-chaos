@@ -49,4 +49,12 @@ public class Route {
     public void setDistance(int distance) {
         this.distance = distance;
     }  
+    
+    /**
+     * Indica si la ruta está en sentido opuesto
+     * @return {@code true} si la distancia es negativa, si no {@code false}
+     */
+    public boolean isBackwards() {
+        return distance < 0;
+    }
 }
