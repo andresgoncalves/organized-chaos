@@ -49,6 +49,76 @@ public class BuyPanel extends javax.swing.JPanel {
             buyButton.setEnabled(true);
         }
     }
+    
+    private boolean hasStock(Store store, StockList list) {
+        for(ListNode<Stock> node = list.getFirst(); node != null; node = node.getNext()) {
+            Stock listProduct = node.getValue();
+            Stock storeProduct = store.getStock().find(listProduct.getProduct());
+            if(storeProduct == null || storeProduct.getAmount() < listProduct.getAmount()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    private RouteList findNearestRoute(Store target, StockList list) {
+        int minDistance = Integer.MAX_VALUE;
+        Store minStore = null;
+        
+        StoreList paths = new StoreList();
+        RouteList pending = new RouteList(), visited = new RouteList();
+        pending.append(new Route(target, 0));
+
+        for (ListNode<Route> sourceNode = pending.getFirst(); sourceNode != null; sourceNode = sourceNode.getNext()) {
+            Route source = sourceNode.getValue();
+            Store path = paths.find(source.getStore().getName());
+            for (ListNode<Route> routeNode = source.getStore().getRoutes().getFirst(); routeNode != null; routeNode = routeNode.getNext()) {
+                Route route = routeNode.getValue();
+                if(route.isBackwards()) {
+                    int distance = source.getDistance() - route.getDistance();
+                    
+                    if(distance > minDistance) {
+                        continue;
+                    }
+                    
+                    Route visitedRoute = visited.find(route.getStore().getName());
+                    Route pendingRoute = pending.find(route.getStore().getName());
+                    
+                    /* Agregar ruta actual */
+                    Store newPath = new Store(route.getStore().getName());
+                    if(path != null) {
+                        for (ListNode<Route> pathNode = path.getRoutes().getFirst(); pathNode != null; pathNode = pathNode.getNext()) {
+                            newPath.getRoutes().append(pathNode.getValue());
+                        }
+                    }
+                    newPath.getRoutes().append(route);
+                    paths.remove(newPath.getName());
+                    paths.append(newPath);
+                    
+                    /* Agregar ruta o actualizar distancia */
+                    if(hasStock(route.getStore(), list) && distance < minDistance) {
+                        minDistance = distance;
+                        minStore = route.getStore();
+                    }
+                    
+                    /* Agregar ruta o actualizar distancia */
+                    if(visitedRoute == null && pendingRoute == null) {
+                        pending.append(new Route(route.getStore(), distance));
+                    }    
+                    else if(pendingRoute != null && pendingRoute.getDistance() > distance) {
+                        pendingRoute.setDistance(distance);
+                    }
+                    else if(visitedRoute != null && visitedRoute.getDistance() > distance) {
+                        visitedRoute.setDistance(distance);
+                    }
+                }
+            }
+            pending.remove(source.getStore().getName());
+            visited.append(source);
+        }
+        
+        return minStore != null ? paths.find(minStore.getName()).getRoutes() : null;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -225,6 +295,51 @@ public class BuyPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
+        Store target = App.getInstance().getGraph().getStore((String) nameComboBox.getSelectedItem());
+        StockList borrowList = new StockList();
+        
+        for(ListNode<Stock> node = cart.getFirst(); node != null; node = node.getNext()) {
+            Stock cartProduct = node.getValue();
+            Stock targetProduct = target.getStock().find(cartProduct.getProduct());
+            if(targetProduct == null) {
+                borrowList.append(new Stock(cartProduct.getProduct(), cartProduct.getAmount()));
+            }    
+            else if(cartProduct.getAmount() > targetProduct.getAmount()) {
+                borrowList.append(new Stock(cartProduct.getProduct(), cartProduct.getAmount() - targetProduct.getAmount()));
+            }               
+        }
+        
+        if(borrowList.isEmpty()) {
+            for(ListNode<Stock> node = cart.getFirst(); node != null; node = node.getNext()) {
+                Stock cartProduct = node.getValue();
+                Stock targetProduct = target.getStock().find(cartProduct.getProduct());
+                targetProduct.setAmount(targetProduct.getAmount() - cartProduct.getAmount());
+            }
+            App.getInstance().saveFile();
+            JOptionPane.showMessageDialog(this, "La compra se procesó exitosamente", "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            RouteList borrowRoute = findNearestRoute(target, borrowList);
+            Store borrowStore = borrowRoute.getLast().getValue().getStore();
+            if(borrowRoute == null) {
+                JOptionPane.showMessageDialog(this, "No fue posible enviar todos los productos", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            for(ListNode<Stock> node = cart.getFirst(); node != null; node = node.getNext()) {
+                Stock cartProduct = node.getValue();
+                Stock targetProduct = target.getStock().find(cartProduct.getProduct());
+                if(targetProduct != null) {
+                    targetProduct.setAmount(targetProduct.getAmount() > cartProduct.getAmount() ? targetProduct.getAmount() - cartProduct.getAmount() : 0);
+                }
+            }
+            for(ListNode<Stock> node = borrowList.getFirst(); node != null; node = node.getNext()) {
+                Stock cartProduct = node.getValue();
+                Stock targetProduct = borrowStore.getStock().find(cartProduct.getProduct());
+                targetProduct.setAmount(targetProduct.getAmount() - cartProduct.getAmount());
+            }
+            App.getInstance().saveFile();
+            JOptionPane.showMessageDialog(this, "La compra se procesó exitosamente abasteciendo desde el Almacén %s".formatted(borrowStore.getName()), "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+        }
         App.getInstance().showOptionsPanel();
     }//GEN-LAST:event_buyButtonActionPerformed
 
