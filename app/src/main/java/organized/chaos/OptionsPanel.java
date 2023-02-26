@@ -149,7 +149,7 @@ public class OptionsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void updateDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDataButtonActionPerformed
-        App.getInstance().showUpdateDataPanel();
+        App.getInstance().showManageStorePanel();
     }//GEN-LAST:event_updateDataButtonActionPerformed
 
     private void showStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStockButtonActionPerformed
@@ -157,25 +157,11 @@ public class OptionsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_showStockButtonActionPerformed
 
     private void addStoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStoreButtonActionPerformed
-        App.getInstance().showAddStorePanel();
-//        for(ListNode<Store> recorrer= App.getInstance().getGraph().getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
-//            JConectionStore.addItem(recorrer.getValue().getName());
-//            JConectionStore2.addItem(recorrer.getValue().getName());
-//        }
+        App.getInstance().showManageStorePanel();
     }//GEN-LAST:event_addStoreButtonActionPerformed
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
         App.getInstance().showBuyPanel();
-//        String productText="";
-//        for(ListNode<Store> recorrer= App.getInstance().getGraph().getStores().getFirst();recorrer!=null;recorrer=recorrer.getNext()){
-//            System.out.println(recorrer);
-//            JCStores.addItem(recorrer.getValue().getName());
-//            for(ListNode<Stock> recorrerStock=recorrer.getValue().getStock().getFirst(); recorrerStock!=null;recorrerStock=recorrerStock.getNext()){
-//                productText=productText+"- "+recorrerStock.getValue().getProduct()+": "+recorrerStock.getValue().getAmount()+"\n";
-//                JProducts.addItem(recorrerStock.getValue().getProduct());
-//            }
-//        }
-//        productosInput.setText(productText);
     }//GEN-LAST:event_buyButtonActionPerformed
 
     private void showStoresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStoresButtonActionPerformed

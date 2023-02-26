@@ -79,9 +79,9 @@ public class App extends javax.swing.JFrame {
         show("OptionsPanel");
     }
     
-    public void showAddStorePanel() {
-        addStorePanel.setStore(null);
-        show("AddStorePanel");
+    public void showManageStorePanel() {
+        manageStorePanel.setStore(null);
+        show("ManageStorePanel");
     }
     
     public void showStockPanel() {
@@ -119,7 +119,7 @@ public class App extends javax.swing.JFrame {
     }
     
     public void showUpdateDataPanel() {
-        addStorePanel.setStore(null);
+        manageStorePanel.setStore(null);
         show("UpdateDataPanel");
     }    
 
@@ -131,13 +131,12 @@ public class App extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel7 = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
         loadPanel = new organized.chaos.LoadPanel();
         optionsPanel = new organized.chaos.OptionsPanel();
-        addStorePanel = new organized.chaos.AddStorePanel();
+        manageStorePanel = new organized.chaos.ManageStorePanel();
         buyPanel = new organized.chaos.BuyPanel();
         stockPanel = new organized.chaos.StockPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -159,7 +158,7 @@ public class App extends javax.swing.JFrame {
         contentPanel.setLayout(new java.awt.CardLayout());
         contentPanel.add(loadPanel, "LoadPanel");
         contentPanel.add(optionsPanel, "OptionsPanel");
-        contentPanel.add(addStorePanel, "AddStorePanel");
+        contentPanel.add(manageStorePanel, "ManageStorePanel");
         contentPanel.add(buyPanel, "BuyPanel");
         contentPanel.add(stockPanel, "StockPanel");
 
@@ -215,7 +214,6 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonAñadirNuevoProductoActionPerformed
 */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private organized.chaos.AddStorePanel addStorePanel;
     private organized.chaos.BuyPanel buyPanel;
     private javax.swing.JMenu chargeFile;
     private javax.swing.JPanel contentPanel;
@@ -223,6 +221,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private organized.chaos.LoadPanel loadPanel;
     private javax.swing.JMenu mainMenu;
+    private organized.chaos.ManageStorePanel manageStorePanel;
     private organized.chaos.OptionsPanel optionsPanel;
     private javax.swing.JMenu requestOption;
     private javax.swing.JMenu showGraph;

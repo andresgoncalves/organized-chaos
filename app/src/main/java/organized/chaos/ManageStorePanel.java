@@ -7,7 +7,7 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Andres
  */
-public class AddStorePanel extends javax.swing.JPanel {
+public class ManageStorePanel extends javax.swing.JPanel {
     
     private Store store;
     private RouteList routes;
@@ -19,7 +19,7 @@ public class AddStorePanel extends javax.swing.JPanel {
     /**
      * Creates new form AddStorePanel
      */
-    public AddStorePanel() {
+    public ManageStorePanel() {
         initComponents();
         setStore(null);
     }

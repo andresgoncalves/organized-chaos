@@ -206,7 +206,7 @@ public class StockPanel extends javax.swing.JPanel {
      * @param evt 
      */
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        App.getInstance().showAddStorePanel();
+        App.getInstance().showManageStorePanel();
     }//GEN-LAST:event_editButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
