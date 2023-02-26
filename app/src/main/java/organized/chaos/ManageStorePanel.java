@@ -138,7 +138,7 @@ public class ManageStorePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         bottomPanel.add(saveButton, gridBagConstraints);
 
-        cancelButton.setText("Cancelar");
+        cancelButton.setText("Volver");
         cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelButtonActionPerformed(evt);
@@ -353,10 +353,15 @@ public class ManageStorePanel extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         StoreGraph graph = App.getInstance().getGraph();
+        String name = nameTextField.getText();
+        Store original = graph.getStore(name);
+        if(original != null && original != store) {
+            JOptionPane.showMessageDialog(this, "Ya existe un almacén con ese nombre", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         if(store != null) {
             graph.removeStore(store.getName());
         }
-        String name = nameTextField.getText();
         Store store = graph.createStore(name);
         for(ListNode<Route> node = routes.getFirst(); node != null; node = node.getNext()) {
             Route route = node.getValue();
