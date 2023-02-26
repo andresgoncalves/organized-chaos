@@ -54,14 +54,15 @@ public class ManageStorePanel extends javax.swing.JPanel {
             saveButton.setEnabled(false);
             return;
         }
+        int[] directedCount = routes.getDirectedCount();
         Store current = App.getInstance().getGraph().getStore(nameTextField.getText());
         if(current != null && current != store ) {
             statusLabel.setText("El almacén ya existe");
             statusLabel.setVisible(true);
             saveButton.setEnabled(false);
         }
-        else if(routes.getSize() < 2) {
-            statusLabel.setText("Agregue al menos 2 rutas al almacén");
+        else if(directedCount[0] < 1 || directedCount[1] < 1) {
+            statusLabel.setText("Agregue al menos una ruta de entrada y una de salida al almacén");
             statusLabel.setVisible(true);
             saveButton.setEnabled(false);
         }
@@ -91,7 +92,10 @@ public class ManageStorePanel extends javax.swing.JPanel {
         searchPanel = new javax.swing.JPanel();
         nameTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
+        storeButtonsPanel = new javax.swing.JPanel();
+        storeFiller = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         createStoreButton = new javax.swing.JButton();
+        removeStoreButton = new javax.swing.JButton();
         routesLabel = new javax.swing.JLabel();
         stockLabel = new javax.swing.JLabel();
         routesScrollPane = new javax.swing.JScrollPane();
@@ -157,11 +161,6 @@ public class ManageStorePanel extends javax.swing.JPanel {
         searchPanel.setLayout(new java.awt.GridBagLayout());
 
         nameTextField.setColumns(10);
-        nameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTextFieldActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
@@ -169,7 +168,7 @@ public class ManageStorePanel extends javax.swing.JPanel {
         gridBagConstraints.weightx = 1.0;
         searchPanel.add(nameTextField, gridBagConstraints);
 
-        searchButton.setText("Buscar");
+        searchButton.setText("Cargar");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
@@ -182,6 +181,11 @@ public class ManageStorePanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 20);
         centerPanel.add(searchPanel, gridBagConstraints);
 
+        storeButtonsPanel.setLayout(new java.awt.GridBagLayout());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.weightx = 1.0;
+        storeButtonsPanel.add(storeFiller, gridBagConstraints);
+
         createStoreButton.setText("Nuevo almacén");
         createStoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,10 +193,24 @@ public class ManageStorePanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 20);
-        centerPanel.add(createStoreButton, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        storeButtonsPanel.add(createStoreButton, gridBagConstraints);
+
+        removeStoreButton.setText("Eliminar almacén");
+        removeStoreButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeStoreButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        storeButtonsPanel.add(removeStoreButton, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        centerPanel.add(storeButtonsPanel, gridBagConstraints);
 
         routesLabel.setText("Rutas:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -245,7 +263,6 @@ public class ManageStorePanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         routeButtonsPanel.add(addRouteButton, gridBagConstraints);
@@ -257,7 +274,6 @@ public class ManageStorePanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         routeButtonsPanel.add(removeRouteButton, gridBagConstraints);
@@ -280,7 +296,6 @@ public class ManageStorePanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         stockButtonsPanel.add(addProductButton, gridBagConstraints);
@@ -292,7 +307,6 @@ public class ManageStorePanel extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         stockButtonsPanel.add(removeProductButton, gridBagConstraints);
@@ -317,8 +331,17 @@ public class ManageStorePanel extends javax.swing.JPanel {
     private void removeRouteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRouteButtonActionPerformed
         int row = routesTable.getSelectedRow();
         if(row >= 0) {
-            routes.removeAt(row);
-            routesTableModel.fireTableRowsDeleted(row, row);
+            Route route = routes.at(row);
+            if(routes.getDirectedCount()[route.isBackwards() ? 1 : 0] > 1 ||
+                    route.getStore().getRoutes().getDirectedCount()[route.isBackwards() ? 0 : 1] > 1) {
+                routes.removeAt(row);
+                routesTableModel.fireTableRowsDeleted(row, row);
+            }
+            else {
+                System.out.println(routes.getDirectedCount()[route.isBackwards() ? 1 : 0]);
+                System.out.println(route.getStore().getRoutes().getDirectedCount()[route.isBackwards() ? 0 : 1]);
+                JOptionPane.showMessageDialog(this, "La operación provocaría almacenes aislados.", "Operación abortada", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_removeRouteButtonActionPerformed
 
@@ -342,7 +365,7 @@ public class ManageStorePanel extends javax.swing.JPanel {
             store.getStock().append(new Stock(product.getProduct(), product.getAmount()));
         }
         App.getInstance().saveFile();
-        App.getInstance().showOptionsPanel();
+        JOptionPane.showMessageDialog(this, "Se guardaron los cambios", "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -375,9 +398,25 @@ public class ManageStorePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_removeProductButtonActionPerformed
 
-    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextFieldActionPerformed
+    private void removeStoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeStoreButtonActionPerformed
+        if(JOptionPane.showConfirmDialog(this, "¿Seguro que desea eliminar el Almacén %s?".formatted(store.getName()), "Confirmar eliminación", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION) {
+            for(ListNode<Route> node = routes.getFirst(); node != null; node = node.getNext()) {
+                Route route = node.getValue();
+                if(route.getStore().getRoutes().getDirectedCount()[route.isBackwards() ? 0 : 1] < 2) {
+                    JOptionPane.showMessageDialog(this, "La operación provocaría almacenes aislados.", "Operación abortada", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
+            if(App.getInstance().getGraph().removeStore(store.getName()) != null) {
+                App.getInstance().saveFile();
+                JOptionPane.showMessageDialog(this, "Se eliminó el Almacén %s".formatted(store.getName()), "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+                setStore(null);
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "No se pudo eliminar el Almacén %s".formatted(store.getName()), "Error", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_removeStoreButtonActionPerformed
 
     class RoutesTableModel extends AbstractTableModel {
 
@@ -546,6 +585,7 @@ public class ManageStorePanel extends javax.swing.JPanel {
     private javax.swing.JTextField nameTextField;
     private javax.swing.JButton removeProductButton;
     private javax.swing.JButton removeRouteButton;
+    private javax.swing.JButton removeStoreButton;
     private javax.swing.JPanel routeButtonsPanel;
     private javax.swing.Box.Filler routeFiller;
     private javax.swing.JLabel routesLabel;
@@ -560,5 +600,7 @@ public class ManageStorePanel extends javax.swing.JPanel {
     private javax.swing.JLabel stockLabel;
     private javax.swing.JScrollPane stockScrollPane;
     private javax.swing.JTable stockTable;
+    private javax.swing.JPanel storeButtonsPanel;
+    private javax.swing.Box.Filler storeFiller;
     // End of variables declaration//GEN-END:variables
 }

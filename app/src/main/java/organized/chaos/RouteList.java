@@ -9,6 +9,23 @@ import java.util.Objects;
 public class RouteList extends List<Route> {
     
     /**
+     * Retorna un arreglo con la cantidad de rutas de entrada y la cantidad de rutas de salida del nodo
+     * @return Un arreglo donde el primer elemento es la cantidad de rutas de entrada, y el segundo la cantidad de rutas de salida
+     */
+    public int[] getDirectedCount() {
+        int[] count = new int[]{0,0};
+        for(ListNode<Route> node = getFirst(); node != null; node = node.getNext()) {
+            if(node.getValue().isBackwards()) {
+                count[1]++;
+            }
+            else {
+                count[0]++;
+            }
+        }
+        return count;
+    }
+    
+    /**
      * Compara el nombre del destino de una ruta con un objeto
      * @param a ruta
      * @param b nombre a comparar
