@@ -68,6 +68,10 @@ public class BuyPanel extends javax.swing.JPanel {
         StoreList paths = new StoreList();
         RouteList pending = new RouteList(), visited = new RouteList();
         pending.append(new Route(target, 0));
+        
+        Store newPath = new Store(target.getName());
+        newPath.getRoutes().append(new Route(target, 0));
+        paths.append(newPath);
 
         for (ListNode<Route> sourceNode = pending.getFirst(); sourceNode != null; sourceNode = sourceNode.getNext()) {
             Route source = sourceNode.getValue();
@@ -85,13 +89,13 @@ public class BuyPanel extends javax.swing.JPanel {
                     Route pendingRoute = pending.find(route.getStore().getName());
                     
                     /* Agregar ruta actual */
-                    Store newPath = new Store(route.getStore().getName());
+                    newPath = new Store(route.getStore().getName());
                     if(path != null) {
                         for (ListNode<Route> pathNode = path.getRoutes().getFirst(); pathNode != null; pathNode = pathNode.getNext()) {
                             newPath.getRoutes().append(pathNode.getValue());
                         }
                     }
-                    newPath.getRoutes().append(route);
+                    newPath.getRoutes().append(new Route(route.getStore(), distance));
                     paths.remove(newPath.getName());
                     paths.append(newPath);
                     
@@ -317,11 +321,12 @@ public class BuyPanel extends javax.swing.JPanel {
             }
             App.getInstance().saveFile();
             JOptionPane.showMessageDialog(this, "La compra se procesó exitosamente", "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+        App.getInstance().showOptionsPanel();
         }
         else {
-            RouteList borrowRoute = findNearestRoute(target, borrowList);
-            Store borrowStore = borrowRoute.getLast().getValue().getStore();
-            if(borrowRoute == null) {
+            RouteList borrowPath = findNearestRoute(target, borrowList);
+            Store borrowStore = borrowPath.getLast().getValue().getStore();
+            if(borrowPath == null) {
                 JOptionPane.showMessageDialog(this, "No fue posible enviar todos los productos", "Error", JOptionPane.WARNING_MESSAGE);
                 return;
             }
@@ -338,9 +343,9 @@ public class BuyPanel extends javax.swing.JPanel {
                 targetProduct.setAmount(targetProduct.getAmount() - cartProduct.getAmount());
             }
             App.getInstance().saveFile();
-            JOptionPane.showMessageDialog(this, "La compra se procesó exitosamente abasteciendo desde el Almacén %s".formatted(borrowStore.getName()), "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La compra se procesó exitosamente abasteciendo desde el Almacén %s, a una distancia de %d km".formatted(borrowStore.getName(), borrowPath.getLast().getValue().getDistance()), "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            App.getInstance().showGraphPanel(borrowPath);
         }
-        App.getInstance().showOptionsPanel();
     }//GEN-LAST:event_buyButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed

@@ -165,7 +165,7 @@ public class OptionsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buyButtonActionPerformed
 
     private void showStoresButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showStoresButtonActionPerformed
-        App.getInstance().showUpdateStockPanel();
+        App.getInstance().showGraphPanel();
     }//GEN-LAST:event_showStoresButtonActionPerformed
 
     private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed

@@ -75,8 +75,14 @@ public class App extends javax.swing.JFrame {
         show("OptionsPanel");
     }
     
-    public void showStoresPanel() {
-        show("OptionsPanel");
+    public void showGraphPanel() {
+        graphPanel.setHighlightedPath(null);
+        show("GraphPanel");
+    }
+    
+    public void showGraphPanel(RouteList path) {
+        graphPanel.setHighlightedPath(path);
+        show("GraphPanel");
     }
     
     public void showManageStorePanel() {
@@ -139,6 +145,7 @@ public class App extends javax.swing.JFrame {
         manageStorePanel = new organized.chaos.ManageStorePanel();
         buyPanel = new organized.chaos.BuyPanel();
         stockPanel = new organized.chaos.StockPanel();
+        graphPanel = new organized.chaos.GraphPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         mainMenu = new javax.swing.JMenu();
         chargeFile = new javax.swing.JMenu();
@@ -161,6 +168,7 @@ public class App extends javax.swing.JFrame {
         contentPanel.add(manageStorePanel, "ManageStorePanel");
         contentPanel.add(buyPanel, "BuyPanel");
         contentPanel.add(stockPanel, "StockPanel");
+        contentPanel.add(graphPanel, "GraphPanel");
 
         getContentPane().add(contentPanel, java.awt.BorderLayout.CENTER);
 
@@ -217,6 +225,7 @@ public class App extends javax.swing.JFrame {
     private organized.chaos.BuyPanel buyPanel;
     private javax.swing.JMenu chargeFile;
     private javax.swing.JPanel contentPanel;
+    private organized.chaos.GraphPanel graphPanel;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private organized.chaos.LoadPanel loadPanel;

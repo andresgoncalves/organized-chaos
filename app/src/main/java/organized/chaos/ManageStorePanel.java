@@ -38,9 +38,11 @@ public class ManageStorePanel extends javax.swing.JPanel {
                 Stock product = node.getValue();
                 stock.append(new Stock(product.getProduct(), product.getAmount()));
             }
+            removeStoreButton.setEnabled(true);
         }
         else {
             nameTextField.setText("");
+            removeStoreButton.setEnabled(false);
         }
         routesTableModel.fireTableDataChanged();
         stockTableModel.fireTableDataChanged();

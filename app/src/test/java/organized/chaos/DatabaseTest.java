@@ -95,8 +95,6 @@ public class DatabaseTest {
         
         String result = writer.toString();
         
-        System.out.println(result);
-        
         for(String line : testDatabase.split("\n")) {
             assertTrue(result.contains(line), "Line not found: " + line);            
         }
