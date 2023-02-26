@@ -247,24 +247,28 @@ public class BuyPanel extends javax.swing.JPanel {
     private void addProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductButtonActionPerformed
         int row = stockList.getSelectedIndex();
         int amount = (int) amountSpinner.getValue();
-        if(amount <= 0) {
+        
+        if(row < 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione un producto", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if(amount <= 0) {
             JOptionPane.showMessageDialog(this, "Ingrese una cantidad mayor a 0", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if(row >= 0 && amount > 0) {
-            Stock original = stock.at(row);
-            if(amount > original.getAmount()) {
-                JOptionPane.showMessageDialog(this, "No hay suficientes productos en inventario", "Error", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            Stock added = new Stock(original.getProduct(), (int) amountSpinner.getValue());
-            original.setAmount(original.getAmount() - added.getAmount());
-            cart.append(added);
-            stockListModel.update();
-            cartListModel.update();
-            amountSpinner.setValue(0);
-            updateStatus();
+        
+        Stock original = stock.at(row);
+        if(amount > original.getAmount()) {
+            JOptionPane.showMessageDialog(this, "No hay suficientes productos en inventario", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
         }
+        Stock added = new Stock(original.getProduct(), (int) amountSpinner.getValue());
+        original.setAmount(original.getAmount() - added.getAmount());
+        cart.append(added);
+        stockListModel.update();
+        cartListModel.update();
+        amountSpinner.setValue(0);
+        updateStatus();
     }//GEN-LAST:event_addProductButtonActionPerformed
    
     class StockListModel extends AbstractListModel {
