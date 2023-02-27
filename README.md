@@ -21,3 +21,7 @@ Primer proyecto de Estructuras de Datos. Trimestre 2223-2.
 Ejecute `gradlew run` para iniciar el programa.
 
 Requiere Java 11 en adelante.
+
+## Diagrama de Clases UML
+
+![Diagrama de clases](diagrama-de-clases.png)
