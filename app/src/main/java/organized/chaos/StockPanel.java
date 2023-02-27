@@ -5,7 +5,7 @@ import javax.swing.ListModel;
 
 /**
  * Panel de disponibilidad en inventario
- * @author Andres
+ * @author Diego, Andres
  */
 public class StockPanel extends javax.swing.JPanel {
     

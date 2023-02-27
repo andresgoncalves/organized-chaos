@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
 /**
- *
- * @author Andres
+ * Panel de gestión de almacenes
+ * @author Diego, Michelle, Andres
  */
 public class ManageStorePanel extends javax.swing.JPanel {
     
@@ -24,6 +24,10 @@ public class ManageStorePanel extends javax.swing.JPanel {
         setStore(null);
     }
 
+    /**
+     * Establece el almacén a mostrar
+     * @param store almacén a mostrar
+     */
     public void setStore(Store store) {
         this.store = store;
         routes = new RouteList();
@@ -49,6 +53,9 @@ public class ManageStorePanel extends javax.swing.JPanel {
         updateStatus();
     }
 
+    /**
+     * Valida y actualiza los datos de la interfaz
+     */
     public void updateStatus() {
         if(nameTextField.getText().isBlank()) {
             statusLabel.setText("Ingrese un nombre para el almacén");
@@ -322,6 +329,10 @@ public class ManageStorePanel extends javax.swing.JPanel {
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Agrega una ruta al almacén
+     * @param evt 
+     */
     private void addRouteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRouteButtonActionPerformed
         int row = routes.getSize();
         routesTableModel.setValueAt("", row, 0);               
@@ -330,6 +341,10 @@ public class ManageStorePanel extends javax.swing.JPanel {
         routesTable.editCellAt(row, 0);
     }//GEN-LAST:event_addRouteButtonActionPerformed
 
+    /**
+     * Elimina una ruta del almacén
+     * @param evt 
+     */
     private void removeRouteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeRouteButtonActionPerformed
         int row = routesTable.getSelectedRow();
         if(row >= 0) {
@@ -347,10 +362,18 @@ public class ManageStorePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_removeRouteButtonActionPerformed
 
+    /**
+     * Cancela los cambios
+     * @param evt 
+     */
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         App.getInstance().showOptionsPanel();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    /**
+     * Guarda los cambios en el grafo y en la base de datos
+     * @param evt 
+     */
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         StoreGraph graph = App.getInstance().getGraph();
         String name = nameTextField.getText();
@@ -375,6 +398,10 @@ public class ManageStorePanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Se guardaron los cambios", "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    /**
+     * Busca un almacén y lo carga en la interfaz
+     * @param evt 
+     */
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         Store store = App.getInstance().getGraph().getStore(nameTextField.getText().toString().toUpperCase());
         if(store != null) {
@@ -385,10 +412,18 @@ public class ManageStorePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_searchButtonActionPerformed
 
+    /**
+     * Inicia la edición de un nuevo almacén
+     * @param evt 
+     */
     private void createStoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createStoreButtonActionPerformed
         setStore(null);
     }//GEN-LAST:event_createStoreButtonActionPerformed
 
+    /**
+     * Agrega un producto al almacén
+     * @param evt 
+     */
     private void addProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductButtonActionPerformed
         int row = stock.getSize();
         stockTableModel.setValueAt("", row, 0);               
@@ -397,6 +432,10 @@ public class ManageStorePanel extends javax.swing.JPanel {
         stockTable.editCellAt(row, 0);
     }//GEN-LAST:event_addProductButtonActionPerformed
 
+    /**
+     * Elimina un producto del almacén
+     * @param evt 
+     */
     private void removeProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeProductButtonActionPerformed
         int row = stockTable.getSelectedRow();
         if(row >= 0) {
@@ -405,6 +444,10 @@ public class ManageStorePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_removeProductButtonActionPerformed
 
+    /**
+     * Elimina un almacén
+     * @param evt 
+     */
     private void removeStoreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeStoreButtonActionPerformed
         if(JOptionPane.showConfirmDialog(this, "¿Seguro que desea eliminar el Almacén %s?".formatted(store.getName()), "Confirmar eliminación", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.OK_OPTION) {
             for(ListNode<Route> node = routes.getFirst(); node != null; node = node.getNext()) {
@@ -425,6 +468,9 @@ public class ManageStorePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_removeStoreButtonActionPerformed
 
+    /**
+     * Modelo de la tabla de rutas del almacén
+     */
     class RoutesTableModel extends AbstractTableModel {
 
         @Override
@@ -504,6 +550,9 @@ public class ManageStorePanel extends javax.swing.JPanel {
         }
     }
     
+    /**
+     * Modelo de la tabla de productos del almacén
+     */
     class StockTableModel extends AbstractTableModel {
 
         @Override

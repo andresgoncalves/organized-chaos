@@ -9,8 +9,8 @@ import javax.swing.JOptionPane;
 import java.awt.CardLayout;
 
 /**
- *
- * @author Andres
+ * Ventana principal del programa
+ * @author Andres, Michelle, Diego
  */
 public class App extends javax.swing.JFrame {
 
@@ -24,18 +24,34 @@ public class App extends javax.swing.JFrame {
         initComponents();
     }
 
+    /**
+     * Retorna el grafo cargado en memoria
+     * @return Grafo de almacenes
+     */
     public StoreGraph getGraph() {
         return graph;
     }
 
+    /**
+     * Establece el grafo del programa
+     * @param graph grafo de almacenes
+     */
     public void setGraph(StoreGraph graph) {
         this.graph = graph;
     }
 
+    /**
+     * Retorna el archivo de datos utilizado
+     * @return Archivo de datos
+     */
     public File getDataFile() {
         return dataFile;
     }
-
+    
+    /**
+     * Establece el archivo de datos utilizado por el programa
+     * @param dataFile archivo de datos
+     */
     public void setDataFile(File dataFile) {
         this.dataFile = dataFile;
     }
@@ -74,36 +90,59 @@ public class App extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Muestra una vista de la interfaz
+     * @param name nombre de la vista
+     */
     public void show(String name) {
         ((CardLayout) contentPanel.getLayout()).show(contentPanel, name);
     }
     
+    /**
+     * Muestra la vista de opciones
+     */
     public void showOptionsPanel() {
         show("OptionsPanel");
     }
     
+    /**
+     * Muestra la vista de grafo
+     */
     public void showGraphPanel() {
         graphPanel.setGraph(graph);
         graphPanel.setHighlightedPath(null);
         show("GraphPanel");
     }
     
+    /**
+     * Muestra la vista de grafo con una ruta marcada
+     * @param path la secuencia de rutas marcada
+     */
     public void showGraphPanel(RouteList path) {
         graphPanel.setGraph(graph);
         graphPanel.setHighlightedPath(path);
         show("GraphPanel");
     }
     
+    /**
+     * Muestra la vista de gestión de almacenes
+     */
     public void showManageStorePanel() {
         manageStorePanel.setStore(null);
         show("ManageStorePanel");
     }
     
+    /**
+     * Muestra la vista de información de inventario
+     */
     public void showStockPanel() {
         stockPanel.updateStock();
         show("StockPanel");
     }
     
+    /**
+     * Muestra la vista de compra
+     */
     public void showBuyPanel() {
         StockList stock = new StockList();
 
@@ -175,7 +214,8 @@ public class App extends javax.swing.JFrame {
     public static App instance;
     
     /**
-     * @param args the command line arguments
+     * Punto de partida del programa
+     * @param args argumentos de línea de comandos
      */
     public static void main(String args[]) {
         /* Set the look and feel */
@@ -200,6 +240,10 @@ public class App extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Retorna la ventana actual
+     * @return Instancia de la aplicación
+     */
     public static App getInstance() {
         return instance;
     }

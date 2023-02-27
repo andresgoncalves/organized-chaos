@@ -2,11 +2,10 @@ package organized.chaos;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.util.Objects;
 
 /**
- * Ventana para mostrar el grafo 
+ * Panel para mostrar el grafo 
  * @author Andres
  */
 public class GraphPanel extends javax.swing.JPanel {
@@ -21,10 +20,18 @@ public class GraphPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * Establece el grafo a utilizar
+     * @param graph grafo
+     */
     public void setGraph(StoreGraph graph) {
         this.graph = graph;
     }
 
+    /**
+     * Establece la secuencia de rutas a resaltar
+     * @param highlightedPath secuencia de rutas
+     */
     public void setHighlightedPath(RouteList highlightedPath) {
         this.highlightedPath = highlightedPath;
     }
@@ -79,7 +86,7 @@ public class GraphPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     
     /**
-     * BotÃ³n para volver al menÃº
+     * Botón para volver al menúº
      * @param evt 
      */
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
@@ -88,7 +95,7 @@ public class GraphPanel extends javax.swing.JPanel {
     
     @Override
     /**
-     * MÃ©todo que dibuja el grafo de rutas y almacenes
+     * Método que dibuja el grafo de rutas y almacenes
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -185,6 +192,9 @@ public class GraphPanel extends javax.swing.JPanel {
         }
     }
     
+    /**
+     * Datos de vértice del dibujo
+     */
     class Vertex {
         public Store store;
         public int x, y;

@@ -1,8 +1,8 @@
 package organized.chaos;
 
 /**
- *
- * @author Andres
+ * Panel de menú principal
+ * @author Michelle, Andres
  */
 public class OptionsPanel extends javax.swing.JPanel {
 
@@ -36,7 +36,7 @@ public class OptionsPanel extends javax.swing.JPanel {
         setLayout(new java.awt.GridBagLayout());
 
         titleLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        titleLabel.setText("Sistema de Distribuciï¿½n de Amazon");
+        titleLabel.setText("Sistema de Distribución de Amazon");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
@@ -44,7 +44,7 @@ public class OptionsPanel extends javax.swing.JPanel {
         add(titleLabel, gridBagConstraints);
 
         subtitleLabel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        subtitleLabel.setText("Seleccione una opciï¿½n");
+        subtitleLabel.setText("Seleccione una opción");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
@@ -101,7 +101,7 @@ public class OptionsPanel extends javax.swing.JPanel {
 
         addStoreButton.setBackground(new java.awt.Color(255, 204, 51));
         addStoreButton.setForeground(new java.awt.Color(0, 0, 0));
-        addStoreButton.setText("Agregar Almacï¿½n");
+        addStoreButton.setText("Agregar Almacén");
         addStoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addStoreButtonActionPerformed(evt);

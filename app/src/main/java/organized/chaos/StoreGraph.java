@@ -2,7 +2,7 @@ package organized.chaos;
 
 /**
  * Grafo que representa un conjunto de almacenes y las rutas que los conectan
- * @author Andres
+ * @author Andres, Diego, Michelle
  */
 public class StoreGraph {
 

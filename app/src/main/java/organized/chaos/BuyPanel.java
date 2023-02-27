@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Panel destinado al pedido de productos para la compra
- * @author Andres
+ * @author Andres, Diego
  */
 public class BuyPanel extends javax.swing.JPanel {
 
@@ -22,6 +22,10 @@ public class BuyPanel extends javax.swing.JPanel {
         initComponents();
     }
 
+    /**
+     * Establece la lista total de inventario
+     * @param stock lista de productos
+     */
     public void setStock(StockList stock) {
         this.stock = stock;
         cart = new StockList();
@@ -33,9 +37,12 @@ public class BuyPanel extends javax.swing.JPanel {
         cartListModel.setList(cart);
     }
     
+    /**
+     * Valida y actualiza el estado de la interfaz
+     */
     public void updateStatus() {
         if(((String) nameComboBox.getSelectedItem()).isBlank()) {
-            statusLabel.setText("Seleccione un almacï¿½n");
+            statusLabel.setText("Seleccione un almacén");
             statusLabel.setVisible(true);
             buyButton.setEnabled(false);
         }
@@ -50,6 +57,12 @@ public class BuyPanel extends javax.swing.JPanel {
         }
     }
 
+    /**
+     * Indica si el almacén puede suplir la lista de productos
+     * @param store almacén a evaluar
+     * @param list lista de productos
+     * @return {@code true} si el almacén tiene suficiente cantidad de cada producto, si no {@code false}
+     */
     private boolean hasStock(Store store, StockList list) {
         for(ListNode<Stock> node = list.getFirst(); node != null; node = node.getNext()) {
             Stock listProduct = node.getValue();
@@ -61,6 +74,12 @@ public class BuyPanel extends javax.swing.JPanel {
         return true;
     }
     
+    /**
+     * Retorna la secuencia de rutas más cercana hacia un almacén que pueda suplir la lista de productos
+     * @param target punto de partida de la búsqueda
+     * @param list lista de productos a buscar
+     * @return La secuencia de rutas hacia el almacén encontrado, o {@code null} si no se encontró ninguno
+     */
     private RouteList findNearestRoute(Store target, StockList list) {
         int minDistance = Integer.MAX_VALUE;
         Store minStore = null;
@@ -196,7 +215,7 @@ public class BuyPanel extends javax.swing.JPanel {
         centerPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(40, 40, 20, 40));
         centerPanel.setLayout(new java.awt.GridBagLayout());
 
-        nameLabel.setText("Almacï¿½n: ");
+        nameLabel.setText("Almacén: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
@@ -253,6 +272,9 @@ public class BuyPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.weightx = 1.0;
         stockButtonsPanel.add(stockFiller, gridBagConstraints);
+
+        amountSpinner.setOpaque(true);
+        amountSpinner.setPreferredSize(new java.awt.Dimension(80, 22));
         stockButtonsPanel.add(amountSpinner, new java.awt.GridBagConstraints());
 
         addProductButton.setText("Agregar al carrito");
@@ -298,6 +320,10 @@ public class BuyPanel extends javax.swing.JPanel {
         add(centerPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Realizar compra
+     * @param evt 
+     */
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
         Store target = App.getInstance().getGraph().getStore((String) nameComboBox.getSelectedItem());
         StockList borrowList = new StockList();
@@ -320,13 +346,13 @@ public class BuyPanel extends javax.swing.JPanel {
                 targetProduct.setAmount(targetProduct.getAmount() - cartProduct.getAmount());
             }
             App.getInstance().saveFile();
-            JOptionPane.showMessageDialog(this, "La compra se procesï¿½ exitosamente", "Operaciï¿½n exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La compra se procesó exitosamente", "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
         App.getInstance().showOptionsPanel();
         }
         else {
             RouteList borrowPath = findNearestRoute(target, borrowList);
             if(borrowPath == null) {
-                JOptionPane.showMessageDialog(this, "No fue posible enviar todos los productos", "Error", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No fue posible enviar todos los productos", "Problema de distribución", JOptionPane.WARNING_MESSAGE);
                 return;
             }
             Store borrowStore = borrowPath.getLast().getValue().getStore();
@@ -343,15 +369,23 @@ public class BuyPanel extends javax.swing.JPanel {
                 targetProduct.setAmount(targetProduct.getAmount() - cartProduct.getAmount());
             }
             App.getInstance().saveFile();
-            JOptionPane.showMessageDialog(this, "La compra se procesï¿½ exitosamente abasteciendo desde el Almacï¿½n %s, a una distancia de %d km".formatted(borrowStore.getName(), borrowPath.getLast().getValue().getDistance()), "Operaciï¿½n exitosa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "La compra se procesó exitosamente abasteciendo desde el Almacén %s, a una distancia de %d km".formatted(borrowStore.getName(), borrowPath.getLast().getValue().getDistance()), "Operaciï¿½n exitosa", JOptionPane.INFORMATION_MESSAGE);
             App.getInstance().showGraphPanel(borrowPath);
         }
     }//GEN-LAST:event_buyButtonActionPerformed
 
+    /**
+     * Cancelar compra
+     * @param evt 
+     */
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         App.getInstance().showOptionsPanel();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    /**
+     * Eliminar producto seleccionado del carrito
+     * @param evt 
+     */
     private void removeProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeProductButtonActionPerformed
         int row = cartList.getSelectedIndex();
         if(row >= 0) {
@@ -364,6 +398,10 @@ public class BuyPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_removeProductButtonActionPerformed
 
+    /**
+     * Agregar producto seleccionado al carrito
+     * @param evt 
+     */
     private void addProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductButtonActionPerformed
         int row = stockList.getSelectedIndex();
         int amount = (int) amountSpinner.getValue();
@@ -391,24 +429,43 @@ public class BuyPanel extends javax.swing.JPanel {
         updateStatus();
     }//GEN-LAST:event_addProductButtonActionPerformed
    
+    /**
+     * Modelo de lista de productos
+     */
     class StockListModel extends AbstractListModel {
 
         private StockList list = new StockList();
 
+        /**
+         * Establece los datos de la lista
+         * @param list lista de productos
+         */
         public void setList(StockList list) {
             this.list = list;
             update();
         }
         
+        /**
+         * Actualiza toda la lista
+         */
         public void update() {
             this.fireContentsChanged(this, 0, list.getSize());
         }
         
+        /**
+         * Retorna el tamaño de la lista
+         * @return tamaño de la lista
+         */
         @Override
         public int getSize() {
             return list.getSize();
         }
 
+        /**
+         * Retorna el elemento en la posición {@code index}
+         * @param index índice del elemento en la lista
+         * @return El elemento correspondiente
+         */
         @Override
         public Object getElementAt(int index) {
             Stock product = list.at(index);
